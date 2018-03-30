@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css">
 	<link rel="stylesheet" href="mymilligram.css">
 
-	<title>Milligram test</title>
+	<title>WildConnection - WildBook</title>
 	
 </head>
 
@@ -64,47 +64,31 @@
 			</form>
 		</section>
 
-		<section class="container">
-			<div class="row">
-				<div class="container profileSide column column-66">
-
-					<div class="row column column-40 profile">
-						<div >
-							<div class="photoContainer">
-								<img class="profilePic" src="http://via.placeholder.com/120x150">
-							</div>
-							<div class="info">					
-								<p>nom prénom</p>
-								<p>campus</p>
-								<p>promo</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="row column column-40 profile">
-						<div>
-							<div class="photoContainer">
-								<img class="profilePic" src="http://via.placeholder.com/120x150">
-							</div>
-							<div class="info">					
-								<p>nom prénom</p>
-								<p>campus</p>
-								<p>promo</p>
-							</div>
-						</div>
-					</div>
+		<section>
+			<div class="profileSide ">
+				<div id="info">					
 				</div>
-
-				<div class="column column-40">
-					<div class="googleMapAPI">
-						<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSWV9N-FYLVlI3IAjVropYsoSl7A33DYDMuRy_4oiVGpaiPhUerQ">
-					</div>
-				</div>
-
 			</div>
-		</div>
-	</section>
+		</section>
+		<script>
+			fetch('http://localhost:9000/wildbook')
+			.then(response => response.json())
+			.then(jason => {
+				let i = 0
+				while (jason[i]){
+					document.getElementById('info').innerHTML += 
+					`<div class="profile"><div class="photoContainer">
+					<img class="profilePic" src="http://via.placeholder.com/120x150">
+					</div>
+					<div><p>${jason[i].lastName}</p></div>
+					<div><p>${jason[i].firstName}</p></div>
+					<div><p>${jason[i].campus}</p></div>
+					<div><p>${jason[i].promo}</p></div></div>`
 
-</main>
+					i++
+				}
+			})
+		</script>
+	</main>
 </body>
 </html>

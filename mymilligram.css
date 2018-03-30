@@ -43,6 +43,9 @@ nav li {
 
 .profile{
 	border: solid black 2px;
+	padding-left : 75px;
+	padding-right : 75px;
+	padding-top : 15px;
 	margin-top: 10px;
 	text-align: center;
 	overflow: hidden;
