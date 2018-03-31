@@ -16,16 +16,13 @@
 				<li><a href="#"><span class="active">WILD BOOK</span></a></li>
 				<li><a href="#">WILD</a></li>
 				<span class="icon">
-					<li><a href="#"><img class="links" src="client/img/links.png"></a></li>
+					<li><a href="#"><img class="links" src="img/links.png"></a></li>
 				</span>
 			</ul>
 		</nav>
 	</header>
 
-	
-
 	<main class="">
-
 		<section class="container">
 			<form class="row">			
 				<input style="font-size:16px" class="input column" type="search" name="searchbar" placeholder="Name, First Name or City"></input>
@@ -58,6 +55,7 @@
 				</div>
 			</div>
 		</section>
+
 		<script>
 			fetch('http://localhost:9000/wildbook')
 			.then(response => response.json())
