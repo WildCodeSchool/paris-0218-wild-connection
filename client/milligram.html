@@ -9,16 +9,14 @@
 <body>
 
 	<header>
-		<h1>WILD CONNECTION</h1>
+		<h2>WILD CONNECTION</h2>
 		<nav>
 			<ul class="menu">
-				<li><a href="#">Wild Home</a></li>
-				<li><a href="#">Wild Book</a></li>
-				<li><a href="#">Wild Job</a></li>
+				<li><a href="#">WILD HOME</a></li>
+				<li><a href="#"><span class="active">WILD BOOK</span></a></li>
+				<li><a href="#">WILD</a></li>
 				<span class="icon">
-					<li><a href="#">Wi</a></li>
-					<li><a href="#">Wi</a></li>
-					<li><a href="#">Wi</a></li>
+					<li><a href="#"><img class="links" src="client/img/links.png"></a></li>
 				</span>
 			</ul>
 		</nav>
@@ -29,33 +27,28 @@
 	<main class="">
 
 		<section class="container">
-			<form class="row searchbar">			
-				<input class="column" type="search" name="searchbar" placeholder="Name, First Name or City"></input>
+			<form class="row">			
+				<input style="font-size:16px" class="input column" type="search" name="searchbar" placeholder="Name, First Name or City"></input>
 				<select class="column">
-					<option>Des options</option>
+					<option>Campus</option>
 					<option>Des options</option>
 					<option>Des options</option>
 					<option>Des options</option>
 				</select>		
 				<select class="column">
-					<option>Des options</option>
-					<option>Des options</option>
-					<option>Des options</option>
-					<option>Des options</option>
-				</select>
-				<select class="column">
-					<option>Des options</option>
+					<option>Promotion</option>
 					<option>Des options</option>
 					<option>Des options</option>
 					<option>Des options</option>
 				</select>
 				<select class="column">
-					<option>Des options</option>
+					<option>Technology</option>
 					<option>Des options</option>
 					<option>Des options</option>
 					<option>Des options</option>
 				</select>
-				<button>Search</button>
+
+				<button style="font-size: 15px">Search</button>
 			</form>
 		</section>
 
@@ -73,35 +66,22 @@
 				document.getElementById('info').innerHTML += '<div>'
 
 				while (jason[i]){
-					if(i % 2 === 0){					
-						document.getElementById('info').innerHTML += 
-						`<div>
-						<div class="profile float-left">
-						<div class="photoContainer">
-						<img class="profilePic" src="http://via.placeholder.com/120x150">
-						</div>
-						<div><p>${jason[i].lastName}</p></div>
-						<div><p>${jason[i].firstName}</p></div>
-						<div><p>${jason[i].campus}</p></div>
-						<div><p>${jason[i].promo}</p></div>
-						</div>`
-					}
-					else {
-						document.getElementById('info').innerHTML += 
-						`<div class="profile float-right">
-						<div class="photoContainer">
-						<img class="profilePic" src="http://via.placeholder.com/120x150">
-						</div>
-						<div><p>${jason[i].lastName}</p></div>
-						<div><p>${jason[i].firstName}</p></div>
-						<div><p>${jason[i].campus}</p></div>
-						<div><p>${jason[i].promo}</p></div>
-						</div>
-						</div>`}
-						i++
-					}
-				})
-			</script>
-		</main>
-	</body>
-	</html>
+					document.getElementById('info').innerHTML += 
+					`<div class="profile float-left">
+					<div class="photoContainer">
+					<img class="profilePic" src="http://via.placeholder.com/120x150">
+					</div>
+					<div class="name">
+					<div><p>${jason[i].lastName}</p></div>
+					<div><p>${jason[i].firstName}</p></div>
+					<div><p>${jason[i].campus}</p></div>
+					<div><p>${jason[i].promo}</p></div>
+					</div>
+					</div>`
+					i++
+				}
+			})
+		</script>
+	</main>
+</body>
+</html>
