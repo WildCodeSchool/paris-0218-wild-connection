@@ -23,7 +23,7 @@
 	</header>
 
 	<main class="">
-		<section class="container">
+		<section class="container searchBar">
 			<form class="row">			
 				<input style="font-size:16px" class="input column" type="search" name="searchbar" placeholder="Name, First Name or City"></input>
 				<select class="column">
@@ -45,13 +45,24 @@
 					<option>Des options</option>
 				</select>
 
-				<button style="font-size: 15px">Search</button>
+				<button class="search" style="font-size: 15px">Search</button>
 			</form>
 		</section>
 
 		<section class="row">
 			<div class="profileSide column column-50">
-				<div id="info">					
+				<div id="info">
+					<div class="profile float-left">
+						<div class="photoContainer">
+							<img class="profilePic" src="http://via.placeholder.com/120x150">
+						</div>
+						<div class="name">
+							<div><p>${jason[i].lastName}</p></div>
+							<div><p>${jason[i].firstName}</p></div>
+							<div><p>${jason[i].campus}</p></div>
+							<div><p>${jason[i].promo}</p></div>
+						</div>
+					</div>					
 				</div>
 			</div>
 		</section>
@@ -60,9 +71,8 @@
 			fetch('http://localhost:9000/wildbook')
 			.then(response => response.json())
 			.then(jason => {
+				console.log(jason)
 				let i = 0
-				document.getElementById('info').innerHTML += '<div>'
-
 				while (jason[i]){
 					document.getElementById('info').innerHTML += 
 					`<div class="profile float-left">
