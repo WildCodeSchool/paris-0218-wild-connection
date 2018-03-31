@@ -1,28 +1,72 @@
+/*reset*/
+
+* {
+	margin: 0;
+	margin-top:0;
+	padding: 0;
+	border: 0;
+	text-decoration: none;
+	color: black; 
+}
+
+
+/*header*/
+
 header {
 	background: #868686;
 	text-align: center;
 	padding-top: 50px;
 }
 
-h1 {
+
+h2 {
 	color: white;
+	padding-top: 30px;
+	padding-bottom: 60px;
 }
 
-main{
-	background: white;
-}
+
+/*navigation*/
 
 nav{
 	background: #C6C3C5;
+	height:80px;
+	border-top: solid 1px orange;
+	border-bottom: solid 1px orange;
+}
+
+
+nav ul {
+	padding-top: 23px;
 }
 
 nav li {
 	display: inline;
 }
 
-.icon {
-	float : right;
-	padding-right : 15px;
+
+nav li a {
+	color: #878485;
+	font-size: 20px;
+	padding-left: 30px;
+}
+
+.profile {
+	border : 1px solid black;
+	margin : 7px;
+	padding : 15px;
+	padding-bottom: 0px;
+
+	text-align : center;
+	line-height: 3px;
+}
+
+.name{
+	margin-top: 15px;
+}
+
+.active{
+	color: white;
 }
 
 .menu {
@@ -30,36 +74,17 @@ nav li {
 	padding-left : 15px;
 }
 
+.icon {
+	float : right;
+	padding-right : 15px;
+}
+
+.links{
+	width:100px;
+	padding-right: 20px;
+}
+
 .profileSide{
-	background: #C6C3C5;
-	display:flex;
-	justify-content: flex-start;
-}
+	background: #868686;
 
-.profilePic{
-	min-width: 120px;
-	height: 150px;
-}
-
-.profile{
-	border: solid black 2px;
-	padding-left : 75px;
-	padding-right : 75px;
-	padding-top : 15px;
-	margin-top: 10px;
-	text-align: center;
-	overflow: hidden;
-}
-
-.info{
-	background: white;
-}
-
-.googleMapAPI{
-	width: 100%;
-}
-
-.searchbar{
-	display:flex;
-	justify-content: space-around;
 }
