@@ -1,0 +1,79 @@
+/*reset*/
+
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	text-decoration: none;
+	color: black; 
+}
+
+/*header*/
+
+header {
+	background: #75D1c6;
+	text-align: center;
+	padding-top: 50px;
+}
+
+h2 {
+	color: white;
+	padding-top: 30px;
+	padding-bottom: 60px;
+}
+
+.button, input[type='submit'] {
+    border: #75D1c6;
+    background-color: #75D1c6;
+}
+/*navigation*/
+
+nav{
+	background: #FFE5B5;
+	height:80px;
+	border-top: solid 1px orange;
+    border-bottom: solid 1px orange;
+	margin-bottom: 20px;
+	
+}
+#login .input {
+	margin: 20px 10px 0 0;
+	display: inline-flex;
+	
+	
+
+}
+.signup {
+    text-align: center;
+}
+.submitform {
+    text-align: center;
+}
+.container {
+    justify-content: space-around;
+}
+#logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+@media screen and (max-width: 900px) {
+	nav {
+		height: auto;
+		
+	}
+	#login .input {
+		display: flex;
+		flex-direction: column;
+		margin: auto;
+		margin-top: 20px;
+		margin-bottom: 10px;
+		max-width: 80%;
+		
+
+	}
+    .row .column.column-40 {
+		max-width: 80%;
+	}
+}
