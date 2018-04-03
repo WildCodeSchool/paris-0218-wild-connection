@@ -11,7 +11,7 @@
 /*header*/
 
 header {
-	background: #f0b958;
+	background: #75D1C6;
 	text-align: center;
 	padding-top: 50px;
 }
@@ -25,7 +25,8 @@ h2 {
 /*navigation*/
 
 nav{
-	background: #FAEC8B;
+	background: #FFE5B5;
+	opacity: 0.9;
 	height:80px;
 	border-top: solid 1px orange;
 	border-bottom: solid 1px orange;
@@ -56,7 +57,7 @@ nav li a {
 }
 
 .active{
-	color: white;
+	color: #CBCBCB;
 }
 
 .links{
@@ -74,7 +75,7 @@ nav li a {
 
 .searchButton{
 	margin-top: 10px;
-	background: #f0b958;
+	background: #75D1C6;
 	border : orange;
 }
 
@@ -93,18 +94,22 @@ nav li a {
 }
 .profileSide{
 	width: 60%;
-	background: #ffe095;
+	background: #d0fff9;
 	margin : 0 auto;
 	display: flex;
 	margin : 15px;
 	flex-wrap: wrap;
+	float : left;
 	justify-content: space-around;
-	float: left;
+	border-radius : 100px: 
+}
+
+.profilePic{
+	border-radius: 100%;
+	padding : 5px;
 }
 
 .profile{
-
-	border : 1px solid black;
 	text-align : center;
 	line-height: 3px;
 	margin: 5px;
@@ -113,7 +118,12 @@ nav li a {
 	display: flex;
 	flex-direction: row;
 	width : 250px;
+	border-radius : 100px: 
+}
 
+.round{
+	max-width : 120px;
+	max-height: 120px;
 }
 
 .name { 
