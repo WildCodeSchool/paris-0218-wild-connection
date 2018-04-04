@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css">
+	<link rel="stylesheet" href="../css/wildbook.css">
+	<title>WildConnection - WildBook</title>
+</head>
+
+<body>
+
+	<header>
+		<h2>WILD CONNECTION</h2>
+		<nav>
+			<ul class="menu">
+				<li><a href="WildHome.html">WILD HOME</a></li>
+				<li><a href="WildBook.html"><span class="active">WILD BOOK</span></a></li>
+				<li><a href="#">WILD JOB</a></li>
+				<span class="icon">
+					<li><a href="#"><img class="links" src="../css/img/links.png"></a></li>
+				</span>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+
+		<section>
+			<form class="row">			
+				<input id="searchBar" style="font-size:16px" class="input column" placeholder="Search..."></input>
+				<select id="campus" class="column input">
+					<option value="Campus">Campus</option>
+					<option value="Biarritz">Biarritz</option>
+					<option value="Bordeaux">Bordeaux</option>
+					<option value="La Loupe">La Loupe</option>
+					<option value="Lille">Lille</option>
+					<option value="Lyon">Lyon</option>
+					<option value="Marseille">Marseille</option>
+					<option value="Orléans">Orléans</option>
+					<option value="Paris">Paris</option>
+					<option value="Reims">Reims</option>
+					<option value="Strasbourg">Strasbourg</option>
+					<option value="Toulouse">Toulouse</option>
+				</select>		
+				<select id="promo" class="column input">
+					<option value="Promo">Promo</option>
+					<option value="2018">2018</option>
+					<option value="2017">2017</option>
+					<option value="2016">2016</option>
+					<option value="2015">2015</option>
+					<option value="2014">2014</option>
+					<option value="2013">2013</option>
+				</select>
+				<select id="techno" class="column input">
+					<option>Technology</option>
+					<option>Javascript</option>
+					<option>fais du Js mon gars.</option>
+					<option>le js y'as que ca de vrai</option>
+				</select>
+
+				<button id="value" class="searchButton" style="font-size: 15px">Search</button>
+			</form>
+		</section>
+
+		<section class="apiandprofile">
+			<div class="profileSide" id="info">
+			</div>
+			<div class="api">
+				<img src="../css/img/apigoogle.png">
+			</div>
+		</section>
+
+		<script>
+			let jason
+			fetch('http://localhost:9000/wildbook')
+			.then(response => jason = response.json())
+			.then(jason => 
+			{
+				let i = 0
+
+				document.getElementById('info').innerHTML = ''
+
+				while (jason[i])
+				{
+					document.getElementById('info').innerHTML += 
+					`<div>
+					<div class="profile">
+					<div class="round"><img class="profilePic" src="../css/img/deer.png"></div>
+					<div class="name">
+					<div><p>${jason[i].lastName}</p></div>
+					<div><p>${jason[i].firstName}</p></div>
+					<div><p>${jason[i].campus}</p></div>
+					<div><p>${jason[i].promo}</p></div>
+					</div>
+					</div>
+					<div>`
+					i++
+				}
+
+				document.getElementById('value').addEventListener('click', () =>
+				{
+					event.preventDefault()
+					let campus = document.getElementById('campus').value
+					let promo = document.getElementById('promo').value
+					let techno = document.getElementById('techno').value
+					let searchBar = document.getElementById('searchBar').value
+
+					let filterjason = jason
+
+					filterjason = jason.filter(jason => 
+					{
+						if ((jason.promo === promo || promo === "Promo" ) && (jason.campus === campus || campus ==='Campus'))
+							return true
+						else 
+							return false
+					})
+
+					document.getElementById('info').innerHTML = ''
+					i = 0
+
+					while (filterjason[i])
+					{
+						document.getElementById('info').innerHTML += 
+						`<div>
+						<div class="profile">
+						<div class="round"><img class="profilePic" src="../css/img/deer.png"></div>
+						<div class="name">
+						<div><p>${filterjason[i].lastName}</p></div>
+						<div><p>${filterjason[i].firstName}</p></div>
+						<div><p>${filterjason[i].campus}</p></div>
+						<div><p>${filterjason[i].promo}</p></div>
+						</div>
+						</div>
+						<div>`
+						i++
+					}
+				})
+			})
+		</script>
+
+	</main>
+</body>
+</html>
