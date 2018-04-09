@@ -46,6 +46,10 @@ nav li a {
 	padding-left: 30px;
 }
 
+form {
+	margin: 5px;
+}
+
 .menu {
 	text-align: left;
 	padding-left : 15px;
@@ -94,6 +98,7 @@ nav li a {
 
 .api{
 	width: 35%;
+	height: 450px;
 	margin-top : 15px;
 }
 .profileSide{
