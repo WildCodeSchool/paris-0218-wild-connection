@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "htmllint-cli": "0.0.6",
+    "http-server": "^0.11.1",
     "nodemon": "^1.17.3",
     "snazzy": "^7.1.1",
     "standard": "^11.0.1",
