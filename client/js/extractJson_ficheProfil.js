@@ -40,16 +40,6 @@ fetch('http://localhost:9000/wildbook')
 			return false
 		})
 
-		filterjason += jason.filter(profile => {
-			let i = 0
-			while (searchBar[i]){
-				if (profile.promo === searchBar[i] || profile.campus === searchBar[i])
-					return true
-				i++
-			}
-			return false
-		})
-
 		/* j'efface les profiles affiché au chargement de la page */
 		document.getElementById('info').innerHTML = ''
 
@@ -68,8 +58,41 @@ fetch('http://localhost:9000/wildbook')
 			</div>
 			<div>`
 		})
-		
+
+		// console.log(searchBar)
+
+		// filterjason = jason.filter(profile => {
+		// 	let i = 0
+		// 	while (searchBar[i]) {
+		// 		if ((profile.promo === searchBar[i]) || (profile.campus === searchBar[i]))
+		// 			return true
+		// 		i++
+		// 	}
+		// 	return false
+		// })
+
+		// /* j'efface les profiles affiché au chargement de la page */
+		// document.getElementById('info').innerHTML = ''
+
+		// /* j'injecte le tableau json filtré */
+		// filterjason.forEach(filterjason => {
+		// 	document.getElementById('info').innerHTML += 
+		// 	`<div>
+		// 	<div class="profile">
+		// 	<div class="round"><img class="profilePic" src="../css/img/deer.png"></div>
+		// 	<div class="name">
+		// 	<div><p>${filterjason.lastName}</p></div>
+		// 	<div><p>${filterjason.firstName}</p></div>
+		// 	<div><p>${filterjason.campus}</p></div>
+		// 	<div><p>${filterjason.promo}</p></div>
+		// 	</div>
+		// 	</div>
+		// 	<div>`
+		// })
+
+
 		filterjason = jason
+		console.log(jason)
 
 	})
 })
