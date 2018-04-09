@@ -9,15 +9,15 @@
 	{
 		"lastName" : " Langevin ",
 		"firstName" : "Pierre",
-		"campus" : "Paris",
+		"campus" : "Toulouse",
 		"promo" : "2018" 
 	},
 
 	{
 		"lastName" : "Benamou",
 		"firstName" : "Serge",
-		"campus" : "Paris",
-		"promo" : "2018" 
+		"campus" : "Biarritz",
+		"promo" : "2016" 
 	},
 
 	{

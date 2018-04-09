@@ -87,10 +87,14 @@ nav li a {
 
 /*profile side */
 
+.apiandprofile{
+	display : flex;
+	flex-direction: row;
+}
+
 .api{
 	width: 35%;
 	margin-top : 15px;
-	float: right;
 }
 .profileSide{
 	width: 60%;
@@ -99,7 +103,6 @@ nav li a {
 	display: flex;
 	margin : 15px;
 	flex-wrap: wrap;
-	float : left;
 	justify-content: space-around;
 	border-radius : 100px: 
 }
