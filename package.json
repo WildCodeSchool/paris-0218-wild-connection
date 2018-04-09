@@ -1,25 +1,6 @@
 {
-  "name": "paris-0218-wild-connection",
-  "version": "1.0.0",
-  "description": "Wild Connection",
-  "main": "server.js",
+  "private": true,
   "dependencies": {
-    "body-parser": "^1.18.2",
-    "express": "^4.16.3"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/WildCodeSchool/paris-0218-wild-connection.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/WildCodeSchool/paris-0218-wild-connection/issues"
-  },
-  "homepage": "https://github.com/WildCodeSchool/paris-0218-wild-connection#readme"
+    "standard": "^11.0.1"
+  }
 }
