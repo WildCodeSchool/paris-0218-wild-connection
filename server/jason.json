@@ -9,22 +9,22 @@
 	{
 		"lastName" : " Langevin ",
 		"firstName" : "Pierre",
-		"campus" : "Paris",
+		"campus" : "Toulouse",
 		"promo" : "2018" 
 	},
 
 	{
 		"lastName" : "Benamou",
 		"firstName" : "Serge",
-		"campus" : "Paris",
-		"promo" : "2018" 
+		"campus" : "Toulouse",
+		"promo" : "2016" 
 	},
 
 	{
 		"lastName" : "Bui",
 		"firstName" : "Alexandra",
 		"campus" : "Paris",
-		"promo" : "2018" 
+		"promo" : "2016" 
 	},
 
 	{
@@ -51,7 +51,7 @@
 	{
 		"lastName" : " Langevin ",
 		"firstName" : "Pierre",
-		"campus" : "Paris",
+		"campus" : "Toulouse",
 		"promo" : "2018" 
 	},
 
