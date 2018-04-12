@@ -55,7 +55,7 @@
 					<option>Technology</option>
 					<option>Javascript</option>
 					<option>fais du Js mon gars.</option>
-					<option>le js y'as que ca de vrai</option>
+					<option>le js y'a que ca de vrai</option>
 				</select>
 
 				<button id="value" class="searchButton" style="font-size: 15px">Search</button>
@@ -65,30 +65,15 @@
 		<section class="apiandprofile">
 			<div class="profileSide" id="info">
 			</div>
+				
+
 			<div id="map" class="api">
 			</div>
 		</section>
 
-		<script src="../js/extractJson_ficheProfil.js">
-		</script>
-
-		<script>
-			function initMap() {
-				const paris = {lat: 48.853, lng: 2.35}
-				const map = new google.maps.Map(document.getElementById('map'), {
-					zoom: 16,
-					center: paris
-				})
-				const marker = new google.maps.Marker({
-					position: paris,
-					map: map
-				})
-			}
-		</script>
-
-
-
-		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAt4SBwCFqoXGujQhi3I2qETM3sOJS6n3w&callback=initMap">
+		<script src="../js/script.js"></script>
+		<script src="../js/extractJson_ficheProfil.js"></script>
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAt4SBwCFqoXGujQhi3I2qETM3sOJS6n3w&callback=initialize">
 		</script>
 
 	</main>
