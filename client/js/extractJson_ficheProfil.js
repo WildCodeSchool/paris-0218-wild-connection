@@ -42,11 +42,21 @@ fetch('http://localhost:9000/wildbook')
 		})
 		
 		if (searchBar != []){
-			filterjason = filterjason.filter(profile => {
-				if ((searchBar.includes(profile.firstName)) || (searchBar.includes(profile.lastName)))
-					return true
-				return false
-			})
+			searchBar = searchBar.split(' ')
+			console.log(searchBar)
+			let i = 0
+			while (searchBar[i]) {
+				filterjason = filterjason.filter(profile => {
+					if (profile.promo === searchBar[i] 
+						|| profile.campus === searchBar[i] 
+						|| profile.firstName === searchBar[i] 
+						|| profile.lastName === searchBar[i])
+						return true
+					return false
+				})
+				i++
+			}
+			console.log(filterjason)
 		}
 
 		/* j'efface les profiles affiché au chargement de la page */
@@ -70,4 +80,4 @@ fetch('http://localhost:9000/wildbook')
 
 		filterjason = jason
 	})
-})
+			})
