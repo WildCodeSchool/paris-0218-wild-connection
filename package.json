@@ -1,6 +1,4 @@
-
-
-
+{
   "private": true,
   "scripts": {
     "server": "nodemon server --ignore client",
@@ -11,9 +9,6 @@
     "lint:html": "htmllint 'client/**/*.html'"
   },
   "dependencies": {
-    "body-parser": "^1.18.2",
-    "express": "^4.16.3",
-    "http-server": "^0.11.1"
     "htmllint-cli": "0.0.6",
     "http-server": "^0.11.1",
     "nodemon": "^1.17.3",
