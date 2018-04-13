@@ -1,0 +1,112 @@
+
+
+header {
+    text-align: center;
+}
+
+h2 {
+    color: orange;
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+
+
+.logo {
+    width:10%;
+    padding-top: 10px;
+
+}
+
+
+nav{
+    background: white;
+    height:80px;
+    border-top: solid 1px orange;
+}
+
+nav ul {
+    padding-top: 23px;
+}
+
+nav li {
+    display: inline;
+}
+
+nav li a {
+    color: orange;
+    font: 20px;
+    padding-left: 30px;
+}
+
+
+
+.menu {
+    text-align: left;
+    padding-left : 15px;
+}
+
+.icon {
+    float : right;
+    padding-right : 15px;
+}
+
+.active{
+    color: grey;
+}
+
+.links{
+    width:100px;
+    padding-right: 20px;
+}
+
+
+.container {
+    padding-top: 10px;
+    width: 100%;
+}
+
+
+#slides {
+    position: relative;
+    width:100%;
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+}
+
+.slide {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    opacity: 0;
+    z-index: 1;
+
+    -webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    -o-transition: opacity 1s;
+    transition: opacity 1s;
+}
+
+.showing {
+    opacity: 1;
+    z-index: 2;
+}
+
+
+
+
+.imgdiv {
+    max-width:100%;
+}
+
+
+
+.control_slide {
+    padding-top: 10px;
+}
+
+.controls {
+    background-color: orange;
+    border:none;
+}
