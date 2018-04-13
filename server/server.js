@@ -1,5 +1,6 @@
 const express = require('express')
 const jason = require('./jason.json')
+const wildjob = require('./wildjob-mock.json')
 const app = express()
 
 app.use((request, response, next) => {
@@ -13,7 +14,7 @@ app.get('/', (request, response) => {
 })
 
 app.get('/wildjob', (request, response) => {
-	response.json("plus tard")
+	response.json(wildjob)
 })
 
 app.get('/wildbook', (request, response) => {
