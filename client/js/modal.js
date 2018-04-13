@@ -8,14 +8,18 @@ const closeBtn = document.getElementsByClassName('closeBtn')[0]
 // Function pour afficher le modal :
 // on affiche la div modal (class="modal"), définie dans le css comme display 'none'
 // grâce au JS qui va changer le style 'none' à 'block' avec l'addEventListenir(click, openModal)
-const openModal = () => modal.style.display = 'block'
+const openModal = () => {
+  modal.style.display = 'block'
+}
 
-const closeModal = () => modal.style.display = 'none'
+const closeModal = () => {
+  modal.style.display = 'none'
+}
 
 const clickOutside = (e) => {
-	if(e.target == modal){
-		modal.style.display = 'none'
-	}
+  if (e.target === modal) {
+    modal.style.display = 'none'
+  }
 }
 
 // Activer l'affichage du modal en display 'block' suite à l'event 'click'
@@ -27,16 +31,15 @@ closeBtn.addEventListener('click', closeModal)
 // Permet de fermer la fenêtre modal en cliquant en dehors de la fenêtre
 window.addEventListener('click', clickOutside)
 
-// 
 // let i = 1
 // let elem = 1
 // while (elem != null) {
-// 	if ((elem = document.getElementById('job' + i)) == null)
-// 	{
-// 		console.log('job' + i)
-// 		break
-// 	}
-// 	elem.addEventListener('click', openModal)
-// 	console.log(elem)
-// 	i++
+//   if ((elem = document.getElementById('job' + i)) == null)
+// {
+// console.log('job' + i)
+//   break
+// }
+//   elem.addEventListener('click', openModal)
+//   console.log(elem)
+//   i++
 // }
