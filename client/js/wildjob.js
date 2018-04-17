@@ -5,8 +5,7 @@ const openModal = () => {
   console.log('t ou')
 }
 
-let fetch
-fetch('http://localhost:9000/wildjob')
+window.fetch('http://localhost:9000/wildjob')
   .then(res => res.json())
   .then(json => {
     let nbElements = 0
@@ -31,8 +30,7 @@ fetch('http://localhost:9000/wildjob')
     }
 
     document.getElementById('value').addEventListener('click', () => {
-      let event
-      event.preventDefault()
+      window.event.preventDefault()
       let contract = document.getElementById('contract').value
       let skills = document.getElementById('skills').value
       let city = document.getElementById('city').value
