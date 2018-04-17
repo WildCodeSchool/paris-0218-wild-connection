@@ -72,12 +72,12 @@ form {
 /*body*/
 /*searchbar */
 
-.searchbar {
+.search-bar {
 	margin : 0 auto;
 	width : 90%;
 }
 
-.searchButton{
+.search-button{
 	margin-top: 10px;
 	background: #75D1C6;
 	border : orange;
@@ -101,7 +101,7 @@ form {
 	height: 450px;
 	margin-top : 15px;
 }
-.profileSide{
+.profile-side{
 	width: 60%;
 	background: #d0fff9;
 	margin : 0 auto;
@@ -112,7 +112,7 @@ form {
 	border-radius : 100px: 
 }
 
-.profilePic{
+.profile-pic{
 	border-radius: 100%;
 	padding : 5px;
 }

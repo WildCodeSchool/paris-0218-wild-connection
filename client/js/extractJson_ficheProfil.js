@@ -8,7 +8,7 @@ window.fetch('http://localhost:9000/wildbook')
       document.getElementById('info').innerHTML +=
       `<div>
       <div class="profile">
-      <div class="round"><img class="profilePic" src="../css/img/deer.png"></div>
+      <div class="round"><img class="profile-pic" src="../css/img/deer.png"></div>
       <div class="name">
       <div><p>${jason.lastName}</p></div>
       <div><p>${jason.firstName}</p></div>
@@ -26,7 +26,7 @@ window.fetch('http://localhost:9000/wildbook')
       window.event.preventDefault()
       let campus = document.getElementById('campus').value
       let promo = document.getElementById('promo').value
-      let searchBar = document.getElementById('searchBar').value
+      let searchBar = document.getElementById('search-bar').value
       let filterjason = jason
 
       /* j'applique un filter sur le tableau jason avec les données du formulaire */

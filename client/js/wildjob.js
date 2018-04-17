@@ -1,5 +1,5 @@
 // cf voir const modal & const openModal dans le fichier modal.js
-const modal = document.getElementById('simple_modal')
+const modal = document.getElementById('simple-modal')
 const openModal = () => {
   modal.style.display = 'block'
   // console.log('t ou')
@@ -34,7 +34,7 @@ window.fetch('http://localhost:9000/wildjob')
       let contract = document.getElementById('contract').value
       let skills = document.getElementById('skills').value
       let city = document.getElementById('city').value
-      let searchBar = document.getElementById('search_bar').value
+      let searchBar = document.getElementById('search-bar').value
 
       let fullJson = json
 
