@@ -68,12 +68,12 @@ nav li a {
 /*body*/
 /*searchbar */
 
-.searchbar {
+.search-bar {
 	margin : 0 auto;
 	width : 90%;
 }
 
-.searchButton{
+.search-button{
 	margin-top: 10px;
 	background: #75D1C6;
 	border : orange;
@@ -203,7 +203,7 @@ body {
 	background-color: rgba(0,0,0,0.5);
 }
 
-.modal_content{
+.modal-content{
 	background-color: white;
 	margin: 30% auto;
 	padding:20px;
@@ -213,13 +213,13 @@ body {
 	animation-duration: 0.4s;
 }
 
-.close_btn{
+.close-btn{
 	color:black;
 	float:right;
 	font-size: 30px;
 }
 
-.close_btn:hover,.close_btn:focus{
+.close-btn:hover,.close-btn:focus{
 	color:#black;
 	text-decoration: none;
 	cursor: pointer;
