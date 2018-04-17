@@ -1,13 +1,13 @@
 [
 	{
-		"lastName" : "Chtira ",
+		"lastName" : "Chtira",
 		"firstName" : "Mehdi",
 		"campus" : "Paris",
 		"promo" : "2018" 
 	},
 
 	{
-		"lastName" : "Langevin ",
+		"lastName" : "Langevin",
 		"firstName" : "Pierre",
 		"campus" : "Toulouse",
 		"promo" : "2018" 
@@ -42,14 +42,15 @@
 	},
 	
 	{
-		"lastName" : "Chtira ",
+
+		"lastName" : "Chtira",
 		"firstName" : "Mehdi",
 		"campus" : "Paris",
 		"promo" : "2017" 
 	},
 
 	{
-		"lastName" : "Langevin ",
+		"lastName" : "Langevin",
 		"firstName" : "Pierre",
 		"campus" : "Toulouse",
 		"promo" : "2018" 
@@ -84,14 +85,14 @@
 	},
 
 	{
-		"lastName" : "Chtira ",
+		"lastName" : "Chtira",
 		"firstName" : "Mehdi",
 		"campus" : "La Loupe",
 		"promo" : "2018" 
 	},
 
 	{
-		"lastName" : "Langevin ",
+		"lastName" : "Langevin",
 		"firstName" : "Pierre",
 		"campus" : "Paris",
 		"promo" : "2018" 
@@ -126,14 +127,14 @@
 	},
 	
 	{
-		"lastName" : "Chtira ",
+		"lastName" : "Chtira",
 		"firstName" : "Mehdi",
 		"campus" : "Paris",
 		"promo" : "2018" 
 	},
 
 	{
-		"lastName" : "Langevin ",
+		"lastName" : "Langevin",
 		"firstName" : "Pierre",
 		"campus" : "Paris",
 		"promo" : "2018" 
