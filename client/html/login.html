@@ -28,20 +28,23 @@
     </header>
     <div class="container">
         <div class="row">
-            <div id="logo" class="column column-40 column-offset-10">
-                <img src="https://wildcodeschool.fr/wp-content/uploads/2017/01/deer.png">
+            <div id="logo" class="column">
+<!-- <div id="logo" class="column column-40 column-offset-10"> -->
+                <img src="https://wildcodeschool.fr/wp-content/uploads/2017/01/deer.png" alt="logo">
             </div>
-            <form class="column column-40 column-offset-10">
+            <form class="column">
+            <!-- <form class="column column-40 column-offset-10"> -->
                 <div class="signup">
                         <h3> Sign up</h3>
                 </div>
                 <fieldset>
-                    <input placeholder="First Name" id="nameField" type="text">
-                    <input placeholder="Last Name" id="nameField" type="text">
-                    <input placeholder="E-mail" id="nameField" type="text">
-                    <input placeholder="Password" id="nameField" type="text">
-                    <input placeholder="Confirm Password" id="nameField" type="text">
-                    <select id="ageRangeField">
+<!-- suppression des id="name_field" pour les 5 input après lint -->
+                    <input placeholder="First Name" type="text">
+                    <input placeholder="Last Name" type="text">
+                    <input placeholder="E-mail" type="text">
+                    <input placeholder="Password" type="text">
+                    <input placeholder="Confirm Password" type="text">
+                    <select>
                         <option value="Campus">Select your Campus</option>
                         <option value="Biarritz">Biarritz</option>
                         <option value="Bordeaux">Bordeaux</option>
@@ -55,7 +58,7 @@
                         <option value="Strasbourg">Strasbourg</option>
                         <option value="Toulouse">Toulouse</option>
                     </select>
-                    <select id="ageRangeField">
+                    <select>
                             <option value="Promo">Promo</option>
                             <option value="2018">2018</option>
                             <option value="2017">2017</option>
@@ -64,7 +67,7 @@
                             <option value="2014">2014</option>
                             <option value="2013">2013</option>
                     </select>
-                    <select id="ageRangeField">
+                    <select>
                             <option value="janvier">Janvier</option>
                             <option value="fevrier">Fevrier</option>
                             <option value="mars">Mars</option>
@@ -80,10 +83,12 @@
                     </select>
                     
                     <div class="submitform">
-                        <input class="button-primary" value="Send" type="submit">
+                        <input class="button_primary" value="Send" type="submit">
                     </div>
                 </fieldset>
             </form>
         </div>
     </div>
 </body>
+</html>
+
