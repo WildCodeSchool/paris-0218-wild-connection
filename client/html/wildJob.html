@@ -15,10 +15,10 @@
 				<li><a href="WildHome.html">WILD HOME</a></li>
 				<li><a href="WildBook.html">WILD BOOK</a></li>
 				<li><a href="wildjob.html"><span class="active">WILD JOB</span></a></li>
-				<span class="icon"><li><a href="#"><img class="links" src="../css/img/links.png"></a></li></span>
+				<span class="icon"><li><a href="#"><img class="links" alt="profilIcon" src="../css/img/links.png"></a></li></span>
 <!-- >>>MODAL BTN -->
- 				<button id="modalBtn" class="button">Job</button> 
- <!-- >>>MODAL BTN -->
+				<button id="modal_btn" class="button">Job</button> 
+<!-- >>>MODAL BTN -->
 			</ul>
 		</nav>
 	</header>
@@ -27,26 +27,26 @@
 
 		<section>
 <!-- >>>MODAL DIV -->
-			<div id="simpleModal" class="modal">
-				<div class="modal-content">
-					<div class="modal-header">
-						<span class="closeBtn">&times;</span>
+			<div id="simple_modal" class="modal">
+				<div class="modal_content">
+					<div class="modal_header">
+						<span class="close_btn">&times;</span>
 						<h1>Share an opportunity</h1>
 					</div>
 					<form action="wildjob.html" method="post">
-						<label for="contract">Contract</label><select id="contractModal" class="column input">
+						<label for="contract">Contract</label><select id="contract_modal" class="column input">
 							<option value="Contract">Contract</option>
 							<option value="Fixed-term contract">Fixed-term contract</option>
 							<option value="Open-ended contract">Open-ended contract</option>
 							<option value="Internship">Internship</option>
 							<option value="Freelance">Freelance</option>
 						</select>
-						<label for="city">City</label><input type="text" name="city" id="cityModal" placeholder="City">
-						<label for="BeginningDate">Beginning time &nbsp; </label><input type="date" name="date" id="BeginningDate"><br>
-						<label for="endDate">Ending time &nbsp;</label><input type="date" name="date" id="endDate"><br>
-						<label>Job title</label><input type="text" name="jobTitle" id="jobTitle" placeholder="Job title">
-						<label>Company name</label><input type="text" name="companyName" id="companyName" placeholder="Company name">
-						<label>Job description</label><textarea placeholder="More information..." name="jobDescription"></textarea>
+						<label for="city">City</label><input type="text" name="city" id="city_modal" placeholder="City">
+						<label for="beginning_date">Starting from &nbsp; </label><input type="date" name="date" id="beginning_date"><br>
+						<label for="end_date">End &nbsp;</label><input type="date" name="date" id="end_date"><br>
+						<label for="job_title">Job title</label><input type="text" name="jobTitle" id="job_title" placeholder="Job title">
+						<label for="company_name">Company name</label><input type="text" name="companyName" id="company_name" placeholder="Company name">
+						<label for="job_description">Job description</label><textarea id="job_description" placeholder="More information..." name="jobDescription"></textarea>
 					<div clas="modal-footer">
 						<button type="submit">Envoyer</button>
 					</div>
@@ -56,10 +56,10 @@
 			</div>
 <!-- >>>MODAL DIV-->
 
-			<div id="secondModal" class="modal">
-				<div class="modal-content">
-					<div class="modal-header">
-						<span class="closeBtn">&times;</span>
+			<div id="second_modal" class="modal">
+				<div class="modal_content">
+					<div class="modal_header">
+						<span class="close_btn">&times;</span>
 						<h1>EST CE QUE CA MARCHE</h1>
 					</div>
 				</div>
@@ -68,7 +68,7 @@
 
 			<form class="row">		
 
-				<input id="searchBar" type="search" style="font-size:16px" class="input column" placeholder="Search..."></input>
+				<input id="search_bar" type="search" class="input column" placeholder="Search..."></input>
 
 <!-- Injecter villes existantes -->				
 				<select id="city" class="column input">
@@ -103,7 +103,7 @@
 					</optgroup>
 				</select>
 
-				<button id="value" class="searchButton" style="font-size: 15px">Search</button>
+				<button id="value" class="search_button">Search</button>
 			</form>
 		</section>
 
