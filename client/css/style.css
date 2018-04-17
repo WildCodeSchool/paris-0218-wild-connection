@@ -203,7 +203,7 @@ body {
 	background-color: rgba(0,0,0,0.5);
 }
 
-.modal-content{
+.modal_content{
 	background-color: white;
 	margin: 30% auto;
 	padding:20px;
@@ -213,13 +213,13 @@ body {
 	animation-duration: 0.4s;
 }
 
-.closeBtn{
+.close_btn{
 	color:black;
 	float:right;
 	font-size: 30px;
 }
 
-.closeBtn:hover,.closeBtn:focus{
+.close_btn:hover,.close_btn:focus{
 	color:#black;
 	text-decoration: none;
 	cursor: pointer;
