@@ -122,7 +122,7 @@ nav li a {
 	display: flex;
 	flex-direction: row;
 	width : 250px;
-	border-radius : 100px: 
+	border-radius : 100px;
 }
 
 .round{
@@ -220,7 +220,7 @@ body {
 }
 
 .close-btn:hover,.close-btn:focus{
-	color:#black;
+	color: black;
 	text-decoration: none;
 	cursor: pointer;
 }
