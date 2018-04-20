@@ -48,7 +48,7 @@
 						<label for="company-name">Company name</label><input type="text" name="companyName" id="company-name" placeholder="Company name">
 						<label for="job-description">Job description</label><textarea id="job-description" placeholder="More information..." name="jobDescription"></textarea>
 					<div clas="modal-footer">
-						<button type="submit">Envoyer</button>
+						<button type="submit" id="submit-job">Envoyer</button>
 					</div>
 
 					</form>
@@ -113,6 +113,29 @@
 
 	</main>
 
+
+<script>
+	window.document.getElementById('submit-job').addEventListener('click', event => {
+		event.preventDefault()
+		const formulaireJob = {
+			contract : window.document.getElementById('contract-modal').value,
+			city : window.document.getElementById('city-modal').value,
+			begDate : window.document.getElementById('beginning-date').value,
+			endDate : window.document.getElementById('end-date').value,
+			title : window.document.getElementById('job-title').value,
+			companyName : window.document.getElementById('company-name').value,
+			description : window.document.getElementById('job-description').value
+		}
+		console.log(formulaireJob)
+
+		fetch("http://localhost:3456/wildjob", {
+			method : 'post',
+			body : JSON.stringify(formulaireJob)
+		})
+	})
+
+</script>
+</script>
 <script type="module" src="../js/wildjob.js"></script>
 <script type="module" src="../js/modal.js"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>

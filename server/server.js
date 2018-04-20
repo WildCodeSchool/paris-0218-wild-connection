@@ -1,15 +1,13 @@
 const express = require('express')
-const jason = require('./jason.json')
+const app = express()
 const wildjob = require('./wildjob-mock.json')
 const path = require('path')
 const util = require('util')
 const fs = require('fs')
 const writeFile = util.promisify(fs.writeFile)
 const readdir = util.promisify(fs.readdir)
-// trop precious
 const readFile = util.promisify(fs.readFile)
-
-const app = express()
+const jasondir = __dirname + "/json"
 
 app.use((request, response, next) => {
   if (request.method === 'GET') return next()
@@ -42,7 +40,7 @@ app.get('/login', (request, response) => {
 
 app.post('/login', (request, response) => {
   let id = Math.random().toString(36).slice(2, 6)
-  let filename = `${id}.json`
+  let filename = `/${id}.json`
   const dirpath = path.join(__dirname, filename)
   const form = {
     id: id,
@@ -56,12 +54,31 @@ app.post('/login', (request, response) => {
     month: request.body.month
   }
   writeFile(dirpath, JSON.stringify(form, null, 2), 'utf8')
-    .then(response.send('ok')
-      .catch(err))
+    .then(response.send('ok'))
+   // .catch(err => response.status(404).end('404'))
 })
 
-app.get('/wildjob', (request, response) => {
-  response.json(wildjob)
+ app.get('/wildjob', (request, response) => {
+  response.send('hey les offres')
+})
+
+app.post('/wildjob', (request, response) => {
+  let idJob = Math.random().toString(36).slice(2, 8)
+  let fileNameJob = `${idJob}.json`
+  const dirpathJob = path.join(__dirname, fileNameJob)
+  const formJob = {
+      id : idJob,
+      contract : request.body.contract, 
+      city : request.body.city,
+      begDate : request.body.begDate,
+      endDate : request.body.endDate,
+      title : request.body.title,
+      companyName : request.body.companyName,
+      description : request.body.description
+  }
+  writeFile(dirpathJob, JSON.stringify(formJob, null, 2), 'utf8')
+    .then(response.send('ok'))
+    // .catch(err => response.status(404).end('error 404'))
 })
 
 app.get('/wildbook', (request, response) => {
