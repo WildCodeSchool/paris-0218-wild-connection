@@ -1,17 +1,21 @@
-window.fetch('http://localhost:9000/wildbook')
+window.fetch('http://localhost:3456/wildbook')
   .then(response => response.json())
   .then(jason => {
+    console.log(jason)
     /* injection des profiles en arrivant sur la pages */
     document.getElementById('info').innerHTML = ''
 
     jason.forEach((jason) => {
+
+      jason = JSON.parse(jason)
+
       document.getElementById('info').innerHTML +=
       `<div>
       <div class="profile">
       <div class="round"><img class="profile-pic" src="../css/img/deer.png"></div>
       <div class="name">
-      <div><p>${jason.lastName}</p></div>
       <div><p>${jason.firstName}</p></div>
+      <div><p>${jason.lastName}</p></div>
       <div><p>${jason.campus}</p></div>
       <div><p>${jason.promo}</p></div>
       </div>

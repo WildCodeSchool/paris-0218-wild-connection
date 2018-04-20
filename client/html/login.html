@@ -3,7 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css">
-    <link rel="stylesheet" href="/home/chtira/paris-0218-wild-connection/client/css/login.css">
+    <link rel="stylesheet" href="../css/login.css">
     <title>WildConnection - login</title>
 </head>
 
@@ -101,19 +101,11 @@
                 promo : window.document.getElementById('promo').value,
                 month : window.document.getElementById('month').value
             }
-            if (formulaire.firstName == (/\w/)) 
- //               && (formulaire.lastName === (/[a-z]/gi)) 
-   //             && (formulaire.password === (/\S/gi)) 
-     //           && (formulaire.password === formulaire.passwordBis)) 
-                {
                 
                 window.fetch("http://localhost:3456/login",{
                     method : 'POST',
                     body : JSON.stringify(formulaire)
                 })
-                    console.log("j'ai send ptit batard")
-                }
-                console.log('Wrong entry')
             })
         
     </script>

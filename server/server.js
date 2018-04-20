@@ -7,7 +7,8 @@ const fs = require('fs')
 const writeFile = util.promisify(fs.writeFile)
 const readdir = util.promisify(fs.readdir)
 const readFile = util.promisify(fs.readFile)
-const jasondir = __dirname + "/json"
+const jasondir = __dirname + "/json/"
+const array = []
 
 app.use((request, response, next) => {
   if (request.method === 'GET') return next()
@@ -40,7 +41,7 @@ app.get('/login', (request, response) => {
 
 app.post('/login', (request, response) => {
   let id = Math.random().toString(36).slice(2, 6)
-  let filename = `/${id}.json`
+  let filename = `/json/${id}.json`
   const dirpath = path.join(__dirname, filename)
   const form = {
     id: id,
@@ -53,12 +54,13 @@ app.post('/login', (request, response) => {
     promo: request.body.promo,
     month: request.body.month
   }
+
   writeFile(dirpath, JSON.stringify(form, null, 2), 'utf8')
     .then(response.send('ok'))
    // .catch(err => response.status(404).end('404'))
 })
 
- app.get('/wildjob', (request, response) => {
+app.get('/wildjob', (request, response) => {
   response.send('hey les offres')
 })
 
@@ -82,7 +84,14 @@ app.post('/wildjob', (request, response) => {
 })
 
 app.get('/wildbook', (request, response) => {
-  response.json(jason)
+  readdir(jasondir)
+    .then(users => users.map(user => jasondir + user))
+    .then(users => {
+      users.forEach(user => array.push(readFile(user, 'utf8')))
+      Promise.all(array)
+        .then(array => response.json(array))
+  })  
+    
 })
 
 app.listen(3456, () => console.log('Port 3456'))
