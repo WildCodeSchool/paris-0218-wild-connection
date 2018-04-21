@@ -19,7 +19,7 @@ form.addEventListener('submit', event => {
     passwordBis: window.document.getElementById('password-bis').value,
   }
 
-  if (inputs.password === inputs.passwordBis) {
+  if (inputs.password && inputs.password === inputs.passwordBis) {
     const credentials = {
       mail: inputs.mail,
       password: inputs.password

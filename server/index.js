@@ -54,7 +54,13 @@ app.post('/login', (request, response, next) => {
   const content = {
     id: id,
     mail: request.body.mail,
-    password: request.body.password
+    password: request.body.password,
+    // default values
+    firstName: "Bob",
+    lastName: "Marley",
+    campus: "Paris",
+    promo: "2013",
+    month: "fevrier"
   }
 
   // if (!content.mail.includes('@')) {
