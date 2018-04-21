@@ -65,7 +65,7 @@ a {
 .input input:focus {
 	border: solid 1px #03B5AA;
 }
-#formulaire input:focus {
+#signup-form input:focus {
 	border: solid 1px #03B5AA;
 }
 
@@ -74,7 +74,7 @@ a {
 	margin: 50px 0;
 }
 
-#formulaire input{
+#signup-form input{
 	margin-bottom: 1.5em !important;
 }
 .button, button, input[type='button'], input[type='reset'], input[type='submit']:hover {
