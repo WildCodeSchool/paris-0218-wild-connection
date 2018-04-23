@@ -6,7 +6,6 @@ const fs = require('fs')
 const writeFile = util.promisify(fs.writeFile)
 const readdir = util.promisify(fs.readdir)
 const readFile = util.promisify(fs.readFile)
-
 const jasondir = __dirname + "/json/"
 const wildjob = require('./wildjob-mock.json')
 
@@ -50,7 +49,6 @@ app.post('/login', (request, response, next) => {
   const id = Math.random().toString(36).slice(2, 6)
   const filename = `user-${id}.json`
   const dirpath = path.join(jasondir, filename)
-  
   const content = {
     id: id,
     mail: request.body.mail,
@@ -102,7 +100,8 @@ app.get('/users', (request, response) => {
     .then(paths => {
       Promise.all(paths.map(path => readFile(path, 'utf8').then(JSON.parse)))
         .then(users => response.json(users))
-  })  
+    })
+
 })
 
 app.listen(3456, () => console.log('Port 3456'))

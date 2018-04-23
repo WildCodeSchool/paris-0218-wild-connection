@@ -51,7 +51,6 @@ const filterUsers = users => {
   return users.filter(byFilters)
 }
 
-
 filtersSubmitButton.addEventListener('click', event => {
   event.preventDefault()
 
@@ -67,4 +66,3 @@ fetch('http://localhost:3456/users')
     
     inject(users)
   })
-

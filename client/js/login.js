@@ -28,9 +28,8 @@ form.addEventListener('submit', event => {
     signup(credentials)
       .then(res => console.log(res))
       .catch(err => console.log(err))
-    
   } else {
     console.log('Wrong entry')
-  } 
-  
+  }
 })
+

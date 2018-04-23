@@ -5,6 +5,7 @@
 	padding: 0;
 	border: 0;
 	text-decoration: none;
+
 	color: black; 
 }
 
@@ -44,7 +45,8 @@ a {
 }
 /*navigation*/
 
-nav{
+nav
+{
 	height: auto;
 	background: #232C31 ;
 }
@@ -179,7 +181,6 @@ footer {
     justify-content: center;
 	align-items: center;
 	flex-shrink: 0;
-	
 }
 
 footer p {
