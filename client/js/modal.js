@@ -16,7 +16,7 @@ const closeModal = () => {
   modal.style.display = 'none'
 }
 
-const clickOutside = (e) => {
+const clickOutside = e => {
   if (e.target === modal) {
     modal.style.display = 'none'
   }

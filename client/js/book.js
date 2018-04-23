@@ -21,11 +21,19 @@ const inject = users => {
   profileElements.forEach((profileElement, i) => profileElement.addEventListener('click', () => openModal(users[i])))
 }
 
-const searchMatchUser = (search, user) => {
-  search = search.toLowerCase()
+// const searchMatchUser = (search, user) => {
+//   if (!search)
+//     return true
 
-  return (search === user.firstName.toLowerCase() || search === user.lastName.toLowerCase())
-}
+//   search = search.toLowerCase().trim().split(' ')
+//   console.log(search)
+//   const test = 
+//   return 
+//   // (filter === user.firstName.toLowerCase() 
+//   // || filterh === user.lastName.toLowerCase()
+//   // || search === user.promo.toLowerCase()
+//   // || search === user.campus.toLowerCase())
+// }
 
 const filterUsers = users => {
   const search = document.getElementById('search-bar').value
@@ -40,7 +48,7 @@ const filterUsers = users => {
     if ((!filters.promo || filters.promo.toLowerCase() === user.promo.toLowerCase())
       && (!filters.campus || filters.campus.toLowerCase() === user.campus.toLowerCase())
       // && (!filters.techno || filters.techno.toLowerCase() === user.techno.toLowerCase())
-      && searchMatchUser(search, user)
+    //  && searchMatchUser(search, user)
     ) {
       return true
     }
