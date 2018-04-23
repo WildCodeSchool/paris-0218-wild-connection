@@ -47,11 +47,12 @@ a {
 	font-weight: bold;
 }
 .button, button, input[type='button'], input[type='reset'], input[type='submit'] {
-	background-color: #03B5AA;
+	background-color: #03B5AA !important;
+	color: white !important;
 	border: none;
 }
 .button:hover {
-	background-color: #E3E7D3 !important;
+	background-color: white !important;
 	color: #232C31 !important;
 
 }
@@ -60,7 +61,8 @@ a {
 	display: inline-flex;
 }
 #login .input input {
-	color: white;
+	color: black;
+	background-color: white;
 }
 .input input:focus {
 	border: solid 1px #03B5AA;

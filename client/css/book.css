@@ -20,10 +20,16 @@ a {
 .banner {
 	position: relative;
 	text-align: center;
+	
+}
+.banner img {
+	width: 100%;	
+	height: 300px;
+	
 }
 .txt {
-	background-color: #232C31E6;
 	color: white;
+	background-color: rgba(0,0,0,0.5);
 	font-weight: bold;
 	width: 100%;
 	position: absolute;
@@ -39,22 +45,29 @@ a {
 /*navigation*/
 
 nav{
+	height: auto;
 	background: #232C31 ;
-	height:auto;
 }
 
-nav ul {
+.menu {
 	padding-top: 23px;
+	display: flex;
+    justify-content: space-around;
+	align-items: center;
+
 }
 
-nav li {
+.menu li {
 	display: inline-flex;
 }
 
-nav li a {
+.menu a {
 	color: white;
-	font-size: 1.5em;
-	padding-left: 30px;
+	font-size: 1.2em;	
+	
+}
+nav li a:hover {
+	color:#03B5AA;
 }
 
 form {
@@ -104,19 +117,21 @@ form {
 
 .apiandprofile{
 	display : flex;
-	flex-direction: row;
+	flex-direction: column-reverse;
 }
 
 .api{
-	width: 35%;
+	width: 95%;
+	margin: auto;
 	height: 450px;
-	margin-top : 15px;
+	margin-top : 20px;
+	margin-bottom: 20px;
 }
 .profile-side{
-	width: 60%;
-	margin : 0 auto;
+	width: 100%;
+	margin :  auto;
+	margin-bottom: 20px;
 	display: flex;
-	margin : 15px;
 	flex-wrap: wrap;
 	justify-content: space-around;
 }
@@ -127,12 +142,15 @@ form {
 }
 
 .profile{
+	width : 100%;
 	text-align : center;
 	line-height: 3px;
 	margin: 5px;
-	margin-top: 15px;
-	background: white;
+	margin-top: 10px;
+	background: #037971;
 	display: flex;
+	border-radius: 2.5px;
+	box-shadow: 6px 6px 6px #DCDCDC;
 	flex-direction: row;
 	width : 250px;
 }
@@ -143,12 +161,13 @@ form {
 }
 
 .name { 
+	 
 	margin : 0 auto;
-	margin-top: 10px;
+	margin-top: 30px;
+	margin-bottom: 10px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-
 }
 
 /*footer*/
@@ -168,6 +187,21 @@ footer p {
 	text-align: center;
 	
 }
-@media screen and (max-width: 900px) {
+
+@media screen and (max-width: 550px) {
+	.api{
+		display: none;
+	}
+	.profile-side{
+		margin: auto;
+		width: 100%;
+	}
+	.profile{
+		width: 100%;
+	}
+	.profile-pic{
+		border-radius: 100%;
+		
+	}
 
 }
