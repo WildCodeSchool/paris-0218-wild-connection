@@ -1,4 +1,7 @@
-// cf voir const modal & const openModal dans le fichier modal.js
+/* global fetch */
+
+import { createJobOffer} from `./components/job-offer.js`
+
 const modal = document.getElementById('simple-modal')
 const openModal = () => {
   modal.style.display = 'block'

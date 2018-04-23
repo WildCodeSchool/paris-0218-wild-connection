@@ -8,6 +8,7 @@ const readdir = util.promisify(fs.readdir)
 const readFile = util.promisify(fs.readFile)
 
 const jasondir = __dirname + "/json/"
+const jasondirJob = __dirname + "/json-job/"
 const wildjob = require('./wildjob-mock.json')
 
 const app = express()
@@ -78,10 +79,10 @@ app.get('/jobs', (request, response) => {
 })
 
 app.post('/jobs', (request, response) => {
-  let idJob = Math.random().toString(36).slice(2, 8)
-  let fileNameJob = `${idJob}.json`
-  const dirpathJob = path.join(__dirname, fileNameJob)
-  const formJob = {
+  const idJob = Math.random().toString(36).slice(2, 8)
+  const fileNameJob = `job-${id}.json`
+  const dirpathJob = path.join(jasondirJob, fileNameJob)
+  const contentJob = {
       id : idJob,
       contract : request.body.contract, 
       city : request.body.city,
@@ -91,9 +92,9 @@ app.post('/jobs', (request, response) => {
       companyName : request.body.companyName,
       description : request.body.description
   }
-  writeFile(dirpathJob, JSON.stringify(formJob, null, 2), 'utf8')
+  writeFile(dirpathJob, JSON.stringify(contentJob, null, 2), 'utf8')
     .then(response.send('ok'))
-    // .catch(err => response.status(404).end('error 404'))
+    .catch(next)
 })
 
 app.get('/users', (request, response) => {
@@ -103,6 +104,10 @@ app.get('/users', (request, response) => {
       Promise.all(paths.map(path => readFile(path, 'utf8').then(JSON.parse)))
         .then(users => response.json(users))
   })  
+})
+
+app.get('/profile', (request, response) => {
+  response.send('setting profiles')
 })
 
 app.listen(3456, () => console.log('Port 3456'))
