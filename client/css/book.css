@@ -5,7 +5,7 @@
 	padding: 0;
 	border: 0;
 	text-decoration: none;
-	color: black; 
+	color: black;
 }
 
 /*header*/
@@ -39,7 +39,6 @@ a {
 /*navigation*/
 
 nav{
-	background: #232C31 ;
 	height:auto;
 }
 
@@ -52,7 +51,7 @@ nav li {
 }
 
 nav li a {
-	color: white;
+	color: black;
 	font-size: 1.5em;
 	padding-left: 30px;
 }
@@ -142,7 +141,7 @@ form {
 	max-height: 120px;
 }
 
-.name { 
+.name {
 	margin : 0 auto;
 	margin-top: 10px;
 	display: flex;
@@ -160,13 +159,13 @@ footer {
     justify-content: center;
 	align-items: center;
 	flex-shrink: 0;
-	
+
 }
 
 footer p {
 	color: white;
 	text-align: center;
-	
+
 }
 @media screen and (max-width: 900px) {
 }

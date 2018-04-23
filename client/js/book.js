@@ -27,9 +27,9 @@ const inject = users => {
 
 //   search = search.toLowerCase().trim().split(' ')
 //   console.log(search)
-//   const test = 
-//   return 
-//   // (filter === user.firstName.toLowerCase() 
+//   const test =
+//   return
+//   // (filter === user.firstName.toLowerCase()
 //   // || filterh === user.lastName.toLowerCase()
 //   // || search === user.promo.toLowerCase()
 //   // || search === user.campus.toLowerCase())
@@ -37,16 +37,16 @@ const inject = users => {
 
 const filterUsers = users => {
   const search = document.getElementById('search-bar').value
-  
+
   const filters = {
     campus: document.getElementById('campus').value,
     promo: document.getElementById('promo').value,
-    techno: document.getElementById('techno').value,
+    techno: document.getElementById('techno').value
   }
 
   const byFilters = user => {
-    if ((!filters.promo || filters.promo.toLowerCase() === user.promo.toLowerCase())
-      && (!filters.campus || filters.campus.toLowerCase() === user.campus.toLowerCase())
+    if ((!filters.promo || filters.promo.toLowerCase() === user.promo.toLowerCase()) &&
+      (!filters.campus || filters.campus.toLowerCase() === user.campus.toLowerCase())
       // && (!filters.techno || filters.techno.toLowerCase() === user.techno.toLowerCase())
     //  && searchMatchUser(search, user)
     ) {
@@ -58,7 +58,6 @@ const filterUsers = users => {
 
   return users.filter(byFilters)
 }
-
 
 filtersSubmitButton.addEventListener('click', event => {
   event.preventDefault()
@@ -72,7 +71,6 @@ fetch('http://localhost:3456/users')
   .then(response => response.json())
   .then(fetchedUsers => {
     users = fetchedUsers
-    
+
     inject(users)
   })
-
