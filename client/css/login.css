@@ -1,0 +1,152 @@
+/*reset*/
+
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	text-decoration: none;
+	color: black; 
+}
+html, body {
+	height: 100%;
+}
+body {
+	display: flex;
+	flex-direction: column;
+}
+h1, h2, h3, h4 ,h5, h6, input {
+	padding: 0;
+	margin: 0;
+}
+blockquote, dl, figure, form, ol, p, pre, table, ul {
+	padding: 0;
+	margin: 0;
+}
+.button, button, dd, dt, li {
+	padding: 0;
+	margin: 0;
+}
+a {
+	color: #03B5AA;
+	cursor: pointer;
+}
+/*header*/
+#header {
+	background: rgb(35, 44, 49);
+	height:80px;
+	align-items: center;
+}
+#titre {
+	justify-content: center;
+	text-align: center;
+	margin: auto;
+}
+#header #titre h2 {
+	color: white;
+	font-size: 2em;
+	font-weight: bold;
+}
+.button, button, input[type='button'], input[type='reset'], input[type='submit'] {
+	background-color: #03B5AA;
+	border: none;
+}
+.button:hover {
+	background-color: #E3E7D3 !important;
+	color: #232C31 !important;
+
+}
+
+#login .input {
+	display: inline-flex;
+}
+#login .input input {
+	color: white;
+}
+.input input:focus {
+	border: solid 1px #03B5AA;
+}
+#signup-form input:focus {
+	border: solid 1px #03B5AA;
+}
+
+.signup {
+	text-align: center;
+	margin: 50px 0;
+}
+
+#signup-form input{
+	margin-bottom: 1.5em !important;
+}
+.button, button, input[type='button'], input[type='reset'], input[type='submit']:hover {
+	background-color: #232C31;
+}
+.submitform {
+    text-align: center;
+}
+
+.container {
+    flex: 1 0 auto;
+}
+
+#logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+footer {
+	background-color: rgb(35, 44, 49);
+	width: calc(100% + 2.0rem);
+	height: 80px;
+    display: flex;
+    justify-content: center;
+	align-items: center;
+	flex-shrink: 0;
+	
+}
+
+footer p {
+	color: white;
+	text-align: center;
+	
+}
+@media screen and (max-width: 900px) {
+	#header {
+		height: auto;
+		display: flex;
+		flex-direction: column;
+		
+	}
+	#login .input {
+		display: flex;
+		flex-direction: column;
+		margin: auto;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		
+		
+	} 
+	#titre {
+		text-align: center;
+		margin: auto;
+	}
+
+	#header #titre h2 {
+		
+		font-weight: bold;
+		margin-top: 20px !important;
+	}
+
+    .row .column.column-40 {
+		max-width: 80%;
+	}
+}
+@media screen and (max-width: 650px) {
+	.signup {
+		margin: 10px 0;
+	}
+}
+@media screen and (max-width: 250px) {
+	#header #titre h2 {
+		font-size: 1em;
+	}
+}

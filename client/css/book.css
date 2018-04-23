@@ -1,0 +1,176 @@
+/*reset*/
+
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	text-decoration: none;
+	color: black; 
+}
+
+/*header*/
+body {
+	font-family: 'Roboto', sans-serif;
+
+}
+a {
+	color: #03B5AA;
+	cursor: pointer;
+}
+.banner {
+	position: relative;
+	text-align: center;
+}
+.txt {
+	background-color: #232C31E6;
+	color: white;
+	font-weight: bold;
+	width: 100%;
+	position: absolute;
+	padding: 2em s;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.txt small {
+	color: white;
+	font-weight: 400;
+}
+/*navigation*/
+
+nav{
+	background: #232C31 ;
+	height:auto;
+}
+
+nav ul {
+	padding-top: 23px;
+}
+
+nav li {
+	display: inline-flex;
+}
+
+nav li a {
+	color: white;
+	font-size: 1.5em;
+	padding-left: 30px;
+}
+
+form {
+	margin: 5px;
+}
+
+.menu {
+	text-align: left;
+	padding-left : 15px;
+}
+
+.icon {
+	float : right;
+	padding-right : 15px;
+}
+
+.active{
+	color: #232C31;
+}
+
+.links{
+	width:100px;
+	padding-right: 20px;
+}
+
+/*body*/
+/*searchbar */
+
+.search-bar {
+	margin : 0 auto;
+	width : 90%;
+}
+
+.search-button{
+	margin-top: 10px;
+	background: #03B5AA;
+	border: none;
+}
+
+.input{
+	margin : 0 auto;
+	margin-top: 10px;
+	padding-left: 5px;
+}
+
+/*profile side */
+
+.apiandprofile{
+	display : flex;
+	flex-direction: row;
+}
+
+.api{
+	width: 35%;
+	height: 450px;
+	margin-top : 15px;
+}
+.profile-side{
+	width: 60%;
+	margin : 0 auto;
+	display: flex;
+	margin : 15px;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.profile-pic{
+	border-radius: 100%;
+	padding : 5px;
+}
+
+.profile{
+	text-align : center;
+	line-height: 3px;
+	margin: 5px;
+	margin-top: 15px;
+	background: white;
+	display: flex;
+	flex-direction: row;
+	width : 250px;
+}
+
+.round{
+	max-width : 120px;
+	max-height: 120px;
+}
+
+.name { 
+	margin : 0 auto;
+	margin-top: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+}
+
+/*footer*/
+footer {
+	background-color: rgb(35, 44, 49);
+	width: calc(100% + 2.0rem);
+	height: 80px;
+    display: flex;
+    justify-content: center;
+	align-items: center;
+	flex-shrink: 0;
+	
+}
+
+footer p {
+	color: white;
+	text-align: center;
+	
+}
+@media screen and (max-width: 900px) {
+}
+
+.mdr {
+	background: : red;
+}
