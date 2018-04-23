@@ -33,7 +33,7 @@
             <span class="close-btn">&times;</span>
             <h1>Share an opportunity</h1>
           </div>
-          <form action="wildjob.html" method="post">
+          <form method="post" id="submit-job">
             <label for="contract">Contract</label><select id="contract-modal" class="column input">
               <option value="Contract">Contract</option>
               <option value="Fixed-term contract">Fixed-term contract</option>
@@ -50,7 +50,7 @@
 <!--             <label for="salary-range">Salary range</label><input type="text" name="salaryRange" id="salary-range" placeholder="Salary range"> -->
 
             <div clas="modal-footer">
-              <button type="submit" id="submit-job">Envoyer</button>
+              <button type="submit">Envoyer</button>
             </div>
 
           </form>
@@ -105,16 +105,17 @@
           </optgroup>
         </select>
 
-        <button id="value" class="search-button">Search</button>
+        <button id="filter-job-submit-button" class="search-button">Search</button>
       </form>
     </section>
 
-    <div id="conteneur">
+    <div id="job-container">
       <div class="test" id="vignette"></div>
     </div>
 
   </main>
 
+<script type="module" src="../js/submit-offer.js"></script>
 <script type="module" src="../js/job.js"></script>
 <script type="module" src="../js/modal.js"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>

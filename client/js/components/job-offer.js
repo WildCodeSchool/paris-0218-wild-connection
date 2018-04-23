@@ -1,5 +1,5 @@
 export const createJobOffer = jobOffer => `
-<div class='job' id='${job.id}'>
+<div class='job' id='${jobOffer.idJob}'>
   <div>
     <h3>${jobOffer.jobTitle}</h3>
       <p><i class="fas fa-handshake"></i></span> ${jobOffer.contract}</p>

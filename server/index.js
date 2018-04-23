@@ -74,24 +74,31 @@ app.post('/login', (request, response, next) => {
     .catch(next)
 })
 
+// app.get('/jobs', (request, response) => {
+//   response.send('hey les offres')
+// })
+
 app.get('/jobs', (request, response) => {
-  response.send('hey les offres')
+  readdir(jasondirJob)
+    .then(filesJob => filesJob.map(filesJob => jasondirJob + filesJob))
+    .then(paths => {
+      Promise.all(paths.map(path => readFile(path, 'utf8').then(JSON.parse)))
+        .then(jobs => response.json(jobs))
+    })
 })
 
 app.post('/jobs', (request, response) => {
   const idJob = Math.random().toString(36).slice(2, 8)
-  const fileNameJob = `job-${id}.json`
+  const fileNameJob = `job-${idJob}.json`
   const dirpathJob = path.join(jasondirJob, fileNameJob)
   const contentJob = {
       id : idJob,
       contract : request.body.contract, 
-      city : request.body.city,
-      begDate : request.body.begDate,
-      endDate : request.body.endDate,
       title : request.body.title,
       companyName : request.body.companyName,
       description : request.body.description
   }
+  console.log(contentJob)
   writeFile(dirpathJob, JSON.stringify(contentJob, null, 2), 'utf8')
     .then(response.send('ok'))
     .catch(next)
