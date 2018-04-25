@@ -5,5 +5,7 @@
   "password": "password",
   "campus": "Bordeaux",
   "promo": "2016",
-  "month": "fevrier"
+  "month": "fevrier",
+  "color": "profil-colors2",
+  "image": "../../client/css/img/img2.jpeg"
 }

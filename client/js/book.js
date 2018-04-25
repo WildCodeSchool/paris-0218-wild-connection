@@ -8,7 +8,7 @@ const usersContainer = document.getElementById('users')
 const filtersSubmitButton = document.getElementById('filter-form-submit-button')
 
 const openModal = user => {
-  console.log(user)
+  document.getElementById('modal').innerHTML = createUserElement(user)
 }
 
 const inject = users => {

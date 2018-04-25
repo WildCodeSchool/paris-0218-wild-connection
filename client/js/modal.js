@@ -1,4 +1,4 @@
-// Récupération de la div contenant l'ensemble du modal formulaire
+// Récupération de la div contenant l'ensemble du modal formulaire  
 const modal = document.getElementById('simple-modal')
 // Récupération du bouton pour afficher le modal
 const modalBtn = document.getElementById('modal-btn')
@@ -32,15 +32,3 @@ closeBtn.addEventListener('click', closeModal)
 
 // Permet de fermer la fenêtre modal en cliquant en dehors de la fenêtre
 window.addEventListener('click', clickOutside)
-
-// let i = 1
-// let elem = 1
-// while (elem != null) {
-//   if ((elem = document.getElementById('job' + i)) == null) {
-//     console.log('job' + i)
-//     break
-// }
-//   elem.addEventListener('click', openModal)
-//   console.log(elem)
-//   i++
-// }

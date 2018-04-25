@@ -49,6 +49,8 @@ app.post('/login', (request, response, next) => {
   const id = Math.random().toString(36).slice(2, 6)
   const filename = `user-${id}.json`
   const dirpath = path.join(jasondir, filename)
+
+  const color = Math.random()
   const content = {
     id: id,
     mail: request.body.mail,
@@ -59,6 +61,23 @@ app.post('/login', (request, response, next) => {
     campus: "Paris",
     promo: "2013",
     month: "fevrier"
+  }
+  if(color < 0.2){
+    content.color = 'profil-colors0'
+  }
+  else if(color < 0.4) {
+    content.color = 'profil-colors1'
+  } 
+  else if(color < 0.6) {
+    content.color = 'profil-colors2'
+    
+  }
+  else if(color < 0.8) {
+    content.color = 'profil-colors3'
+    
+  }
+  else if(color < 1) {
+    content.color = 'profil-colors4'
   }
 
   // if (!content.mail.includes('@')) {

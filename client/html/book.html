@@ -5,6 +5,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
   <link rel="stylesheet" href="../css/book.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
   <title>WildConnection - WildBook</title>
 </head>
 
@@ -17,26 +18,26 @@
 
 
       <iframe src="AnimatedHeaderBackgrounds/index.html"
-       width="100%" height="500">
+       width="100%" height="400">
       </iframe>
     </div>
     <nav>
       <ul class="menu">
-        <li><a href="WildHome.html">WILD HOME</a></li>
-        <li><a href="book.html">WILD BOOK</a></li>
-        <li><a href="job.html">WILD JOB</a></li>
+        <li><a class="navitems" href="WildHome.html">WILD HOME</a></li>
+        <li><a class="navitems" href="book.html">WILD BOOK</a></li>
+        <li><a class="navitems" href="job.html">WILD JOB</a></li>
         <span class="icon">
-          <li><a href="#"><img class="links" src="../css/img/links.png" alt="profilIcon"></a></li>
+          <li><a href="#"><i class="fas fa-user-circle"></i></a></li>
         </span>
       </ul>
     </nav>
   </header>
 
   <main>
-    <div id="modal" class="mdr"></div>
+    <div id="modal" class="profile_user"></div>
     <section class="container">
       <form id="filter-form" class="row">
-        <input id="search-bar" type="search" class="input column" placeholder="Bob Marley.."></input>
+        <input id="search-bar" type="search" class="input column" placeholder="Name.."></input>
         <select id="campus" class="column input">
           <option value selected>-- Campus --</option>
           <option value="Biarritz">Biarritz</option>
