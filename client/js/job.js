@@ -1,28 +1,43 @@
 /* global fetch */
 
 import { createJobOffer } from './components/job-offer.js'
+import { showVignette } from './components/show-vignette.js'
 
 let jobs = []
 
 const jobContainer = document.getElementById('job-container')
+
+// const modal = document.getElementById('simple-modal')
+const modalBis = document.getElementById('simple-modal-bis')
+
 const filterJobSubmitBtn = document.getElementById('filter-job-submit-button')
 
-const modal = document.getElementById('simple-modal')
-const openModal = () => {
-  modal.style.display = 'block'
+// const openModal = () => {
+//   modal.style.display = 'block'
+// }
+
+const openModalBis = (job) => {
+  
+  modalBis.style.display = 'block'
+
+  modalBis.innerHTML = showVignette(job)
+  
+  console.log(job)
 }
+
 
 const injectJob = jobs => {
   
-  const jobElements = jobs.map(createJobOffer).join('')
+  const jobElements = jobs.map(createJobOffer).join('') 
   
   jobContainer.innerHTML = jobElements !== '' ? jobElements : 'no match for your research'
   
   const offerElements = Array.from(document.getElementsByClassName('job'))
-
-  offerElements.forEach((offElements, i) => offElements.addEventListener('click', () => openModal(jobs[i])))
+  
+  offerElements.forEach((element, i) => element.addEventListener('click', () => openModalBis(jobs[i])))
 
 }
+
 
 const filterJob = jobs => {
   const search = document.getElementById('search-bar').value

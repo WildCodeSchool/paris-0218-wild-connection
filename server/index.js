@@ -93,10 +93,12 @@ app.post('/jobs', (request, response) => {
   const dirpathJob = path.join(jasondirJob, fileNameJob)
   const contentJob = {
       id : idJob,
+      city: request.body.city,
+      salaryRange: request.body.salaryRange,
       contract : request.body.contract, 
       title : request.body.title,
       companyName : request.body.companyName,
-      description : request.body.description
+      description : request.body.description,
   }
   console.log(contentJob)
   writeFile(dirpathJob, JSON.stringify(contentJob, null, 2), 'utf8')

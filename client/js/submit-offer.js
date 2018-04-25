@@ -16,6 +16,8 @@ form.addEventListener('submit', event => {
 		companyName: window.document.getElementById('company-name').value,
     title: window.document.getElementById('job-title').value,
     description: window.document.getElementById('job-description').value,
+    salaryRange: window.document.getElementById('salary-range').value,
+    city: window.document.getElementById('city').value,
 	}
 
 	console.log(input)

@@ -17,7 +17,9 @@
         <li><a href="job.html">WILD JOB</a></li>
         <span class="icon"><li><a href="profile.html"><img class="links" alt="profilIcon" src="../css/img/links.png"></a></li></span>
         <!-- >>>MODAL BTN -->
-        <button id="modal-btn" class="button">Job</button> 
+        <div>
+          <button id="modal-btn" class="btn striped-shadow white"><span>Job offer</span></button>
+        </div>
         <!-- >>>MODAL BTN -->
       </ul>
     </nav>
@@ -41,13 +43,13 @@
               <option value="Internship">Internship</option>
               <option value="Freelance">Freelance</option>
             </select>
-<!--             <label for="city">City</label><input type="text" name="city" id="city-modal" placeholder="City">
+            <label for="city">City</label><input type="text" name="city" id="city" placeholder="City">
             <label for="beginning-date">Starting from &nbsp; </label><input type="date" name="date" id="beginning-date"><br>
-            <label for="end-date">End &nbsp;</label><input type="date" name="date" id="end-date"><br> -->
+            <label for="end-date">End &nbsp;</label><input type="date" name="date" id="end-date"><br>
             <label for="job-title">Job title</label><input type="text" name="jobTitle" id="job-title" placeholder="Job title">
             <label for="company-name">Company name</label><input type="text" name="companyName" id="company-name" placeholder="Company name">
             <label for="job-description">Job description</label><textarea id="job-description" placeholder="More information..." name="jobDescription"></textarea>
-<!--             <label for="salary-range">Salary range</label><input type="text" name="salaryRange" id="salary-range" placeholder="Salary range"> -->
+            <label for="salary-range">Salary range</label><input type="text" name="salaryRange" id="salary-range" placeholder="Salary range">
 
             <div clas="modal-footer">
               <button type="submit">Envoyer</button>
@@ -58,14 +60,14 @@
       </div>
       <!-- >>>MODAL DIV-->
 
-      <div id="second-modal" class="modal">
+<!--       <div id="second-modal" class="modal">
         <div class="modal-content">
           <div class="modal-header">
             <span class="close-btn">&times;</span>
             <h1>EST CE QUE CA MARCHE</h1>
           </div>
         </div>
-      </div>
+      </div> -->
 
 
       <form class="row">    
@@ -109,8 +111,10 @@
       </form>
     </section>
 
-    <div id="job-container">
-      <div class="test" id="vignette"></div>
+    <div id="job-container" class="hover-job-container"></div>
+
+    <div id="simple-modal-bis" class="modal"> 
+      <div id="offer-modal"></div>
     </div>
 
   </main>
@@ -118,6 +122,7 @@
 <script type="module" src="../js/submit-offer.js"></script>
 <script type="module" src="../js/job.js"></script>
 <script type="module" src="../js/modal.js"></script>
+<script type="module" src="../js/modal-offers.js"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
 </body>
 </html>
