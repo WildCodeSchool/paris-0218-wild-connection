@@ -7,7 +7,7 @@ let jobs = []
 
 const jobContainer = document.getElementById('job-container')
 
-// const modal = document.getElementById('simple-modal')
+const modal = document.getElementById('simple-modal')
 const modalBis = document.getElementById('simple-modal-bis')
 
 const filterJobSubmitBtn = document.getElementById('filter-job-submit-button')
@@ -47,6 +47,7 @@ const filterJob = jobs => {
     contract: document.getElementById('contract').value,
     skills: document.getElementById('skills').value,
   }
+
 
   const byfilters = jobs => {
     if ((!filters.city || filters.city.toLowerCase() === jobs.city.toLowerCase())
