@@ -1,11 +1,19 @@
 /*reset*/
 
 * {
-	color: white;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	text-decoration: none;
+
+	color: black; 
 }
 
 /*header*/
+body {
+	font-family: 'Roboto', sans-serif;
 
+}
 a {
 	color: #44B4FF;
 	cursor: pointer;
@@ -16,6 +24,7 @@ a {
 	content: ' ';
 	width: 60px;
 	height: 1px;
+	background:black;
 	margin: auto;
 }
 
@@ -64,8 +73,7 @@ nav
 }
 
 .menu a {
-
-
+	color: black;
 	font-size: 1.2em;	
 	
 }
