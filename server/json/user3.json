@@ -1,0 +1,11 @@
+{
+  "id": "3",
+  "firstName": "Pierre",
+  "lastName": "LANGEVIN",
+  "password": "password",
+  "campus": "Paris",
+  "promo": "2018",
+  "month": "fevrier",
+  "color": "profil-colors3",
+  "image": "../../client/css/img/img3.jpeg"
+}

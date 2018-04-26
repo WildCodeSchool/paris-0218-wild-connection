@@ -2,88 +2,59 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css">
-    <link rel="stylesheet" href="/client/css/login.css">
-    <title>WildConnection - login </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css">
+  <link rel="stylesheet" href="../css/login.css">
+  <title>WildConnection - login</title>
 </head>
 
 <body>
-
-    <header>
+  <header>
+    <nav id='header'class='row'>
+      <div id='titre' class="column column-50 column">
         <h2>WILD CONNECTION</h2>
-        <nav>
-            <div id="login">
-                <div class="input">
-                        <input type="text" name="username" placeholder="username">    
-                </div>
-                <div class="input">
-                        <input type="password" name="psw" placeholder="password">
-                </div>
-                <div class="input">
-                        <input class="button" value="LOGIN" type="submit">
-                </div>
-            </div>
-        </nav>
-        
-    </header>
-    <div class="container">
-        <div class="row">
-            <div id="logo" class="column column-40 column-offset-10">
-                <img src="https://wildcodeschool.fr/wp-content/uploads/2017/01/deer.png">
-            </div>
-            <form class="column column-40 column-offset-10">
-                <div class="signup">
-                        <h3> Sign up</h3>
-                </div>
-                <fieldset>
-                    <input placeholder="First Name" id="nameField" type="text">
-                    <input placeholder="Last Name" id="nameField" type="text">
-                    <input placeholder="E-mail" id="nameField" type="text">
-                    <input placeholder="Passeword" id="nameField" type="text">
-                    <input placeholder="Confirm Passeword" id="nameField" type="text">
-                    <select id="ageRangeField">
-                        <option value="Campus">Select your Campus</option>
-                        <option value="Biarritz">Biarritz</option>
-                        <option value="Bordeaux">Bordeaux</option>
-                        <option value="La Loupe">La Loupe</option>
-                        <option value="Lille">Lille</option>
-                        <option value="Lyon">Lyon</option>
-                        <option value="Marseille">Marseille</option>
-                        <option value="Orléans">Orléans</option>
-                        <option value="Paris">Paris</option>
-                        <option value="Reims">Reims</option>
-                        <option value="Strasbourg">Strasbourg</option>
-                        <option value="Toulouse">Toulouse</option>
-                    </select>
-                    <select id="ageRangeField">
-                            <option value="Promo">Promo</option>
-                            <option value="2018">2018</option>
-                            <option value="2017">2017</option>
-                            <option value="2016">2016</option>
-                            <option value="2015">2015</option>
-                            <option value="2014">2014</option>
-                            <option value="2013">2013</option>
-                    </select>
-                    <select id="ageRangeField">
-                            <option value="janvier">Janvier</option>
-                            <option value="fevrier">Fevrier</option>
-                            <option value="mars">Mars</option>
-                            <option value="avril">Avril</option>
-                            <option value="mai">Mai</option>
-                            <option value="juin">Juin</option>
-                            <option value="juiller">Juillet</option>
-                            <option value="aout">Aout</option>
-                            <option value="septembre">Septembre</option>
-                            <option value="octobre7">Octobre</option>
-                            <option value="novembre">Novembre</option>
-                            <option value="décembre">Décembre</option>
-                    </select>
-                    
-                    <div class="submitform">
-                        <input class="button-primary" value="Send" type="submit">
-                    </div>
-                </fieldset>
-            </form>
+      </div>
+      <div id="login" class="column column-50 column">
+
+        <div class="input">
+          <input type="text" name="username" placeholder="username">    
         </div>
+        <div class="input">
+          <input type="password" name="psw" placeholder="password">
+        </div>
+        <div class="input">
+          <input class="button" value="LOGIN" type="submit">
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div id="logo" class="column column-40 column-offset-10">
+        <img src="https://www.jds.fr/medias/image/0-42179800-1496335948-64638-600-600-F.jpg" alt="logo">
+      </div>
+        <form id='signup-form' class="column column-40 column-offset-10">
+          <div class="signup">
+            <h3> Sign up</h3>
+          </div>
+          <fieldset>
+            <input id="mail" type="text" placeholder="E-mail">
+            <input id="password" type="password" name="psw" placeholder="password">
+            <input id="password-bis" type="password" name="psw" placeholder="Confirm password">
+            <!-- <input id="mail" type="email" placeholder="E-mail" required>
+            <input id="password" type="password" name="psw" placeholder="password" required>
+            <input id="password-bis" type="password" name="psw" placeholder="Confirm password" required>
+             --><input value="Send" type="submit">
+          </fieldset>
+        </form>
+      </div>
     </div>
-</body>
+
+    <footer>
+      <div>
+        <p>Contact us at <a>wildconnection@gmail.com</a></p>
+      </div>
+    </footer>
+  </body>
+  <script type="module" src="../js/login.js"></script>
+</html>

@@ -1,0 +1,47 @@
+.container {
+    padding-top: 10px;
+    width: 100%;
+}
+
+
+#slides {
+    position: relative;
+    width:100%;
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+}
+
+.slide {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    opacity: 0;
+    z-index: 1;
+
+    -webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    -o-transition: opacity 1s;
+    transition: opacity 1s;
+}
+
+.showing {
+    opacity: 1;
+    z-index: 2;
+}
+
+
+.imgdiv {
+    max-width:100%;
+}
+
+
+.control_slide {
+    padding-top: 10px;
+}
+
+.controls {
+    background-color: orange;
+    border:none;
+}
