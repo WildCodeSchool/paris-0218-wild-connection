@@ -6,7 +6,6 @@
 	border: 0;
 	text-decoration: none;
 
-	color: black; 
 }
 
 /*header*/
@@ -17,7 +16,7 @@ body {
 a {
 	color: #44B4FF;
 	cursor: pointer;
-	
+
 }
 .navitems::after {
 	display: block;
@@ -31,12 +30,12 @@ a {
 .banner {
 	position: relative;
 	text-align: center;
-	
+
 }
 .banner img {
-	width: 100%;	
+	width: 100%;
 	height: 300px;
-	
+
 }
 .txt {
 	color: white;
@@ -73,9 +72,8 @@ nav
 }
 
 .menu a {
-	color: black;
 	font-size: 1.2em;	
-	
+
 }
 nav li a:hover {
 	color:#44B4FF;
@@ -156,19 +154,19 @@ form {
 }
 .profil-colors1 {
 	background-color: #191919;
-	
+
 }
 .profil-colors2 {
 	background-color: #323031;
-	
+
 }
 .profil-colors3 {
 	background-color: #13142B;
-	
+
 }
 .profil-colors4 {
 	background-color: #1A2E51;
-	
+
 }
 .profile{
 	width : 100%;
@@ -210,8 +208,8 @@ form {
 		animation-name: modalopen;
 		animation-duration: 0.4s;
 	}
-.name { 
-	 
+.name {
+
 	margin : 0 auto;
 	margin-top: 30px;
 	margin-bottom: 10px;
@@ -234,7 +232,7 @@ footer {
 footer p {
 	color: white;
 	text-align: center;
-	
+
 }
 
 @media screen and (max-width: 550px) {
@@ -250,7 +248,7 @@ footer p {
 	}
 	.profile-pic{
 		border-radius: 100%;
-		
+
 	}
 
 }
