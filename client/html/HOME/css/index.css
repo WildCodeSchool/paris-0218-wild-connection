@@ -24,7 +24,7 @@ a {
 	content: ' ';
 	width: 60px;
 	height: 1px;
-	background:black;
+	background:white;
 	color: white;
 }
 
@@ -60,6 +60,9 @@ nav
 	height: auto;
 }
 
+a.navitems {
+	text-align: center;
+}
 .menu {
 	display: flex;
     justify-content: space-around;
