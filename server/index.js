@@ -11,6 +11,14 @@ const wildjob = require('./wildjob-mock.json')
 
 const app = express()
 
+//Ajout du app.js
+const session = require('express-session')
+const FileStore = require('session-file-store')(session)
+const multer = require('multer')
+const rename = util.promisify(fs.rename)
+
+
+
 app.use((request, response, next) => {
   if (request.method === 'GET') return next()
 
@@ -122,5 +130,64 @@ app.get('/users', (request, response) => {
     })
 
 })
+
+//set storage
+const storage = multer.diskStorage({
+    destination: path.join(__dirname, 'server/public/uploads'),
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+    }
+})
+// init upload
+const upload = multer({
+    storage: storage,
+    limits: { fileSize: 3000000 },
+    // FileFilter: (req, file, cb) => {
+    //     checkFileType(file, cb)
+    // }
+})
+
+// check File Type
+const checkFileType = (file, cb) => {
+    //alowed ext
+    const filetypes = /jpeg|jpg|png|gif/
+    //check ext
+    const extname = filetypes.test(path.extname(file.originalname).toLowerCase())
+    // check mime
+    const mimetype = filetypes.test(file.mimetype)
+
+    if(mimetype && extname) {
+        return cb(null, true)
+    } else {
+        cb('Error: Image Only!')
+    }
+}
+
+// public folder
+app.use(express.static('./public'))
+app.get('/', (req, res) => {
+    res.send('ok')
+    console.log('Get GET get')
+  })
+
+  app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*')
+    res.header('Access-Control-Allow-Methods', '*')
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+    next()
+  })
+
+// upload
+
+app.post('/upload', upload.single('myImage'), async (req, res, next) => {
+    const data = req.body
+    const file = req.file
+    console.log(req.file, req.files)
+    const filename = req.file.fieldname + '-' + Date.now() + path.extname(req.file.originalname)
+    rename(req.file.path, path.join(req.file.destination, filename))
+        .then(() => res.end(`file ${filename} added !!!!!!`))
+        .catch(next)
+})
+
 
 app.listen(3456, () => console.log('Port 3456'))
