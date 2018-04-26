@@ -2,13 +2,26 @@ const express = require('express')
 const path = require('path')
 const util = require('util')
 const fs = require('fs')
+const session = require('express-session')
+const FileStore = require('session-file-store')(session)
 
 const writeFile = util.promisify(fs.writeFile)
 const readdir = util.promisify(fs.readdir)
 const readFile = util.promisify(fs.readFile)
 const jasondir = __dirname + "/json/"
 const wildjob = require('./wildjob-mock.json')
+const secret = 'secret'
+let allUsers
 
+readdir(jasondir)
+.then(files => files.map(file => jasondir + file))
+.then(paths => {
+  allUser = Promise.all(paths.map(path => readFile(path, 'utf8').then(JSON.parse)))
+    .then(users => {
+      allUsers = users
+    })
+  })    
+  
 const app = express()
 
 app.use((request, response, next) => {
@@ -29,8 +42,16 @@ app.use((request, response, next) => {
 app.use((request, response, next) => {
   response.header('Access-Control-Allow-Origin', '*')
   response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+  response.header('Access-Control-Allow-Credentials', 'true')
   next()
 })
+
+app.use(session({
+  secret,
+  saveUninitialized: true,
+  resave: true,
+  store: new FileStore({ secret }),
+}))
 
 app.use((request, response, next) => {
   console.log(`${request.method} ${request.url}`)
@@ -38,7 +59,10 @@ app.use((request, response, next) => {
 })
 
 app.get('/', (request, response) => {
-  response.send("Bienvenue sur notre site trop cool. Y'aura un formulaire d'inscription ici plus tard")
+  response.send('Ok')
+})
+
+app.post('/', (request, response) => {
 })
 
 app.get('/login', (request, response) => {
@@ -70,11 +94,9 @@ app.post('/login', (request, response, next) => {
   } 
   else if(color < 0.6) {
     content.color = 'profil-colors2'
-    
   }
   else if(color < 0.8) {
     content.color = 'profil-colors3'
-    
   }
   else if(color < 1) {
     content.color = 'profil-colors4'
@@ -84,10 +106,13 @@ app.post('/login', (request, response, next) => {
   //   response.status(500).json('invalid mail')
   //   return
   // }
-
+  
   writeFile(dirpath, JSON.stringify(content, null, 2), 'utf8')
     .then(response.json('ok'))
     .catch(next)
+
+  console.log(request.body)
+    
 })
 
 app.get('/jobs', (request, response) => {
@@ -114,13 +139,7 @@ app.post('/jobs', (request, response) => {
 })
 
 app.get('/users', (request, response) => {
-  readdir(jasondir)
-    .then(files => files.map(file => jasondir + file))
-    .then(paths => {
-      Promise.all(paths.map(path => readFile(path, 'utf8').then(JSON.parse)))
-        .then(users => response.json(users))
-    })
-
+          response.json(allUsers)
 })
 
 app.listen(3456, () => console.log('Port 3456'))
