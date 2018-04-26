@@ -13,8 +13,9 @@ body {
 	font-family: 'Roboto', sans-serif;
 
 }
+
 a {
-	color: #44B4FF;
+	color: white;
 	cursor: pointer;
 
 }
@@ -24,6 +25,7 @@ a {
 	width: 60px;
 	height: 1px;
 	background:black;
+	color: white;
 }
 
 .banner {
@@ -82,10 +84,7 @@ form {
 	margin: 5px;
 }
 
-.menu {
-	text-align: left;
-	padding-left : 15px;
-}
+
 
 .fa-user-circle {
 	font-size: 2em;
