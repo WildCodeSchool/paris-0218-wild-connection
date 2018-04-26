@@ -1,0 +1,289 @@
+/*MILLIGRAM MILLIGRAM MILLIGRAM MILLIGRAM MILLIGRAM*/
+
+.button, button, input[type='button'], input[type='reset'], input[type='submit'] {
+  border-radius: 0px !important;
+}
+
+.button:focus, .button:hover,
+button:focus,
+button:hover,
+input[type='button']:focus,
+input[type='button']:hover,
+input[type='reset']:focus,
+input[type='reset']:hover,
+input[type='submit']:focus,
+input[type='submit']:hover {
+  background-color: black;
+  border-color: black;
+  color: #fff;
+  outline: 0;
+}
+
+.button, button, input[type='button'], input[type='reset'], input[type='submit'] {
+  line-height: 0;
+}
+
+/*MILLIGRAM MILLIGRAM MILLIGRAM MILLIGRAM MILLIGRAM*/
+
+body {
+  background-color: #F8FAFF;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.fas fa-handshake {
+  background-color: blue;
+}
+
+/* AFFICHAGE MODAL -- DEBUT */
+
+.modal-header{  /*modal pour poster une offre*/
+	background: #FAEBD7;
+	padding: 15px;
+}
+
+.modal-footer{
+  /*background: #141414;*/
+  /*background: grey;*/
+  padding: 10px;
+}
+
+h1{
+  text-align: center;
+}
+
+form{
+	padding: 20px;
+}
+
+.submit-job-form{
+
+}
+
+.modal{
+	display: none;
+	position: fixed;
+  /*position: relative;*/
+	z-index: 1;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+	background-color: rgba(0,0,0,0.6);
+  /*background-color: rgba(0,0,0,0);*/
+}
+
+.modal-content{
+	background-color: white;
+  margin: 10% auto;
+  width: 70%;
+	box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.2);
+	animation-name: modalopen;
+	animation-duration: 0.8s;
+  padding: 0;
+}
+
+.close-btn{
+	color:black;
+	float:right;
+	font-size: 30px;
+}
+
+.close-btn:hover,.close-btn:focus{
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+@keyframes modalopen{
+  from{ opacity: 0}
+  to {opacity: 1}
+}
+
+/* AFFICHAGE MODAL -- FIN */
+
+/*CODE BOUTON RIGOLO STRIPES -- DEBUT */
+
+button {
+  overflow: visible;
+  border: 0;
+  padding: 0;
+  margin: 1.8rem;
+  /*float: right;*/
+}
+.btn.striped-shadow span {
+  display: block;
+  position: relative;
+  z-index: 2;
+  border: 5px solid;
+}
+.btn.striped-shadow.white span {
+  border-color: #393939;
+  color: #393939;
+  background: #77bfa1;
+}
+
+.btn {
+  font-family: 'Bungee Shade', sans-serif;
+  height: 80px;
+  line-height: 65px;
+  display: inline-block;
+  letter-spacing: 1px;
+  position: relative;
+  font-size: 1.35rem;
+  transition: opacity .3s, z-index .3s step-end, -webkit-transform .3s;
+  transition: opacity .3s, z-index .3s step-end, transform .3s;
+  transition: opacity .3s,
+    z-index .3s step-end,
+    transform .3s,
+    -webkit-transform .3s;
+  z-index: 1;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.btn {
+  width: 155px;
+  height: 48px;
+  line-height: 38px;
+}
+
+button.btn.striped-shadow.white:after, button.btn.striped-shadow.white:before {
+  background-image: linear-gradient(
+    135deg,
+    transparent 0,
+    transparent 5px,
+    #393939 5px,
+    #393939 10px,
+    transparent 10px
+  );
+}
+
+button.btn.striped-shadow:hover:before {
+  max-height: calc(100% - 10px);
+}
+
+button.btn.striped-shadow:after {
+  width: calc(100% - 4px);
+  height: 8px;
+  left: -10px;
+  bottom: -9px;
+  background-size: 15px 8px;
+  background-repeat: repeat-x;
+}
+button.btn.striped-shadow:after, button.btn.striped-shadow:before {
+  content: '';
+  display: block;
+  position: absolute;
+  z-index: 1;
+  transition: max-height .3s, width .3s, -webkit-transform .3s;
+  transition: transform .3s, max-height .3s, width .3s;
+  transition: transform .3s, max-height .3s, width .3s, -webkit-transform .3s;
+}
+
+.btn.striped-shadow:hover {
+  -webkit-transform: translate(-12px, 12px);
+  -ms-transform: translate(-12px, 12px);
+  transform: translate(-12px, 12px);
+  z-index: 3;
+}
+
+button.btn.striped-shadow:hover:after, button.btn.striped-shadow:hover:before {
+  -webkit-transform: translate(12px, -12px);
+  -ms-transform: translate(12px, -12px);
+  transform: translate(12px, -12px);
+}
+button.btn.striped-shadow:before {
+  width: 8px;
+  max-height: calc(100% - 5px);
+  height: 100%;
+  left: -12px;
+  bottom: -5px;
+  background-size: 8px 15px;
+  background-repeat: repeat-y;
+  background-position: 0 100%;
+}
+
+/* CODE BOUTON RIGOLO STRIPES -- DEBUT */
+
+/* HOVER VIGNETTES -- DEBUT */
+
+.box {
+  position: relative;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 2.5px;
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.box::after {
+  content: "";
+  border-radius: 5px;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.box:hover {
+  -webkit-transform: scale(1.01., 1.01);
+  transform: scale(1.01, 1.01);
+}
+
+.box:hover::after {
+    opacity: 1;
+}
+
+/*/* HOVER VIGNETTES -- FIN */
+
+
+/*** Skewed Switch Style ***/
+
+
+.container-yolo {
+  max-width: 960px;
+  height: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.yolo {
+  background: transparent;
+  color: inherit;
+  text-decoration: none;
+  border: 0;
+  transition: all 200ms ease-in;
+  display: inline-block;
+}
+
+.yolo-default {
+    color: black;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 4px solid black;
+    padding: 12px 28px;
+}
+    
+.yolo-default:hover {
+      background: black;
+      color: white;
+}
+  
+.yolo--skew {
+    transform: skew(-10deg);
+}
+
+/*https://codepen.io/visualcookie/pen/JeoFt*/
+
+/*** Skewed Switch Style ***/
+
