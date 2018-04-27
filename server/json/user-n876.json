@@ -7,5 +7,6 @@
   "campus": "Paris",
   "promo": "2013",
   "month": "fevrier",
-  "color": "profil-colors4"
+  "color": "profil-colors4",  
+  "image": "../css/img/deer.png"
 }
