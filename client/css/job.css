@@ -18,8 +18,7 @@ body {
 }
 a {
 	/*color: #44B4FF*/;
-	cursor: pointer;
-	
+	cursor: pointer;	
 }
 /*.navitems::after {
 	display: block;
@@ -106,6 +105,7 @@ form {
 }
 
 /*body*/
+
 /*searchbar */
 
 .search-bar {
@@ -115,12 +115,15 @@ form {
 
 .search-button{
 	margin-top: 10px;
-	background: #44B4FF;
+	background: #4EC2AF;
 	border: none;
+	border-radius: 3px;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .input{
-	margin : 0 auto;
+	/*margin : 0 auto;*/
+	margin: 40px;
 	margin-top: 10px;
 	padding-left: 5px;
 }

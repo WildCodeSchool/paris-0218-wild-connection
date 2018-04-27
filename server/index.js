@@ -130,4 +130,22 @@ app.post('/jobs', (request, response) => {
     .catch(next)
 })
 
+app.get('/profil', (request, response) => {
+  response.send('setting profiles')
+})
+
+app.post('/profil', (request, response) => {
+  const idJob = Math.random().toString(36).slice(2, 8)
+  const fileNameJob = `job-${idJob}.json`
+  const dirpathJob = path.join(jasondirJob, fileNameJob)
+  const contentJob = {
+      id : idJob,
+      city: request.body.city,
+      salaryRange: request.body.salaryRange,
+      contract : request.body.contract, 
+      title : request.body.title,
+      companyName : request.body.companyName,
+      description : request.body.description,
+  }
+
 app.listen(3456, () => console.log('Port 3456'))

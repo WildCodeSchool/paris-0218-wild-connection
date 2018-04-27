@@ -1,7 +1,7 @@
 /*MILLIGRAM MILLIGRAM MILLIGRAM MILLIGRAM MILLIGRAM*/
 
 .button, button, input[type='button'], input[type='reset'], input[type='submit'] {
-  border-radius: 0px !important;
+  border-radius: 0px;
 }
 
 .button:focus, .button:hover,
@@ -19,6 +19,47 @@ input[type='submit']:hover {
   outline: 0;
 }
 
+input[type='email'],
+input[type='number'],
+input[type='password'],
+input[type='search'],
+input[type='tel'],
+input[type='text'],
+input[type='url'],
+textarea,
+select {
+
+}
+
+input[type='email'], input[type='number'], input[type='password'], input[type='search'], input[type='tel'], input[type='text'], input[type='url'], textarea, select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #9e9e9e;
+    border-radius: 0;
+    box-shadow: none;
+    box-sizing: inherit;
+    height: 3.8rem;
+    padding: .6rem 1.0rem;
+    width: 100%;
+}
+
+input[type='email']:focus,
+input[type='number']:focus,
+input[type='password']:focus,
+input[type='search']:focus,
+input[type='tel']:focus,
+input[type='text']:focus,
+input[type='url']:focus,
+textarea:focus,
+select:focus {
+  border-bottom: 1.5px solid black;
+  border-color: black; /*couleur pour la bordure du formulaire*/
+  outline: 0;
+}
+
 .button, button, input[type='button'], input[type='reset'], input[type='submit'] {
   line-height: 0;
 }
@@ -30,6 +71,11 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+section {
+  margin-left: 6%;
+  margin-bottom: 5%;
+}
+
 .fas fa-handshake {
   background-color: blue;
 }
@@ -38,31 +84,29 @@ body {
 
 .modal-header{  /*modal pour poster une offre*/
 	background: #FAEBD7;
-	padding: 15px;
+	padding: 18px;
 }
 
 .modal-footer{
-  /*background: #141414;*/
-  /*background: grey;*/
-  padding: 10px;
+  background: #141414;
+  padding: 18px;
 }
 
 h1{
   text-align: center;
 }
 
-form{
-	padding: 20px;
+form {
+  margin: 0; /*pour que le background du header et footer de la modal prenne toute la largeur*/
 }
 
-.submit-job-form{
-
+.form-content{
+	padding: 30px 90px;
 }
 
 .modal{
 	display: none;
 	position: fixed;
-  /*position: relative;*/
 	z-index: 1;
 	left: 0;
 	top: 0;
@@ -70,7 +114,6 @@ form{
 	width: 100%;
 	overflow: auto;
 	background-color: rgba(0,0,0,0.6);
-  /*background-color: rgba(0,0,0,0);*/
 }
 
 .modal-content{
@@ -102,111 +145,12 @@ form{
 
 /* AFFICHAGE MODAL -- FIN */
 
-/*CODE BOUTON RIGOLO STRIPES -- DEBUT */
+/*CODE BOUTON RIGOLO STRIPES NAV -- DEBUT */
 
-button {
-  overflow: visible;
-  border: 0;
-  padding: 0;
-  margin: 1.8rem;
-  /*float: right;*/
-}
-.btn.striped-shadow span {
-  display: block;
-  position: relative;
-  z-index: 2;
-  border: 5px solid;
-}
-.btn.striped-shadow.white span {
-  border-color: #393939;
-  color: #393939;
-  background: #77bfa1;
-}
 
-.btn {
-  font-family: 'Bungee Shade', sans-serif;
-  height: 80px;
-  line-height: 65px;
-  display: inline-block;
-  letter-spacing: 1px;
-  position: relative;
-  font-size: 1.35rem;
-  transition: opacity .3s, z-index .3s step-end, -webkit-transform .3s;
-  transition: opacity .3s, z-index .3s step-end, transform .3s;
-  transition: opacity .3s,
-    z-index .3s step-end,
-    transform .3s,
-    -webkit-transform .3s;
-  z-index: 1;
-  background-color: transparent;
-  cursor: pointer;
-}
+/* CODE BOUTON RIGOLO STRIPES NAV -- DEBUT */
 
-.btn {
-  width: 155px;
-  height: 48px;
-  line-height: 38px;
-}
-
-button.btn.striped-shadow.white:after, button.btn.striped-shadow.white:before {
-  background-image: linear-gradient(
-    135deg,
-    transparent 0,
-    transparent 5px,
-    #393939 5px,
-    #393939 10px,
-    transparent 10px
-  );
-}
-
-button.btn.striped-shadow:hover:before {
-  max-height: calc(100% - 10px);
-}
-
-button.btn.striped-shadow:after {
-  width: calc(100% - 4px);
-  height: 8px;
-  left: -10px;
-  bottom: -9px;
-  background-size: 15px 8px;
-  background-repeat: repeat-x;
-}
-button.btn.striped-shadow:after, button.btn.striped-shadow:before {
-  content: '';
-  display: block;
-  position: absolute;
-  z-index: 1;
-  transition: max-height .3s, width .3s, -webkit-transform .3s;
-  transition: transform .3s, max-height .3s, width .3s;
-  transition: transform .3s, max-height .3s, width .3s, -webkit-transform .3s;
-}
-
-.btn.striped-shadow:hover {
-  -webkit-transform: translate(-12px, 12px);
-  -ms-transform: translate(-12px, 12px);
-  transform: translate(-12px, 12px);
-  z-index: 3;
-}
-
-button.btn.striped-shadow:hover:after, button.btn.striped-shadow:hover:before {
-  -webkit-transform: translate(12px, -12px);
-  -ms-transform: translate(12px, -12px);
-  transform: translate(12px, -12px);
-}
-button.btn.striped-shadow:before {
-  width: 8px;
-  max-height: calc(100% - 5px);
-  height: 100%;
-  left: -12px;
-  bottom: -5px;
-  background-size: 8px 15px;
-  background-repeat: repeat-y;
-  background-position: 0 100%;
-}
-
-/* CODE BOUTON RIGOLO STRIPES -- DEBUT */
-
-/* HOVER VIGNETTES -- DEBUT */
+/* HOVER VIGNETTES ZOOM OMBRE -- DEBUT */
 
 .box {
   position: relative;
@@ -241,7 +185,7 @@ button.btn.striped-shadow:before {
     opacity: 1;
 }
 
-/*/* HOVER VIGNETTES -- FIN */
+/*/* HOVER VIGNETTES ZOOM OMBRES -- FIN */
 
 
 /*** Skewed Switch Style ***/
@@ -259,24 +203,23 @@ button.btn.striped-shadow:before {
 
 .yolo {
   background: transparent;
-  color: inherit;
-  text-decoration: none;
   border: 0;
   transition: all 200ms ease-in;
   display: inline-block;
 }
 
 .yolo-default {
-    color: black;
+    color: white;
     font-weight: bold;
     text-transform: uppercase;
-    border: 4px solid black;
+    border: 4px solid white;
     padding: 12px 28px;
 }
     
 .yolo-default:hover {
-      background: black;
-      color: white;
+      background: white;
+      color: black;
+      border: 4px solid #FAEBD7;
 }
   
 .yolo--skew {
