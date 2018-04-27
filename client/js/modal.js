@@ -16,7 +16,8 @@ const closeModal = () => {
   modal.style.display = 'none'
 }
 
-const clickOutside = (e) => {
+
+const clickOutside = e => {
   if (e.target === modal) {
     modal.style.display = 'none'
   }
@@ -27,18 +28,7 @@ modalBtn.addEventListener('click', openModal)
 
 // Fermer la fenêtre du modal en passant du display 'block' au display 'none' suite à l'event click sur la croix : <span class="closeBtn">&times;</span>
 closeBtn.addEventListener('click', closeModal)
+// closeBtn.addEventListener('click', closeModalBis)
 
 // Permet de fermer la fenêtre modal en cliquant en dehors de la fenêtre
 window.addEventListener('click', clickOutside)
-
-// let i = 1
-// let elem = 1
-// while (elem != null) {
-//   if ((elem = document.getElementById('job' + i)) == null) {
-//     console.log('job' + i)
-//     break
-// }
-//   elem.addEventListener('click', openModal)
-//   console.log(elem)
-//   i++
-// }

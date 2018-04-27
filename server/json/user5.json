@@ -1,0 +1,11 @@
+{
+  "id": "5",
+  "firstName": "Sabrina",
+  "lastName": "Berguer",
+  "password": "password",
+  "campus": "Paris",
+  "promo": "2018",
+  "month": "fevrier",
+  "color": "profil-colors2",
+  "image": "../../client/css/img/img5.jpeg"
+}

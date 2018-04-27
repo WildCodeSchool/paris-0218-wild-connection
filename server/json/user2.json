@@ -1,0 +1,11 @@
+{
+  "id": "2",
+  "firstName": "Mehdi",
+  "lastName": "CHTIRA",
+  "password": "password",
+  "campus": "Bordeaux",
+  "promo": "2016",
+  "month": "fevrier",
+  "color": "profil-colors2",
+  "image": "../../client/css/img/img2.jpeg"
+}
