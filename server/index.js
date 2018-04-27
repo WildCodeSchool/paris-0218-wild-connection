@@ -1,4 +1,5 @@
 const express = require('express')
+const app = express()
 const path = require('path')
 const util = require('util')
 const fs = require('fs')
@@ -8,8 +9,10 @@ const FileStore = require('session-file-store')(session)
 const writeFile = util.promisify(fs.writeFile)
 const readdir = util.promisify(fs.readdir)
 const readFile = util.promisify(fs.readFile)
+
 const jasondir = __dirname + "/json/"
-const wildjob = require('./wildjob-mock.json')
+const jasondirJob = __dirname + "/json-job/"
+
 const secret = 'secret'
 let allUsers
 
@@ -21,8 +24,6 @@ readdir(jasondir)
       allUsers = users
     })
   })    
-  
-const app = express()
 
 app.use((request, response, next) => {
   if (request.method === 'GET') return next()
@@ -80,8 +81,8 @@ app.post('/login', (request, response, next) => {
     mail: request.body.mail,
     password: request.body.password,
     // default values
-    firstName: "Bob",
-    lastName: "Marley",
+    firstName: "Jason",
+    lastName: "Du Place-Holder",
     campus: "Paris",
     promo: "2013",
     month: "fevrier"
@@ -102,10 +103,10 @@ app.post('/login', (request, response, next) => {
     content.color = 'profil-colors4'
   }
 
-  // if (!content.mail.includes('@')) {
-  //   response.status(500).json('invalid mail')
-  //   return
-  // }
+  if (!content.mail.includes('@')) {
+    response.status(500).json('invalid mail')
+    return
+  }
   
   writeFile(dirpath, JSON.stringify(content, null, 2), 'utf8')
     .then(response.json('ok'))
@@ -115,31 +116,51 @@ app.post('/login', (request, response, next) => {
     
 })
 
+app.get('/users', (request, response) => {
+  readdir(jasondir)
+    .then(files => files.map(file => jasondir + file))
+    .then(paths => {
+      Promise.all(paths.map(path => readFile(path, 'utf8').then(JSON.parse)))
+        .then(users => response.json(users))
+    })
+
+})
+
 app.get('/jobs', (request, response) => {
-  response.send('hey les offres')
+  readdir(jasondirJob)
+    .then(filesJob => filesJob.map(filesJob => jasondirJob + filesJob))
+    .then(paths => {
+      Promise.all(paths.map(path => readFile(path, 'utf8').then(JSON.parse)))
+        .then(jobs => response.json(jobs))
+    })
 })
 
 app.post('/jobs', (request, response) => {
-  let idJob = Math.random().toString(36).slice(2, 8)
-  let fileNameJob = `${idJob}.json`
-  const dirpathJob = path.join(__dirname, fileNameJob)
-  const formJob = {
+  const idJob = Math.random().toString(36).slice(2, 8)
+  const fileNameJob = `job-${idJob}.json`
+  const dirpathJob = path.join(jasondirJob, fileNameJob)
+  const contentJob = {
       id : idJob,
+      city: request.body.city,
+      salaryRange: request.body.salaryRange,
       contract : request.body.contract, 
-      city : request.body.city,
-      begDate : request.body.begDate,
-      endDate : request.body.endDate,
       title : request.body.title,
       companyName : request.body.companyName,
-      description : request.body.description
+      description : request.body.description,
   }
-  writeFile(dirpathJob, JSON.stringify(formJob, null, 2), 'utf8')
+  
+  console.log(contentJob)
+  writeFile(dirpathJob, JSON.stringify(contentJob, null, 2), 'utf8')
     .then(response.send('ok'))
-    // .catch(err => response.status(404).end('error 404'))
+    .catch(next)
 })
 
 app.get('/users', (request, response) => {
-          response.json(allUsers)
+  response.json(allUsers)
+})
+
+app.get('/profil', (request, response) => {
+  response.send('setting profiles')
 })
 
 app.listen(3456, () => console.log('Port 3456'))

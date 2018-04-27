@@ -1,4 +1,4 @@
-// Récupération de la div contenant l'ensemble du modal formulaire  
+// Récupération de la div contenant l'ensemble du modal formulaire
 const modal = document.getElementById('simple-modal')
 // Récupération du bouton pour afficher le modal
 const modalBtn = document.getElementById('modal-btn')
@@ -18,7 +18,6 @@ const closeModal = () => {
 
 
 const clickOutside = e => {
-
   if (e.target === modal) {
     modal.style.display = 'none'
   }
@@ -29,6 +28,7 @@ modalBtn.addEventListener('click', openModal)
 
 // Fermer la fenêtre du modal en passant du display 'block' au display 'none' suite à l'event click sur la croix : <span class="closeBtn">&times;</span>
 closeBtn.addEventListener('click', closeModal)
+// closeBtn.addEventListener('click', closeModalBis)
 
 // Permet de fermer la fenêtre modal en cliquant en dehors de la fenêtre
 window.addEventListener('click', clickOutside)
