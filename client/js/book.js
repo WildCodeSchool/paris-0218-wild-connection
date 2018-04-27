@@ -21,14 +21,9 @@ const inject = users => {
   profileElements.forEach((profileElement, i) => profileElement.addEventListener('click', () => openModal(users[i])))
 }
 
-const searchMatchUser = (search, user) => {
-  search = search.toLowerCase()
-
-  return (search === user.firstName.toLowerCase() || search === user.lastName.toLowerCase())
-}
-
 const filterUsers = users => {
-  const search = document.getElementById('search-bar').value
+  let search = document.getElementById('search-bar').value
+  console.log(search)
   
   const filters = {
     campus: document.getElementById('campus').value,
@@ -39,16 +34,32 @@ const filterUsers = users => {
   const byFilters = user => {
     if ((!filters.promo || filters.promo.toLowerCase() === user.promo.toLowerCase())
       && (!filters.campus || filters.campus.toLowerCase() === user.campus.toLowerCase())
-      // && (!filters.techno || filters.techno.toLowerCase() === user.techno.toLowerCase())
-      && searchMatchUser(search, user)
     ) {
       return true
     }
-
     return false
   }
 
-  return users.filter(byFilters)
+  users = users.filter(byFilters)
+
+  if (search !== '') {
+    search = search.toLowerCase().split(' ')
+    let i = 0
+    while (search[i]) {
+      users = users.filter(profile => {
+        if (profile.promo.toLowerCase() === search[i] 
+          || profile.campus.toLowerCase() === search[i] 
+          || profile.firstName.toLowerCase() === search[i] 
+          || profile.lastName.toLowerCase() === search[i]) {
+          return true
+      }
+      return false
+    })
+      i++
+    }
+  }
+
+  return users
 }
 
 filtersSubmitButton.addEventListener('click', event => {
