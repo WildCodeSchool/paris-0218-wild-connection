@@ -2,7 +2,9 @@
 <html>
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/job.css">
+  <link rel="stylesheet" href="../css/vignettes.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
   <title>WildConnection - WildBook</title>
 </head>
 
@@ -14,12 +16,16 @@
     </iframe>
     <nav>
       <ul class="menu">
-        <li><a href="WildHome.html">WILD HOME</a></li>
-        <li><a href="book.html">WILD BOOK</a></li>
-        <li><a href="job.html"><span class="active">WILD JOB</span></a></li>
-        <span class="icon"><li><a href="#"><img class="links" alt="profilIcon" src="../css/img/links.png"></a></li></span>
-        <!-- >>>MODAL BTN -->s
-        <button id="modal-btn" class="button">Job</button>
+        <li><a class="navitems" href="WildHome.html">WILD HOME</a></li>
+        <li><a class="navitems" href="book.html">WILD BOOK</a></li>
+        <li><a class="navitems" href="job.html">WILD JOB</a></li>
+        <span class="icon">
+          <li><a href="#"><i class="fas fa-user-circle"></i></a></li>
+        </span>
+        <!-- >>>MODAL BTN -->
+        <div>
+          <button id="modal-btn" class="btn striped-shadow white"><span>Job offer</span></button>
+        </div>
         <!-- >>>MODAL BTN -->
       </ul>
     </nav>
@@ -28,53 +34,55 @@
   <main>
 
     <section>
-      <!-- >>>MODAL DIV -->
+
+<!-- >>>MODAL DIV -->
       <div id="simple-modal" class="modal">
         <div class="modal-content">
           <div class="modal-header">
             <span class="close-btn">&times;</span>
             <h1>Share an opportunity</h1>
           </div>
-          <form action="wildjob.html" method="post">
-            <label for="contract">Contract</label><select id="contract-modal" class="column input">
-              <option value="Contract">Contract</option>
+          <form method="post" id="submit-job">
+            <div class="form-content">
+            <label for="contract">Contract</label><select id="contract-modal">
+              <option value="Contract">--Select the type of contract--</option>
               <option value="Fixed-term contract">Fixed-term contract</option>
               <option value="Open-ended contract">Open-ended contract</option>
               <option value="Internship">Internship</option>
               <option value="Freelance">Freelance</option>
             </select>
-            <label for="city">City</label><input type="text" name="city" id="city-modal" placeholder="City">
-            <label for="beginning-date">Starting from &nbsp; </label><input type="date" name="date" id="beginning-date"><br>
-            <label for="end-date">End &nbsp;</label><input type="date" name="date" id="end-date"><br>
-            <label for="job-title">Job title</label><input type="text" name="jobTitle" id="job-title" placeholder="Job title">
+            <label for="city">City or Country</label><input type="text" name="city" id="city" placeholder= "ex : 'Beauvais'" >
+            <label for="beginning-date">Starting from &nbsp; </label><input type="date" name="date" id="beginning-date">
+            <label for="job-title">Job Title</label><input type="text" name="jobTitle" id="job-title" placeholder="Job title">
             <label for="company-name">Company name</label><input type="text" name="companyName" id="company-name" placeholder="Company name">
             <label for="job-description">Job description</label><textarea id="job-description" placeholder="More information..." name="jobDescription"></textarea>
-            <div clas="modal-footer">
-              <button type="submit" id="submit-job">Envoyer</button>
+            <label for="salary-range">Salary range</label><input type="text" name="salaryRange" id="salary-range" placeholder="ex : 35k - 40k">
+            <label for="Contact-mail">Contact</label><input type="email" name="contact-mail" id="contact-mail" placeholder="contact@gmail.com">
             </div>
+<!-- FOOTER -->
+          <div class="modal-footer">
+            <div class="container-yolo">
+              <button class="yolo yolo--skew yolo-default submit-job-form" type="submit">
+                <span>Post your offer</span>
+              </button>
+            </div>
+          </div>
 
           </form>
-        </div>
+<!-- FOOTER -->
       </div>
-      <!-- >>>MODAL DIV-->
+    </div>
 
-      <div id="second-modal" class="modal">
-        <div class="modal-content">
-          <div class="modal-header">
-            <span class="close-btn">&times;</span>
-            <h1>EST CE QUE CA MARCHE</h1>
-          </div>
-        </div>
-      </div>
+<!-- >>>MODAL DIV-->
 
-      <form class="row">
+      <form class="row">    
 
         <input id="search-bar" type="search" class="input column" placeholder="Search..."></input>
 
-        <!-- Injecter villes existantes -->
+        <!-- Injecter villes existantes -->       
         <select id="city" class="column input">
           <option value="City">City</option>
-        </select>
+        </select>   
 
 
         <!-- Injecter contrats existants et enlever les choix par défaut -->
@@ -104,18 +112,23 @@
           </optgroup>
         </select>
 
-        <button id="value" class="search-button">Search</button>
+        <button id="filter-job-submit-button" class="search-button">Search</button>
       </form>
+
     </section>
 
-    <div id="conteneur">
-      <div class="test" id="vignette"></div>
+    <div id="job-container" class="hover-job-container"></div>
+
+    <div id="simple-modal-bis" class="modal"> 
+      <div id="offer-modal"></div>
     </div>
 
   </main>
 
+<script type="module" src="../js/submit-offer.js"></script>
 <script type="module" src="../js/job.js"></script>
 <script type="module" src="../js/modal.js"></script>
+<script type="module" src="../js/modal-offer.js"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
 </body>
 </html>

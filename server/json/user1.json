@@ -5,5 +5,7 @@
   "password": "password",
   "campus": "Paris",
   "promo": "2017",
-  "month": "fevrier"
+  "month": "fevrier",
+  "color": "profil-colors0",
+  "image": "../css/img/deer.png"
 }

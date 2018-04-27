@@ -1,0 +1,12 @@
+{
+  "id": "qs2e",
+  "mail": "Hedi@hedi.com",
+  "password": "qw",
+  "firstName": "Bob",
+  "lastName": "Marley",
+  "campus": "Paris",
+  "promo": "2013",
+  "month": "fevrier",
+  "color": "profil-colors1",  
+  "image": "../css/img/deer.png"
+}
