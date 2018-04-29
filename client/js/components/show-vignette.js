@@ -1,15 +1,34 @@
 export const showVignette = vignette =>
 `  <div class="modal-content">
-      <div class="modal-header">
-        <span class="close-btn">&times;</span>
-      </div>
+      <div class="modal-header vignette-title">
         <h3>${vignette.title}</h3>
-          <p><i class="fas fa-handshake"></i></span> ${vignette.contract}</p>
-          <p><span><i class="fab fa-fly"></i></i></span> ${vignette.city}</p>
-          <p><span><i class="fas fa-euro-sign"></i></span> ${vignette.salaryRange}</p>
-          <p><i class="fas fa-hand-spock"></i> ${vignette.description}</p>
-        <div clas="modal-footer">
+      </div>
+      <div class="form-content">
+          <p><span><img src="./pictures/contract.png" class="img-vign"></i></span><span>${vignette.contract}</span></p>
+          <p><span><img src="./pictures/place.png" class="img-vign"></span><span>${vignette.city}</span></p>
+          <p><span><img src="./pictures/dolls.png" class="img-vign"></span><span>${vignette.salaryRange}</span></p>
+          <p><span><img src="./pictures/contractbis.png" class="img-vign"><span><span>${vignette.description}</span></p>
+      </div>
+        <div class="modal-footer">
           <p>Footer</p>
         </div>
-    </div>
+      </div>
 `
+
+
+// export const showVignette = vignette =>
+// `  <div class="modal-content">
+//       <div class="modal-header vignette-title">
+//         <h3>${vignette.title}</h3>
+//       </div>
+//       <div class="form-content">
+//           <p><span vignette-description><i class="fas fa-handshake></i></span><span>${vignette.contract}</span></p>
+//           <p><span><i class="fab fa-fly"></i></span><span class="vignette-description">${vignette.city}</span></p>
+//           <p><span><i class="fas fa-euro-sign"></i></span><span class="vignette-description">${vignette.salaryRange}</span></p>
+//           <p><span><i class="fas fa-hand-spock"></i><span><span class="vignette-description">${vignette.description}</span></p>
+//       </div>
+//         <div class="modal-footer">
+//           <p>Footer</p>
+//         </div>
+//       </div>
+// `

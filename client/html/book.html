@@ -13,10 +13,6 @@
 
   <header>
     <div class="banner">
-
-
-
-
       <iframe src="AnimatedHeaderBackgrounds/index.html"
        width="100%" height="400">
       </iframe>
@@ -27,14 +23,17 @@
         <li><a class="navitems" href="book.html">BOOK</a></li>
         <li><a class="navitems" href="job.html">JOB</a></li>
         <span class="icon">
-          <li><a href="#"><i class="fas fa-user-circle"></i></a></li>
+          <li><a href="profile.html"><i class="fas fa-user-circle"></i></a></li>
         </span>
       </ul>
     </nav>
   </header>
 
   <main>
-    <div id="modal" class="profile_user"></div>
+    <div class="">
+      <div id="modal" class="profile_user modal"></div>   
+    </div>
+
     <section class="container">
       <form id="filter-form" class="row">
         <input id="search-bar" type="search" class="input column" placeholder="Name..">
@@ -89,6 +88,7 @@
   </footer>
 
   <script type="module" src="../js/book.js"></script>
+  <script type="module" src="../js/profile-modal.js"></script>
   <script src="../js/map.js"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAt4SBwCFqoXGujQhi3I2qETM3sOJS6n3w&callback=initialize">
   </script>

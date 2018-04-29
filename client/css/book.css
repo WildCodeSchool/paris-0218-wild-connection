@@ -181,6 +181,19 @@ nav li a:hover {
 .profile p {
 	color: white;
 }
+
+.modal-profile {
+	width : 100%;
+	text-align : center;
+	line-height: 3px;
+	margin: 2px;
+	display: flex;
+	border-radius: 2.5px;
+	box-shadow: 6px 6px 6px #DCDCDC;
+	flex-direction: columns;
+	width : 250px;
+}
+
 .round{
 	max-width : 120px;
 	max-height: 120px;
@@ -197,6 +210,7 @@ nav li a:hover {
 		overflow: auto;
 		background-color: rgba(0,0,0,0.5);
 	}
+
 .modal-content{
 		background-color: white;
 		margin: 30% auto;
@@ -249,5 +263,4 @@ footer p {
 		border-radius: 100%;
 		
 	}
-
 }

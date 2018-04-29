@@ -159,7 +159,7 @@ app.get('/users', (request, response) => {
   response.json(allUsers)
 })
 
-app.get('/profil', (request, response) => {
+app.get('/profile', (request, response) => {
   response.send('setting profiles')
 })
 
