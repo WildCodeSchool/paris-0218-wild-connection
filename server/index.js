@@ -3,7 +3,6 @@ const app = express()
 const path = require('path')
 const fs = require('fs')
 const util = require('util')
-const bodyParser = require('body-parser')
 const session = require('express-session')
 const FileStore = require('session-file-store')(session)
 const multer = require('multer')
@@ -12,7 +11,6 @@ const writeFile = util.promisify(fs.writeFile)
 const readdir = util.promisify(fs.readdir)
 const readFile = util.promisify(fs.readFile)
 const rename = util.promisify(fs.rename)
-
 
 const jasondir = __dirname + "/json/"
 const jasondirJob = __dirname + "/json-job/"
@@ -28,8 +26,21 @@ app.use((request, response, next) => {
   next()
 })
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use((request, response, next) => {
+  if (request.method === 'GET') return next()
+
+  let accumulator = ''
+
+  request.on('data', data => {
+    accumulator += data
+  })
+
+  request.on('end', () => {
+    request.body = JSON.parse(accumulator)
+    next()
+  })
+})
+
 
 // //set storage
 // const storage = multer.diskStorage({
