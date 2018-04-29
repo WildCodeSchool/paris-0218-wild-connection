@@ -1,61 +1,78 @@
 const express = require('express')
 const app = express()
 const path = require('path')
-const util = require('util')
 const fs = require('fs')
+const util = require('util')
+const bodyParser = require('body-parser')
 const session = require('express-session')
 const FileStore = require('session-file-store')(session)
+const multer = require('multer')
 
 const writeFile = util.promisify(fs.writeFile)
 const readdir = util.promisify(fs.readdir)
 const readFile = util.promisify(fs.readFile)
+const rename = util.promisify(fs.rename)
+
 
 const jasondir = __dirname + "/json/"
 const jasondirJob = __dirname + "/json-job/"
 
+
 const secret = 'secret'
-let allUsers
 
-readdir(jasondir)
-.then(files => files.map(file => jasondir + file))
-.then(paths => {
-  allUser = Promise.all(paths.map(path => readFile(path, 'utf8').then(JSON.parse)))
-    .then(users => {
-      allUsers = users
-    })
-  })    
 
 app.use((request, response, next) => {
-  if (request.method === 'GET') return next()
-
-  let accumulator = ''
-
-  request.on('data', data => {
-    accumulator += data
-  })
-
-  request.on('end', () => {
-    request.body = JSON.parse(accumulator)
-    next()
-  })
-})
-
-app.use((request, response, next) => {
-  response.header('Access-Control-Allow-Origin', '*')
+  response.header('Access-Control-Allow-Origin', request.headers.origin)
   response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
   response.header('Access-Control-Allow-Credentials', 'true')
   next()
 })
 
-app.use(session({
-  secret,
-  saveUninitialized: true,
-  resave: true,
-  store: new FileStore({ secret }),
-}))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 
-app.use((request, response, next) => {
-  console.log(`${request.method} ${request.url}`)
+// //set storage
+// const storage = multer.diskStorage({
+//     destination: path.join(__dirname, 'uploads'),
+//     filename: (req, file, cb) => {
+//         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+//     }
+// })
+// // init upload
+// const upload = multer({
+//     storage: storage,
+//     limits: { fileSize: 3000000 },
+//     // FileFilter: (req, file, cb) => {
+//     //     checkFileType(file, cb)
+//     // }
+// })
+
+// // check File Type
+// const checkFileType = (file, cb) => {
+//     //alowed ext
+//     const filetypes = /jpeg|jpg|png|gif/
+//     //check ext
+//     const extname = filetypes.test(path.extname(file.originalname).toLowerCase())
+//     // check mime
+//     const mimetype = filetypes.test(file.mimetype)
+
+//     if(mimetype && extname) {
+//         return cb(null, true)
+//     } else {
+//         cb('Error: Image Only!')
+//     }
+// }
+
+// app.use(session({
+//   secret,
+//   saveUninitialized: true,
+//   resave: true,
+//   store: new FileStore({ secret }),
+// }))
+
+
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`)
   next()
 })
 
@@ -63,19 +80,13 @@ app.get('/', (request, response) => {
   response.send('Ok')
 })
 
-app.post('/', (request, response) => {
-})
-
-app.get('/login', (request, response) => {
-  response.send('Bienvenue login')
-})
-
 app.post('/login', (request, response, next) => {
   const id = Math.random().toString(36).slice(2, 6)
   const filename = `user-${id}.json`
   const dirpath = path.join(jasondir, filename)
+  console.log(request.body)
 
-  const color = Math.random()
+  const colors = Math.floor(Math.random() * 5)
   const content = {
     id: id,
     mail: request.body.mail,
@@ -85,35 +96,14 @@ app.post('/login', (request, response, next) => {
     lastName: "Du Place-Holder",
     campus: "Paris",
     promo: "2013",
-    month: "fevrier"
-  }
-  if(color < 0.2){
-    content.color = 'profil-colors0'
-  }
-  else if(color < 0.4) {
-    content.color = 'profil-colors1'
-  } 
-  else if(color < 0.6) {
-    content.color = 'profil-colors2'
-  }
-  else if(color < 0.8) {
-    content.color = 'profil-colors3'
-  }
-  else if(color < 1) {
-    content.color = 'profil-colors4'
-  }
-
-  if (!content.mail.includes('@')) {
-    response.status(500).json('invalid mail')
-    return
+    month: "fevrier",
+    color: `profil-colors${colors}`,
+    image: "../css/img/deer.png"
   }
   
   writeFile(dirpath, JSON.stringify(content, null, 2), 'utf8')
     .then(response.json('ok'))
-    .catch(next)
-
-  console.log(request.body)
-    
+    .catch(next)    
 })
 
 app.get('/users', (request, response) => {
@@ -135,32 +125,41 @@ app.get('/jobs', (request, response) => {
     })
 })
 
-app.post('/jobs', (request, response) => {
+app.post('/jobs', (request, response, next) => {
   const idJob = Math.random().toString(36).slice(2, 8)
   const fileNameJob = `job-${idJob}.json`
   const dirpathJob = path.join(jasondirJob, fileNameJob)
-  const contentJob = {
-      id : idJob,
-      city: request.body.city,
-      salaryRange: request.body.salaryRange,
-      contract : request.body.contract, 
-      title : request.body.title,
-      companyName : request.body.companyName,
-      description : request.body.description,
-  }
-  
-  console.log(contentJob)
+  console.log(request.body)
+  const contentJob = request.body
+
   writeFile(dirpathJob, JSON.stringify(contentJob, null, 2), 'utf8')
     .then(response.send('ok'))
     .catch(next)
 })
 
 app.get('/users', (request, response) => {
-  response.json(allUsers)
+  readdir(jasondir)
+  .then(files => files.map(file => jasondir + file))
+  .then(paths => {
+    Promise.all(paths.map(path => readFile(path, 'utf8').then(JSON.parse)))
+    .then(users => response.json(users))
+  })
 })
 
 app.post('/profile', (request, response) => {
   response.send('setting profiles')
 })
+// upload
+
+// app.post('/upload', upload.single('myImage'), async (req, res, next) => {
+//     const data = req.body
+//     const file = req.file
+//     console.log(req.file, req.files)
+//     const filename = req.file.fieldname + '-' + Date.now() + path.extname(req.file.originalname)
+//     rename(req.file.path, path.join(req.file.destination, filename))
+//         .then(() => res.end(`file ${filename} added !!!!!!`))
+//         .catch(next)
+// })
+
 
 app.listen(3456, () => console.log('Port 3456'))

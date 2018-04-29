@@ -9,20 +9,20 @@
 
 <body>
   <header>
-    <nav id='header'class='row'>
+    <nav id='header' class='row'>
       <div id='titre' class="column column-50 column">
         <h2>WILD CONNECTION</h2>
       </div>
       <div id="login" class="column column-50 column">
 
         <div class="input">
-          <input type="text" name="username" placeholder="username">    
+          <input id="user-login" type="text" name="username" placeholder="username">    
         </div>
         <div class="input">
-          <input type="password" name="psw" placeholder="password">
+          <input id="password-login" type="password" name="psw" placeholder="password">
         </div>
         <div class="input">
-          <input class="button" value="LOGIN" type="submit">
+          <input id="sendlogin" class="button" value="LOGIN" type="submit">
         </div>
       </div>
     </nav>
@@ -33,20 +33,17 @@
       <div id="logo" class="column column-40 column-offset-10">
         <img src="https://www.jds.fr/medias/image/0-42179800-1496335948-64638-600-600-F.jpg" alt="logo">
       </div>
-        <form id='signup-form' class="column column-40 column-offset-10">
+        <div class="column column-40 column-offset-10">
           <div class="signup">
             <h3> Sign up</h3>
           </div>
-          <fieldset>
-            <input id="mail" type="text" placeholder="E-mail">
-            <input id="password" type="password" name="psw" placeholder="password">
-            <input id="password-bis" type="password" name="psw" placeholder="Confirm password">
-            <!-- <input id="mail" type="email" placeholder="E-mail" required>
-            <input id="password" type="password" name="psw" placeholder="password" required>
-            <input id="password-bis" type="password" name="psw" placeholder="Confirm password" required>
-             --><input value="Send" type="submit">
-          </fieldset>
-        </form>
+          <form id='signup-form'>
+              <input id="mail" type="text" placeholder="E-mail">
+              <input id="password" type="password" placeholder="password">
+              <input id="password-bis" type="password" placeholder="Confirm password">
+              <input value="Send" type="submit">
+          </form>
+        </div>
       </div>
     </div>
 
