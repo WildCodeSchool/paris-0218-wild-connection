@@ -1,14 +1,14 @@
 /* global fetch */
 
 //login in
-const formLogin = document.getElementById('formlogin')
+const formLogin = document.getElementById('signin-form')
 
 const logIn = (passport) => {
-return fetch("http://localhost:3456/login", {
-  method: 'POST',
-  body: JSON.stringify(passport)
-})
-.then(res => res.json())
+  return fetch("http://localhost:3456/login", {
+   method: 'POST',
+    body: JSON.stringify(passport)
+  })
+  .then(res => res.json())
 }
 
 formLogin.addEventListener('click', event => {
