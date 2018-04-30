@@ -1,64 +1,4 @@
-/*MILLIGRAM MILLIGRAM MILLIGRAM MILLIGRAM MILLIGRAM*/
 
-.button, button, input[type='button'], input[type='reset'], input[type='submit'] {
-  border-radius: 0px;
-}
-
-.button:focus, .button:hover,
-button:focus,
-button:hover,
-input[type='button']:focus,
-input[type='button']:hover,
-input[type='reset']:focus,
-input[type='reset']:hover,
-input[type='submit']:focus,
-input[type='submit']:hover {
-  background-color: black;
-  border-color: black;
-  color: #fff;
-  outline: 0;
-}
-
-input[type='email'],
-input[type='number'],
-input[type='password'],
-input[type='search'],
-input[type='tel'],
-input[type='text'],
-input[type='url'],
-textarea,
-select {
-
-}
-
-input[type='email'], input[type='number'], input[type='password'], input[type='search'], input[type='tel'], input[type='text'], input[type='url'], textarea, select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-color: transparent;
-    border: none;
-    border-bottom: 1px solid #9e9e9e;
-    border-radius: 0;
-    box-shadow: none;
-    box-sizing: inherit;
-    height: 3.8rem;
-    padding: .6rem 1.0rem;
-    width: 100%;
-}
-
-input[type='email']:focus,
-input[type='number']:focus,
-input[type='password']:focus,
-input[type='search']:focus,
-input[type='tel']:focus,
-input[type='text']:focus,
-input[type='url']:focus,
-textarea:focus,
-select:focus {
-  border-bottom: 1.5px solid black;
-  border-color: black; /*couleur pour la bordure du formulaire*/
-  outline: 0;
-}
 
 .button, button, input[type='button'], input[type='reset'], input[type='submit'] {
   line-height: 0;
@@ -242,10 +182,11 @@ h1{
   height: 15px;
 }*/
 
-.img-vign{
-  width: 35px;
-}
 
+h3 {
+    font-size: 2.8rem;
+    line-height: 1.3;
+}
 
 /*https://codepen.io/visualcookie/pen/JeoFt*/
 

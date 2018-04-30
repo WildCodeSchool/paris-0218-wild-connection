@@ -1,6 +1,6 @@
 export const createJobOffer = jobOffer => `
 <div class='job box' id='${jobOffer.idJob}'>
-  <div>
+  <div class="offer-width">
     <h3>${jobOffer.title}</h3>
       <p>
       	<span><img src="./pictures/contract.png" class="img-vign"></span>

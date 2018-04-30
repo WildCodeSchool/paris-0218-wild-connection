@@ -18,9 +18,10 @@ form.addEventListener('submit', event => {
     description: window.document.getElementById('job-description').value,
     salaryRange: window.document.getElementById('salary-range').value,
     city: window.document.getElementById('city').value,
+    contact: window.document.getElementById('contact-mail').value,
 	}
 
-	console.log(input)
+console.log(input)
 
 submit(input)
 

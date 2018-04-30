@@ -8,6 +8,7 @@ export const showVignette = vignette =>
           <p><span><img src="./pictures/place.png" class="img-vign"></span><span>${vignette.city}</span></p>
           <p><span><img src="./pictures/dolls.png" class="img-vign"></span><span>${vignette.salaryRange}</span></p>
           <p><span><img src="./pictures/contractbis.png" class="img-vign"><span><span>${vignette.description}</span></p>
+          <p><span><img src="./pictures/contractbis.png" class="img-vign"><span><span>${vignette.contact}</span></p>
       </div>
       </div>
 `

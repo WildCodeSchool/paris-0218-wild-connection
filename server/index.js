@@ -147,6 +147,7 @@ app.post('/jobs', (request, response) => {
       title : request.body.title,
       companyName : request.body.companyName,
       description : request.body.description,
+      contact : request.body.contact,
   }
   
   console.log(contentJob)
