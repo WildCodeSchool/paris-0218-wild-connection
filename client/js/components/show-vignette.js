@@ -9,9 +9,6 @@ export const showVignette = vignette =>
           <p><span><img src="./pictures/dolls.png" class="img-vign"></span><span>${vignette.salaryRange}</span></p>
           <p><span><img src="./pictures/contractbis.png" class="img-vign"><span><span>${vignette.description}</span></p>
       </div>
-        <div class="modal-footer">
-          <p>Footer</p>
-        </div>
       </div>
 `
 
