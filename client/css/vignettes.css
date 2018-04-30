@@ -66,7 +66,7 @@ select:focus {
 
 /*MILLIGRAM MILLIGRAM MILLIGRAM MILLIGRAM MILLIGRAM*/
 
-body {
+/*body {
   background-color: #F8FAFF;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -74,7 +74,7 @@ body {
 section {
   margin-left: 6%;
   margin-bottom: 5%;
-}
+}*/
 
 .fas fa-handshake {
   background-color: blue;
@@ -98,9 +98,9 @@ h1{
   text-align: center;
 }
 
-form {
-  margin: 0; /*pour que le background du header et footer de la modal prenne toute la largeur*/
-}
+/*form {
+  margin: 0; pour que le background du header et footer de la modal prenne toute la largeur
+}*/
 
 .form-content{
 	padding: 30px 90px;

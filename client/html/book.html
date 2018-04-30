@@ -6,6 +6,8 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/book.css">
+  <link rel="stylesheet" href="../css/job.css">
+  <link rel="stylesheet" href="../css/vignettes.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
   <title>WildConnection - WildBook</title>
 </head>
@@ -18,11 +20,12 @@
        width="100%" height="400">
       </iframe>
     </div>
-    <nav>
+    <nav id="navbar">
       <ul class="menu">
         <li><a class="navitems" href="#">HOME</a></li>
         <li><a class="navitems" href="book.html">BOOK</a></li>
         <li><a class="navitems" href="job.html">JOB</a></li>
+        <li><img src="./pictures/post.png" id="modal-btn" alt="Post an offer" class="icon"></li>
         <li><a href="profile.html"><img src="./pictures/profile.png" class="icon"></a></li>
       </ul>
     </nav>
@@ -78,6 +81,45 @@
       </div>
     </section>
 
+    <!-- >>>MODAL DIV -->
+      <div id="simple-modal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close-btn">&times;</span>
+            <h1>Share an opportunity</h1>
+          </div>
+          
+          <form method="post" id="submit-job">
+            <div class="form-content">
+            <label for="contract">Contract</label><select id="contract-modal">
+              <option value="Contract">--Select the type of contract--</option>
+              <option value="Fixed-term contract">Fixed-term contract</option>
+              <option value="Open-ended contract">Open-ended contract</option>
+              <option value="Internship">Internship</option>
+              <option value="Freelance">Freelance</option>
+            </select>
+            <label for="city">City or Country</label><input type="text" name="city" id="city" placeholder= "ex : 'Beauvais'" >
+            <label for="beginning-date">Starting from &nbsp; </label><input type="date" name="date" id="beginning-date">
+            <label for="job-title">Job Title</label><input type="text" name="jobTitle" id="job-title" placeholder="Job title">
+            <label for="company-name">Company name</label><input type="text" name="companyName" id="company-name" placeholder="Company name">
+            <label for="job-description">Job description</label><textarea id="job-description" placeholder="More information..." name="jobDescription"></textarea>
+            <label for="salary-range">Salary range</label><input type="text" name="salaryRange" id="salary-range" placeholder="ex : 35k - 40k">
+            <label for="Contact-mail">Contact</label><input type="email" name="contact-mail" id="contact-mail" placeholder="contact@gmail.com">
+            </div>
+<!-- FOOTER -->
+          <div class="modal-footer">
+            <div class="container-yolo">
+              <button class="yolo yolo--skew yolo-default submit-job-form" type="submit">
+                <span>Post your offer</span>
+              </button>
+            </div>
+          </div>
+
+          </form>
+<!-- FOOTER -->
+      </div>
+    </div>
+
   </main>
 
   <footer>
@@ -86,6 +128,11 @@
     </div>
   </footer>
 
+  <script type="module" src="../js/nav-bar-scroll.js"></script>
+  <script type="module" src="../js/submit-offer.js"></script>
+  <script type="module" src="../js/job.js"></script>
+  <script type="module" src="../js/modal.js"></script>
+  <script type="module" src="../js/modal-offer.js"></script>
   <script type="module" src="../js/book.js"></script>
   <script type="module" src="../js/profile-modal.js"></script>
   <script src="../js/map.js"></script>

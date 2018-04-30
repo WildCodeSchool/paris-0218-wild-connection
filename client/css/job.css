@@ -13,23 +13,6 @@
 	width : 90%;
 }
 
-/*footer*/
-footer {
-	background-color: rgb(35, 44, 49);
-	width: calc(100% + 2.0rem);
-	height: 80px;
-    display: flex;
-    justify-content: center;
-	align-items: center;
-	flex-shrink: 0;
-}
-
-footer p {
-	color: white;
-	text-align: center;
-	
-}
-
 @media screen and (max-width: 550px) {
 	.api{
 		display: none;
