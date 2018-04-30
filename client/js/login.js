@@ -1,7 +1,7 @@
 /* global fetch */
 
 //login in
-const formLogin = document.getElementById('formlogin')
+const formLogin = document.getElementById('signup-form')
 
 const logIn = (passport) => {
 return fetch("http://localhost:3456/login", {
