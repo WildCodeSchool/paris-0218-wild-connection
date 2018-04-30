@@ -1,14 +1,25 @@
 /* global fetch */
 
 import { createUserElement } from './components/user.js'
+import { showUser } from './components/show-user.js'
 
 let users = []
 
 const usersContainer = document.getElementById('users')
 const filtersSubmitButton = document.getElementById('filter-form-submit-button')
 
+const modal = document.getElementById('modal')
+
 const openModal = user => {
-  document.getElementById('modal').innerHTML = createUserElement(user)
+  modal.style.display = 'block'
+    modal.innerHTML = showUser(user)
+}
+
+const clickOutside = e => {
+  console.log(e.target)
+  if (e.target === modal) {
+    modal.style.display = 'none'
+  }
 }
 
 const inject = users => {
