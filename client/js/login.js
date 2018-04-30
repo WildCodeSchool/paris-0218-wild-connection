@@ -4,49 +4,52 @@
 const formLogin = document.getElementById('sendlogin')
 
 const logIn = passport => {
-return fetch("http://localhost:3456/login", {
-  method: 'POST',
-  body: JSON.stringify(passport)
-})
-.then(res => res.json())
+return fetch("http://localhost:3456/auth", {
+    method: 'post',
+    headers: {'Content-Type': 'application/json',},
+    'credentials': 'include',
+    body: JSON.stringify(passport)
+  })
 }
 
-formLogin.addEventListener('click', event => {
+formLogin.addEventListener('submit', event => {
   event.preventDefault()
+
   const inputs = {
-    user: window.document.getElementById('user-login').value,
+    mail: window.document.getElementById('user-login').value,
     password: window.document.getElementById('password-login').value,
   }
+
   logIn(inputs)
+  .then(res => res.json())
+  .then(res => console.log(res.session.user))
 })
-
-
 
 // sign up
 const form = window.document.getElementById('signup-form')
 
 const signup = credentials => {
+  console.log(credentials)
   return fetch("http://localhost:3456/login", {
     method: 'POST',
-    body: credentials
+    headers: {'Content-Type': 'application/json',},
+    'credentials': 'include',
+    body: JSON.stringify(credentials)
   })
 }
 
 form.addEventListener('submit', event => {
   event.preventDefault()
   const inputs = {
+    mail:window.document.getElementById('mail').value,
     password: window.document.getElementById('password').value,
     passwordBis: window.document.getElementById('password-bis').value,
   }
-  console.log(inputs)
-
   if (inputs.password && inputs.password === inputs.passwordBis) {
-    const formdata = new FormData(form)
-    signup(formdata)
+    signup(inputs)
       .then(res => console.log(res))
       .catch(err => console.log(err))
   } else {
     console.log('Wrong entry')
   }
 })
-

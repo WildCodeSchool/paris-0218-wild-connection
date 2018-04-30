@@ -6,6 +6,7 @@ const util = require('util')
 const session = require('express-session')
 const FileStore = require('session-file-store')(session)
 const multer = require('multer')
+const bodyParser = require('body-parser')
 
 const writeFile = util.promisify(fs.writeFile)
 const readdir = util.promisify(fs.readdir)
@@ -15,9 +16,7 @@ const rename = util.promisify(fs.rename)
 const jasondir = __dirname + "/json/"
 const jasondirJob = __dirname + "/json-job/"
 
-
-const secret = 'secret'
-
+const secret = 'a'
 
 app.use((request, response, next) => {
   response.header('Access-Control-Allow-Origin', request.headers.origin)
@@ -26,77 +25,92 @@ app.use((request, response, next) => {
   next()
 })
 
-app.use((request, response, next) => {
-  if (request.method === 'GET') return next()
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 
-  let accumulator = ''
-
-  request.on('data', data => {
-    accumulator += data
-  })
-
-  request.on('end', () => {
-    request.body = JSON.parse(accumulator)
-    next()
-  })
+//set storage
+const storage = multer.diskStorage({
+    destination: path.join(__dirname, 'uploads'),
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+    }
 })
 
+// init upload
+const upload = multer({
+    storage: storage,
+    limits: { fileSize: 3000000 },
+})
 
-// //set storage
-// const storage = multer.diskStorage({
-//     destination: path.join(__dirname, 'uploads'),
-//     filename: (req, file, cb) => {
-//         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
-//     }
-// })
-// // init upload
-// const upload = multer({
-//     storage: storage,
-//     limits: { fileSize: 3000000 },
-//     // FileFilter: (req, file, cb) => {
-//     //     checkFileType(file, cb)
-//     // }
-// })
+// check File Type
+const checkFileType = (file, cb) => {
+    //alowed ext
+    const filetypes = /jpeg|jpg|png|gif/
+    //check ext
+    const extname = filetypes.test(path.extname(file.originalname).toLowerCase())
+    // check mime
+    const mimetype = filetypes.test(file.mimetype)
 
-// // check File Type
-// const checkFileType = (file, cb) => {
-//     //alowed ext
-//     const filetypes = /jpeg|jpg|png|gif/
-//     //check ext
-//     const extname = filetypes.test(path.extname(file.originalname).toLowerCase())
-//     // check mime
-//     const mimetype = filetypes.test(file.mimetype)
+    if(mimetype && extname) {
+        return cb(null, true)
+    } else {
+        cb('Error: Image Only!')
+    }
+}
 
-//     if(mimetype && extname) {
-//         return cb(null, true)
-//     } else {
-//         cb('Error: Image Only!')
-//     }
-// }
-
-// app.use(session({
-//   secret,
-//   saveUninitialized: true,
-//   resave: true,
-//   store: new FileStore({ secret }),
-// }))
+app.use(session({
+  secret,
+  saveUninitialized: true,
+  resave: true,
+  store: new FileStore({ secret }),
+}))
 
 
 app.use((req, res, next) => {
-  console.log(`${req.method} ${req.url}`)
+  console.log(`mon middleware dit : ${Date.now()} ${req.method} ${req.url}`, { user: req.session.user, cookie: req.headers.cookie })
+
   next()
 })
 
 app.get('/', (request, response) => {
-  response.send('Ok')
+  const user = req.session.user || {}
+
+  res.json(user)
+})
+
+app.post('/auth', (request, response, next) => {
+  readdir(jasondir)
+    .then(files => files.map(file => jasondir + file))
+    .then(paths => Promise.all(paths.map(path => readFile(path, 'utf8'))))
+    .then(users => {
+      const user = JSON.parse(
+        users.find(u => {
+          u = JSON.parse(u)
+          if(request.body.mail === u.mail)
+           return true
+         return false
+        })
+      )
+
+      if (!user) {
+        console.log("user not found")
+        return response.json({ error: 'User not found' })
+      }
+
+      if (user.password !== request.body.password) {
+        console.log('wrong password')
+        return response.json({ error: 'Wrong password' })
+      }
+      request.session.user = user
+
+      response.json(user)
+    })
 })
 
 app.post('/login', (request, response, next) => {
   const id = Math.random().toString(36).slice(2, 6)
   const filename = `user-${id}.json`
   const dirpath = path.join(jasondir, filename)
-  console.log(request.body)
-
   const colors = Math.floor(Math.random() * 5)
   const content = {
     id: id,
@@ -111,20 +125,21 @@ app.post('/login', (request, response, next) => {
     color: `profil-colors${colors}`,
     image: "../css/img/deer.png"
   }
-  
   writeFile(dirpath, JSON.stringify(content, null, 2), 'utf8')
+
     .then(response.json('ok'))
     .catch(next)    
 })
 
 app.get('/users', (request, response) => {
+  console.log(request.session)
   readdir(jasondir)
     .then(files => files.map(file => jasondir + file))
     .then(paths => {
       Promise.all(paths.map(path => readFile(path, 'utf8').then(JSON.parse)))
+
         .then(users => response.json(users))
     })
-
 })
 
 app.get('/jobs', (request, response) => {
@@ -140,37 +155,49 @@ app.post('/jobs', (request, response, next) => {
   const idJob = Math.random().toString(36).slice(2, 8)
   const fileNameJob = `job-${idJob}.json`
   const dirpathJob = path.join(jasondirJob, fileNameJob)
-  console.log(request.body)
   const contentJob = request.body
-
   writeFile(dirpathJob, JSON.stringify(contentJob, null, 2), 'utf8')
+
     .then(response.send('ok'))
     .catch(next)
 })
 
 app.get('/users', (request, response) => {
+  console.log(request.session)
   readdir(jasondir)
   .then(files => files.map(file => jasondir + file))
   .then(paths => {
     Promise.all(paths.map(path => readFile(path, 'utf8').then(JSON.parse)))
+
     .then(users => response.json(users))
   })
 })
 
 app.post('/profile', (request, response) => {
+
   response.send('setting profiles')
 })
-// upload
 
-// app.post('/upload', upload.single('myImage'), async (req, res, next) => {
-//     const data = req.body
-//     const file = req.file
-//     console.log(req.file, req.files)
-//     const filename = req.file.fieldname + '-' + Date.now() + path.extname(req.file.originalname)
-//     rename(req.file.path, path.join(req.file.destination, filename))
-//         .then(() => res.end(`file ${filename} added !!!!!!`))
-//         .catch(next)
-// })
+//upload
+
+app.post('/upload', upload.single('myImage'), async (req, res, next) => {
+     const data = req.body
+     const file = req.file
+     console.log(req.file, req.files)
+     const filename = req.file.fieldname + '-' + Date.now() + path.extname(req.file.originalname)
+     rename(req.file.path, path.join(req.file.destination, filename))
+
+         .then(() => res.end(`file ${filename} added !!!!!!`))
+         .catch(next)
+ })
+
+app.use((err, req, res, next) => {
+  if (err) {
+    res.json({ message: err.message })
+    console.error(err)
+  }
+  next(err)
+})
 
 
 app.listen(3456, () => console.log('Port 3456'))
