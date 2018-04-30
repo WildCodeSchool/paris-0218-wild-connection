@@ -66,10 +66,7 @@ select:focus {
 
 /*MILLIGRAM MILLIGRAM MILLIGRAM MILLIGRAM MILLIGRAM*/
 
-body {
-  background-color: #F8FAFF;
-  font-family: Arial, Helvetica, sans-serif;
-}
+/*k,*/
 
 section {
   margin-left: 6%;
@@ -83,22 +80,26 @@ section {
 /* AFFICHAGE MODAL -- DEBUT */
 
 .modal-header{  /*modal pour poster une offre*/
-	background: #FAEBD7;
+	background: #FDD417;
 	padding: 18px;
+  height: 80px;
+  border-radius: 20px 20px 0 0;
 }
 
 .modal-footer{
-  background: #141414;
+  background: #FCFAF9;
   padding: 18px;
+  height: 70px;
+  border-radius: 0 0 20px 20px;
 }
 
 h1{
   text-align: center;
 }
 
-form {
-  margin: 0; /*pour que le background du header et footer de la modal prenne toute la largeur*/
-}
+/*form {
+  margin: 0; pour que le background du header et footer de la modal prenne toute la largeur
+}*/
 
 .form-content{
 	padding: 30px 90px;
@@ -116,15 +117,21 @@ form {
 	background-color: rgba(0,0,0,0.6);
 }
 
+
+/*ICI POUR MODIF MODAL AFFICHAGE JOB EXSTANTS -- début */
+
 .modal-content{
 	background-color: white;
   margin: 10% auto;
-  width: 70%;
+  width: 50%;
 	box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.2);
 	animation-name: modalopen;
 	animation-duration: 0.8s;
   padding: 0;
+  border-radius: 20px;
 }
+
+/*ICI POUR MODIF MODAL AFFICHAGE JOB EXSTANTS -- fin*/
 
 .close-btn{
 	color:black;
@@ -209,22 +216,36 @@ form {
 }
 
 .yolo-default {
-    color: white;
+    color: black;
     font-weight: bold;
     text-transform: uppercase;
-    border: 4px solid white;
+    border: 4px solid black;
     padding: 12px 28px;
 }
     
 .yolo-default:hover {
       background: white;
       color: black;
-      border: 4px solid #FAEBD7;
+      border: 4px solid #FDD417;
 }
   
 .yolo--skew {
     transform: skew(-10deg);
 }
+
+.vignette-title{
+  text-align: center;
+}
+
+/*.vignette-description{
+  width: 70px;
+  height: 15px;
+}*/
+
+.img-vign{
+  width: 35px;
+}
+
 
 /*https://codepen.io/visualcookie/pen/JeoFt*/
 

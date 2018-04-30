@@ -122,8 +122,4 @@ db.addJob(job)
     .catch(next)
 })
 
-app.post('/profile', (request, response) => {
-  response.json('setting profiles')
-})
-
 app.listen(3456, () => console.log('Port 3456'))

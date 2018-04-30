@@ -25,7 +25,6 @@ const openModalBis = (job) => {
   console.log(job)
 }
 
-
 const injectJob = jobs => {
   
   const jobElements = jobs.map(createJobOffer).join('') 
@@ -52,7 +51,7 @@ const filterJob = jobs => {
   const byfilters = jobs => {
     if ((!filters.city || filters.city.toLowerCase() === jobs.city.toLowerCase())
       && (!filters.contract || filters.contract.toLowerCase() === jobs.contract.toLowerCase())
-      && (!filters.skills || filters.skills.toLowerCase() === filters.skills.toLowerCase())
+      && (!filters.skills || filters.skills.toLowerCase() === jobs.skills.toLowerCase())
   ) {
       return true
     }
@@ -71,7 +70,7 @@ filterJobSubmitBtn.addEventListener('click', event => {
   inject(filteredJob)
 })
 
-fetch('http://localhost:3456/jobs')
+window.fetch('http://localhost:3456/jobs')
   .then(response => response.json())
   .then(fetchedJobs => {
     jobs = fetchedJobs
