@@ -1,5 +1,6 @@
 {
   "id": "4",
+  "mail": "yvan.chtira@hotmail.com",
   "firstName": "Yvan",
   "lastName": "Lattore",
   "password": "password",
@@ -8,5 +9,4 @@
   "month": "fevrier",
   "color": "profil-colors4",
   "image": "../css/img/deer.png"
-  
 }

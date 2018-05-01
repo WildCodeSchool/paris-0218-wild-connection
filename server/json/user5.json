@@ -1,5 +1,6 @@
 {
   "id": "5",
+  "mail": "sabrina.chtira@hotmail.com",
   "firstName": "Sabrina",
   "lastName": "Berguer",
   "password": "password",
@@ -8,5 +9,4 @@
   "month": "fevrier",
   "color": "profil-colors2",
   "image": "../css/img/deer.png"
-
 }

@@ -13,5 +13,3 @@ const clickOutside = e => {
 window.addEventListener('click', clickOutside)
 
 modalBtn.addEventListener('click', openModal)
-
-

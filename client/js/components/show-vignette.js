@@ -1,5 +1,5 @@
 export const showVignette = vignette =>
-`  <div class="modal-content">
+  `  <div class="modal-content">
       <div class="modal-header vignette-title">
         <h3>${vignette.title}</h3>
       </div>
@@ -11,7 +11,6 @@ export const showVignette = vignette =>
       </div>
       </div>
 `
-
 
 // export const showVignette = vignette =>
 // `  <div class="modal-content">
