@@ -93,7 +93,7 @@ select:focus {
 	padding: 0;
 	border: 0;
 	text-decoration: none;
-	color: black; 
+	/*color: black;*/
 }
 
 body {
