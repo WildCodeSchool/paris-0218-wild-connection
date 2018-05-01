@@ -22,7 +22,7 @@ app.use((request, response, next) => {
   request.on('end', () => {
     request.body = JSON.parse(accumulator)
     next()
-  }) 
+  })
 })
 
 app.use((request, response, next) => {
@@ -36,7 +36,7 @@ app.use(session({
   secret,
   saveUninitialized: true,
   resave: true,
-  store: new FileStore({ secret }),
+  store: new FileStore({ secret })
 }))
 
 app.use((request, response, next) => {
@@ -51,7 +51,7 @@ app.use((request, response, next) => {
 //   database: 'wildConnection'
 // }).then(connection => {
 // // simple query
-//   return connection.query('SELECT * FROM user')  
+//   return connection.query('SELECT * FROM user')
 // })
 //     .then(console.log, console.error)
 
@@ -71,7 +71,7 @@ app.use((request, response, next) => {
 //     .then(users => {
 //       allUsers = users
 //     })
-//   })    
+//   })
 
 // routes
 
@@ -86,17 +86,17 @@ app.post('/login', (request, response, next) => {
     mail: request.body.mail,
     password: request.body.password,
     // default values
-    firstName: "Jason",
-    lastName: "Du Place-Holder",
-    campus: "Paris",
-    promo: "2013",
-    month: "fevrier",
+    firstName: 'Jason',
+    lastName: 'Du Place-Holder',
+    campus: 'Paris',
+    promo: '2013',
+    month: 'fevrier',
     color: `profil-colors${random}`
   }
 
   db.addUser(user)
     .then(response.json('ok'))
-    .catch(next)    
+    .catch(next)
 })
 
 db.getUsers().then(console.log)
@@ -110,15 +110,15 @@ app.get('/users', (request, response, next) => {
 db.getJobs().then(console.log)
 app.get('/jobs', (request, response, next) => {
   db.getJobs()
-  .then(jobs => response.json(jobs))
-  .catch(next)  
+    .then(jobs => response.json(jobs))
+    .catch(next)
 })
 
 app.post('/jobs', (request, response, next) => {
   const job = request.body
-  
-db.addJob(job)
-    .then(response.json ('ok'))
+
+  db.addJob(job)
+    .then(response.json('ok'))
     .catch(next)
 })
 

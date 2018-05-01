@@ -17,26 +17,22 @@ const filterJobSubmitBtn = document.getElementById('filter-job-submit-button')
 // }
 
 const openModalBis = (job) => {
-  
   modalBis.style.display = 'block'
 
   modalBis.innerHTML = showVignette(job)
-  
+
   console.log(job)
 }
 
 const injectJob = jobs => {
-  
-  const jobElements = jobs.map(createJobOffer).join('') 
-  
+  const jobElements = jobs.map(createJobOffer).join('')
+
   jobContainer.innerHTML = jobElements !== '' ? jobElements : 'no match for your research'
-  
+
   const offerElements = Array.from(document.getElementsByClassName('job'))
-  
+
   offerElements.forEach((element, i) => element.addEventListener('click', () => openModalBis(jobs[i])))
-
 }
-
 
 const filterJob = jobs => {
   const search = document.getElementById('search-bar').value
@@ -44,22 +40,21 @@ const filterJob = jobs => {
   const filters = {
     city: document.getElementById('city').value,
     contract: document.getElementById('contract').value,
-    skills: document.getElementById('skills').value,
+    skills: document.getElementById('skills').value
   }
 
-
   const byfilters = jobs => {
-    if ((!filters.city || filters.city.toLowerCase() === jobs.city.toLowerCase())
-      && (!filters.contract || filters.contract.toLowerCase() === jobs.contract.toLowerCase())
-      && (!filters.skills || filters.skills.toLowerCase() === jobs.skills.toLowerCase())
-  ) {
+    if ((!filters.city || filters.city.toLowerCase() === jobs.city.toLowerCase()) &&
+      (!filters.contract || filters.contract.toLowerCase() === jobs.contract.toLowerCase()) &&
+      (!filters.skills || filters.skills.toLowerCase() === jobs.skills.toLowerCase())
+    ) {
       return true
     }
 
     return false
   }
 
-return jobs.filter(byfilters)
+  return jobs.filter(byfilters)
 }
 
 filterJobSubmitBtn.addEventListener('click', event => {
@@ -74,10 +69,9 @@ window.fetch('http://localhost:3456/jobs')
   .then(response => response.json())
   .then(fetchedJobs => {
     jobs = fetchedJobs
-console.log(jobs)
+    console.log(jobs)
     injectJob(jobs)
   })
-
 
 // https://osvaldas.info/real-time-search-in-javascript
 
