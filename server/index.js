@@ -67,15 +67,15 @@ app.use(session({
 
 
 app.use((req, res, next) => {
-  console.log(`mon middleware dit : ${Date.now()} ${req.method} ${req.url}`, { user: req.session.user, cookie: req.headers.cookie })
+  console.log(`mon middleware dit :  ${req.method} ${req.url}`, { user: req.session.user, cookie: req.headers.cookie })
 
   next()
 })
 
 app.get('/', (request, response) => {
-  const user = req.session.user || {}
+  const user = request.session.user || {}
 
-  res.json(user)
+  response.json(user)
 })
 
 app.post('/auth', (request, response, next) => {
@@ -132,7 +132,6 @@ app.post('/login', (request, response, next) => {
 })
 
 app.get('/users', (request, response) => {
-  console.log(request.session)
   readdir(jasondir)
     .then(files => files.map(file => jasondir + file))
     .then(paths => {

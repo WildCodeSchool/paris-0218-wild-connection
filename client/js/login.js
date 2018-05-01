@@ -22,7 +22,7 @@ formLogin.addEventListener('submit', event => {
 
   logIn(inputs)
   .then(res => res.json())
-  .then(res => console.log(res.session.user))
+  .then(res => console.log(res))
 })
 
 // sign up
@@ -52,4 +52,7 @@ form.addEventListener('submit', event => {
   } else {
     console.log('Wrong entry')
   }
+
+fetch('http://localhost:3456/', { 'credentials': 'include' })
+  .then(res => res.json())
 })

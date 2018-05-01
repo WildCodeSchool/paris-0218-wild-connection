@@ -4,7 +4,8 @@ const submit = postOffer => {
 	return fetch("http://localhost:3456/jobs", {
 		method : "POST",
 		body : JSON.stringify(postOffer)
-	})
+	}, 
+	{'credentials': 'include'})
 	.then(res => res.json())
 }
 
