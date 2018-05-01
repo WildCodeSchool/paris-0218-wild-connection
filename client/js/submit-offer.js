@@ -2,7 +2,9 @@ const form = window.document.getElementById('submit-job')
 
 const submit = postOffer => {
 	return fetch("http://localhost:3456/jobs", {
-		method : "POST",
+    method : "post",
+    headers: {'Content-Type': 'application/json',},
+    'credentials': 'include',
 		body : JSON.stringify(postOffer)
 	}, 
 	{'credentials': 'include'})
@@ -19,7 +21,7 @@ form.addEventListener('submit', event => {
     salaryRange: window.document.getElementById('salary-range').value,
     city: window.document.getElementById('city').value
   }
-
+  console.log(input)
   submit(input)
 	.then(res => res.json())
 })

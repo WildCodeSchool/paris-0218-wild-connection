@@ -23,6 +23,7 @@ formLogin.addEventListener('submit', event => {
 
   logIn(inputs)
   .then(res => res.json())
+  .then((res) => console.log(res))
 })
 
 // sign up
