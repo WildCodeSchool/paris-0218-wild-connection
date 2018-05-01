@@ -79,3 +79,4 @@ module.exports = {
 // updateUser({ firstName: 'Yoann', lastName: 'Cribier', promo: '2018', campus: undefined }, 3).then(console.log, console.error)
 // addJob({ userID: '2', firstName: 'Mehdi', lastName:'Chtira', email: 'qwe@WSAEDQUOT.fr',city: 'le Mans', salaryRange: 10, contract: 'cdi', title: 'cherche larbin',companyName: 'wcs', description: 'Larbin' }).then(console.log, console.error)
 // updateJob({ firstName: 'Yoann', lastName: 'Cribier', description: 'serveur chez Do-Mac' }, 3).then(console.log, console.error)
+

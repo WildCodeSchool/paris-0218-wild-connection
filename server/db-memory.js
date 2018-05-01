@@ -1,7 +1,7 @@
 const assert = require('assert')
 const path = require('path')
-const jasondir = path.join(__dirname, "/json/")
-const jasondirJob = path.join(__dirname, "/json/")
+const jasondir = path.join(__dirname, '/json/')
+const jasondirJob = path.join(__dirname, '/json/')
 
 const randomId = () => Math.random().toString(36).slice(2, 6)
 
@@ -32,13 +32,13 @@ const getUsers = () => {
 const addUser = user => {
   user.id = randomId()
   users.push(user)
-  
+ 
   return Promise.resolve()
 }
 
 const getJobs = () => Promise.resolve(jobs)
 
-const addJob  = job => {
+const addJob = job => {
   job.id = randomId()    
   jobs.push(job)
   
@@ -55,3 +55,4 @@ module.exports = {
 // TESTS
 
 getUsers().then(dbUsers => assert.deepEqual(dbUsers, users))
+
