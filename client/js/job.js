@@ -70,7 +70,7 @@ filterJobSubmitBtn.addEventListener('click', event => {
   inject(filteredJob)
 })
 
-window.fetch('http://localhost:3456/jobs')
+fetch('http://localhost:3456/jobs')
   .then(response => response.json())
   .then(fetchedJobs => {
     jobs = fetchedJobs

@@ -135,7 +135,7 @@ app.get('/jobs', (request, response) => {
     })
 })
 
-app.post('/jobs', (request, response) => {
+app.post('/jobs', (request, response, next) => {
   const idJob = Math.random().toString(36).slice(2, 8)
   const fileNameJob = `job-${idJob}.json`
   const dirpathJob = path.join(jasondirJob, fileNameJob)

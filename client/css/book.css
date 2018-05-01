@@ -66,21 +66,33 @@
 /* Profile Random */
 .profil-colors0 {
 	background-color: #000000;
+	margin: 10% auto;
+    width: 50%;
+	box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.2);
+	animation-name: modalopen;
+	animation-duration: 0.8s;
+    padding: 0;
+    border-radius: 20px;
+    color: white;
 }
 .profil-colors1 {
 	background-color: #191919;
+	width: 50%;
 	
 }
 .profil-colors2 {
 	background-color: #323031;
+	width: 50%;
 	
 }
 .profil-colors3 {
 	background-color: #13142B;
+	width: 50%;
 	
 }
 .profil-colors4 {
 	background-color: #1A2E51;
+	width: 50%;
 	
 }
 .profile{
@@ -94,6 +106,7 @@
 	flex-direction: row;
 	width : 250px;
 }
+
 .profile p {
 	color: white;
 }
@@ -138,16 +151,6 @@
 		width: 100%;
 		overflow: auto;
 		background-color: rgba(0,0,0,0.5);
-	}
-
-.modal-content{
-		background-color: white;
-		margin: 30% auto;
-		padding:20px;
-		width: 70%;
-		box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.2);
-		animation-name: modalopen;
-		animation-duration: 0.4s;
 	}
 
 /*MODAL*/
