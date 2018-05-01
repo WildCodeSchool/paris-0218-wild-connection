@@ -1,5 +1,6 @@
 {
   "id": "6",
+  "mail": "Serge.chtira@hotmail.com",
   "firstName": "Serge",
   "lastName": "Benhamou",
   "password": "password",
@@ -8,5 +9,4 @@
   "month": "fevrier",
   "color": "profil-colors2",
   "image": "../css/img/deer.png"
-
 }

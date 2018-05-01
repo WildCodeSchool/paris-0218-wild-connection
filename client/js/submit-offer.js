@@ -1,11 +1,11 @@
 const form = window.document.getElementById('submit-job')
 
 const submit = postOffer => {
-  return fetch('http://localhost:3456/jobs', {
-    method: 'POST',
-    body: JSON.stringify(postOffer)
-  })
-    .then(res => res.json())
+	return fetch("http://localhost:3456/jobs", {
+		method : "POST",
+		body : JSON.stringify(postOffer)
+	}, 
+	{'credentials': 'include'})
 }
 
 form.addEventListener('submit', event => {
@@ -20,7 +20,6 @@ form.addEventListener('submit', event => {
     city: window.document.getElementById('city').value
   }
 
-  console.log(input)
-
   submit(input)
+	.then(res => res.json())
 })
