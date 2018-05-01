@@ -18,7 +18,7 @@ const getUsers = () => {
     .then(paths => Promise.all(paths.map(path => readFile(path, 'utf8').then(JSON.parse))))
 }
 
-const addUser  = () => {
+const addUser  = user => {
     user.id = randomId()
 
     const filename = `user-${randomId}.json`

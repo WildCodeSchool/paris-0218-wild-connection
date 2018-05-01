@@ -3,7 +3,7 @@ const session = require('express-session')
 const FileStore = require('session-file-store')(session)
 const mysql = require('mysql2/promise')
 
-const db = require('./db-fs.js')
+const db = require('./db-sql.js')
 
 const secret = 'secret'
 
@@ -50,6 +50,7 @@ app.use((request, response, next) => {
 //   user: 'root',
 //   database: 'wildConnection'
 // }).then(connection => {
+
 // // simple query
 //   return connection.query('SELECT * FROM user')  
 // })
@@ -99,15 +100,12 @@ app.post('/login', (request, response, next) => {
     .catch(next)    
 })
 
-db.getUsers().then(console.log)
-
 app.get('/users', (request, response, next) => {
   db.getUsers()
     .then(users => response.json(users))
     .catch(next)
 })
 
-db.getJobs().then(console.log)
 app.get('/jobs', (request, response, next) => {
   db.getJobs()
   .then(jobs => response.json(jobs))
@@ -117,9 +115,9 @@ app.get('/jobs', (request, response, next) => {
 app.post('/jobs', (request, response, next) => {
   const job = request.body
   
-db.addJob(job)
-    .then(response.json ('ok'))
-    .catch(next)
+  db.addJob(job)
+      .then(response.json ('ok'))
+      .catch(next)
 })
 
 app.post('/profile', (request, response) => {

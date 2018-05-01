@@ -32,12 +32,7 @@ CREATE TABLE jobOffers (
     FOREIGN KEY (userID) REFERENCES user (id)
 ) ENGINE=INNODB ;
 
-DESCRIBE user;
 INSERT INTO user (firstName, lastName, email, campus, promo)
 VALUES ("Pierre", "Langevin", "lama_san@gmail.com", "Paris", "Feb 2018");
 INSERT INTO user (firstName, lastName, email, campus, promo)
 VALUES ("Mehdi", "Chtira", "jaffar@gmail.com", "Paris", "Feb 2018")
-UPDATE user SET firstName = "Mehdi" WHERE id = 2;
-
-
-
