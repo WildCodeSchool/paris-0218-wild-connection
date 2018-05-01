@@ -1,8 +1,10 @@
 const express = require('express')
 const multer = require('multer')
+const path = require('path')
 const session = require('express-session')
 const FileStore = require('session-file-store')(session)
 const mysql = require('mysql2/promise')
+const bodyParser = require('body-parser')
 
 const db = require('./db-fs.js')
 
@@ -53,7 +55,7 @@ const checkFileType = (file, cb) => {
 
 app.use(session({
   secret,
-  saveUninitialized: true,
+  saveUninitialized: false,
   resave: true,
   store: new FileStore({ secret })
 }))
@@ -72,19 +74,16 @@ app.get('/', (request, response) => {
 })
 
 app.post('/auth', (request, response, next) => {
-  readdir(jasondir)
-    .then(files => files.map(file => jasondir + file))
-    .then(paths => Promise.all(paths.map(path => readFile(path, 'utf8'))))
+  db.getUsers()
     .then(users => {
-      const user = JSON.parse(
+      const user = 
         users.find(u => {
-          u = JSON.parse(u)
           if(request.body.mail === u.mail)
            return true
-         return false
+          return false
         })
-      )
-
+        
+      console.log('test')
       if (!user) {
         console.log("user not found")
         return response.json({ error: 'User not found' })
@@ -98,6 +97,7 @@ app.post('/auth', (request, response, next) => {
     
       response.json(user)
     })
+})
 
 // routes
 app.get('/', (request, response) => {
@@ -124,15 +124,12 @@ app.post('/login', (request, response, next) => {
     .catch(next)
 })
 
-db.getUsers().then(console.log)
 
 app.get('/users', (request, response, next) => {
   db.getUsers()
     .then(users => response.json(users))
     .catch(next)
 })
-
-db.getJobs().then(console.log)
 app.get('/jobs', (request, response, next) => {
   db.getJobs()
     .then(jobs => response.json(jobs))
