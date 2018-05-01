@@ -10,6 +10,7 @@ return fetch("http://localhost:3456/auth", {
     'credentials': 'include',
     body: JSON.stringify(passport)
   })
+
 }
 
 formLogin.addEventListener('submit', event => {
@@ -22,15 +23,14 @@ formLogin.addEventListener('submit', event => {
 
   logIn(inputs)
   .then(res => res.json())
-  .then(res => console.log(res))
 })
 
 // sign up
 const form = window.document.getElementById('signup-form')
 
-const signup = credentials => {
-  console.log(credentials)
-  return fetch("http://localhost:3456/login", {
+
+const signup = (credentials) => {
+  return fetch('http://localhost:3456/login', {
     method: 'POST',
     headers: {'Content-Type': 'application/json',},
     'credentials': 'include',
@@ -40,10 +40,11 @@ const signup = credentials => {
 
 form.addEventListener('submit', event => {
   event.preventDefault()
+
   const inputs = {
     mail:window.document.getElementById('mail').value,
     password: window.document.getElementById('password').value,
-    passwordBis: window.document.getElementById('password-bis').value,
+    passwordBis: window.document.getElementById('password-bis').value
   }
   if (inputs.password && inputs.password === inputs.passwordBis) {
     signup(inputs)
@@ -55,4 +56,5 @@ form.addEventListener('submit', event => {
 
 fetch('http://localhost:3456/', { 'credentials': 'include' })
   .then(res => res.json())
+
 })

@@ -1,23 +1,16 @@
 const express = require('express')
-const app = express()
-const path = require('path')
-const fs = require('fs')
-const util = require('util')
+const multer = require('multer')
 const session = require('express-session')
 const FileStore = require('session-file-store')(session)
-const multer = require('multer')
-const bodyParser = require('body-parser')
+const mysql = require('mysql2/promise')
 
-const writeFile = util.promisify(fs.writeFile)
-const readdir = util.promisify(fs.readdir)
-const readFile = util.promisify(fs.readFile)
-const rename = util.promisify(fs.rename)
+const db = require('./db-fs.js')
 
-const jasondir = __dirname + "/json/"
-const jasondirJob = __dirname + "/json-job/"
+const secret = 'secret'
 
-const secret = 'a'
+const app = express()
 
+// Middlewear
 app.use((request, response, next) => {
   response.header('Access-Control-Allow-Origin', request.headers.origin)
   response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
@@ -62,7 +55,7 @@ app.use(session({
   secret,
   saveUninitialized: true,
   resave: true,
-  store: new FileStore({ secret }),
+  store: new FileStore({ secret })
 }))
 
 
@@ -102,79 +95,56 @@ app.post('/auth', (request, response, next) => {
         return response.json({ error: 'Wrong password' })
       }
       request.session.user = user
-
+    
       response.json(user)
     })
+
+// routes
+app.get('/', (request, response) => {
+  response.send('ok')
 })
 
+// sign-up
 app.post('/login', (request, response, next) => {
-  const id = Math.random().toString(36).slice(2, 6)
-  const filename = `user-${id}.json`
-  const dirpath = path.join(jasondir, filename)
-  const colors = Math.floor(Math.random() * 5)
-  const content = {
-    id: id,
+  const random = Math.floor(Math.random() * 5)
+  const user = {
     mail: request.body.mail,
     password: request.body.password,
     // default values
-    firstName: "Jason",
-    lastName: "Du Place-Holder",
-    campus: "Paris",
-    promo: "2013",
-    month: "fevrier",
-    color: `profil-colors${colors}`,
-    image: "../css/img/deer.png"
+    firstName: 'Jason',
+    lastName: 'Du Place-Holder',
+    campus: 'Paris',
+    promo: '2013',
+    month: 'fevrier',
+    color: `profil-colors${random}`
   }
-  writeFile(dirpath, JSON.stringify(content, null, 2), 'utf8')
 
+  db.addUser(user)
     .then(response.json('ok'))
-    .catch(next)    
-})
-
-app.get('/users', (request, response) => {
-  readdir(jasondir)
-    .then(files => files.map(file => jasondir + file))
-    .then(paths => {
-      Promise.all(paths.map(path => readFile(path, 'utf8').then(JSON.parse)))
-
-        .then(users => response.json(users))
-    })
-})
-
-app.get('/jobs', (request, response) => {
-  readdir(jasondirJob)
-    .then(filesJob => filesJob.map(filesJob => jasondirJob + filesJob))
-    .then(paths => {
-      Promise.all(paths.map(path => readFile(path, 'utf8').then(JSON.parse)))
-        .then(jobs => response.json(jobs))
-    })
-})
-
-app.post('/jobs', (request, response, next) => {
-  const idJob = Math.random().toString(36).slice(2, 8)
-  const fileNameJob = `job-${idJob}.json`
-  const dirpathJob = path.join(jasondirJob, fileNameJob)
-  const contentJob = request.body
-  writeFile(dirpathJob, JSON.stringify(contentJob, null, 2), 'utf8')
-
-    .then(response.send('ok'))
     .catch(next)
 })
 
-app.get('/users', (request, response) => {
-  console.log(request.session)
-  readdir(jasondir)
-  .then(files => files.map(file => jasondir + file))
-  .then(paths => {
-    Promise.all(paths.map(path => readFile(path, 'utf8').then(JSON.parse)))
+db.getUsers().then(console.log)
 
+app.get('/users', (request, response, next) => {
+  db.getUsers()
     .then(users => response.json(users))
-  })
+    .catch(next)
 })
 
-app.post('/profile', (request, response) => {
+db.getJobs().then(console.log)
+app.get('/jobs', (request, response, next) => {
+  db.getJobs()
+    .then(jobs => response.json(jobs))
+    .catch(next)
+})
 
-  response.send('setting profiles')
+app.post('/jobs', (request, response, next) => {
+  const job = request.body
+
+  db.addJob(job)
+    .then(response.json('ok'))
+    .catch(next)
 })
 
 //upload
