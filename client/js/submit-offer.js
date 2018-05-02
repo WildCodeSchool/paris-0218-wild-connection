@@ -2,14 +2,15 @@ const form = window.document.getElementById('submit-job')
 
 const submit = postOffer => {
 	return fetch("http://localhost:3456/jobs", {
-		method : "POST",
-		body : JSON.stringify(postOffer)
-	})
-	.then(res => res.json())
+    method: 'POST',
+    headers: {'Content-Type': 'application/json',},
+    'credentials': 'include',
+    body: JSON.stringify(postOffer)
+  })
 }
 
 form.addEventListener('submit', event => {
-	event.preventDefault()
+  event.preventDefault()
 
 const lineBreak = str => {
     if (typeof str === 'undefined' || str === null) {
@@ -31,6 +32,7 @@ const lineBreak = str => {
 
 console.log(input)
 
-submit(input)
 
+  submit(input)
+	.then(res => res.json())
 })

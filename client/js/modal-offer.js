@@ -7,5 +7,3 @@ const clickOutside = e => {
 }
 
 window.addEventListener('click', clickOutside)
-
-
