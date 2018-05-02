@@ -23,6 +23,7 @@ formLogin.addEventListener('submit', event => {
 
   logIn(inputs)
   .then(res => res.json())
+  .then(res => window.location = 'http://localhost:5000/html/book.html')
 })
 
 // sign up
@@ -42,19 +43,29 @@ form.addEventListener('submit', event => {
   event.preventDefault()
 
   const inputs = {
-    mail:window.document.getElementById('mail').value,
+    email: window.document.getElementById('email').value,
     password: window.document.getElementById('password').value,
     passwordBis: window.document.getElementById('password-bis').value
   }
   if (inputs.password && inputs.password === inputs.passwordBis) {
-    signup(inputs)
+    const credentials = {
+      email: inputs.email,
+      password: inputs.password
+    }
+
+    signup(credentials)
       .then(res => console.log(res))
       .catch(err => console.log(err))
+      
+
   } else {
-    console.log('Wrong entry')
+    console.log('error')
+
   }
 
 fetch('http://localhost:3456/', { 'credentials': 'include' })
   .then(res => res.json())
+  .then(res => document.getElementById('signupFeedback').innerHTML = `<p> Success ! Please Login.</p>`)
+  
 
 })

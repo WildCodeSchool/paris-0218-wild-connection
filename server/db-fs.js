@@ -17,10 +17,10 @@ const getUsers = () => {
     .then(paths => Promise.all(paths.map(path => readFile(path, 'utf8').then(JSON.parse))))
 }
 
-const addUser = () => {
-  user.id = randomId()
+const addUser  = user => {
+    user.id = randomId()
 
-  const filename = `user-${randomId}.json`
+  const filename = `user-${randomId()}.json`
   const dirpath = path.join(jasondir, filename)
 
   return writeFile(dirpath, JSON.stringify(user, null, 2), 'utf8')
@@ -38,7 +38,7 @@ const addJob = job => {
   const filename = `job-${job.id}.json`
   const dirpath = path.join(jasondirJob, filename)
 
-  return writeFile(dirpath, JSON.stringify(user, null, 2), 'utf8')
+  return writeFile(dirpath, JSON.stringify(job, null, 2), 'utf8')
 }
 
 module.exports = {

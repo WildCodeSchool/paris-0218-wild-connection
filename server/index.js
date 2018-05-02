@@ -5,6 +5,12 @@ const session = require('express-session')
 const FileStore = require('session-file-store')(session)
 const mysql = require('mysql2/promise')
 const bodyParser = require('body-parser')
+const fs = require('fs')
+
+
+const util = require('util')
+
+const rename = util.promisify(fs.rename)
 
 const db = require('./db-fs.js')
 
@@ -21,7 +27,7 @@ app.use((request, response, next) => {
 })
 
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 
 //set storage
 const storage = multer.diskStorage({
@@ -83,7 +89,6 @@ app.post('/auth', (request, response, next) => {
           return false
         })
         
-      console.log('test')
       if (!user) {
         console.log("user not found")
         return response.json({ error: 'User not found' })
@@ -116,7 +121,8 @@ app.post('/login', (request, response, next) => {
     campus: 'Paris',
     promo: '2013',
     month: 'fevrier',
-    color: `profil-colors${random}`
+    color: `profil-colors${random}`,
+    image: "../css/img/deer.png"
   }
 
   db.addUser(user)
@@ -124,12 +130,12 @@ app.post('/login', (request, response, next) => {
     .catch(next)
 })
 
-
 app.get('/users', (request, response, next) => {
   db.getUsers()
     .then(users => response.json(users))
     .catch(next)
 })
+
 app.get('/jobs', (request, response, next) => {
   db.getJobs()
     .then(jobs => response.json(jobs))
@@ -137,11 +143,11 @@ app.get('/jobs', (request, response, next) => {
 })
 
 app.post('/jobs', (request, response, next) => {
+  console.log(request.body)
   const job = request.body
-
   db.addJob(job)
-    .then(response.json('ok'))
-    .catch(next)
+      .then(response.json ('ok'))
+      .catch(next)
 })
 
 //upload
@@ -151,19 +157,17 @@ app.post('/upload', upload.single('myImage'), async (req, res, next) => {
      const file = req.file
      console.log(req.file, req.files)
      const filename = req.file.fieldname + '-' + Date.now() + path.extname(req.file.originalname)
-     rename(req.file.path, path.join(req.file.destination, filename))
-
-         .then(() => res.end(`file ${filename} added !!!!!!`))
-         .catch(next)
+     rename(req.file.path, path.join(__dirname, '../client/css/img', filename))
+      .then(() => res.json({ filename }))
+      .catch(next)
  })
 
-app.use((err, req, res, next) => {
-  if (err) {
-    res.json({ message: err.message })
-    console.error(err)
-  }
-  next(err)
-})
-
+// app.use((err, req, res, next) => {
+//   if (err) {
+//     res.json({ message: err.message })
+//     console.error(err)
+//   }
+//   next(err)
+// })
 
 app.listen(3456, () => console.log('Port 3456'))
