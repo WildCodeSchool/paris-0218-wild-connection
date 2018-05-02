@@ -66,8 +66,6 @@ blockquote, dl, figure, form, ol, p, pre, table, ul {
   width: 100%;
 }
 
-/*VIGNETTES*/
-
 
 section {
   margin-left: 6%;
@@ -78,61 +76,6 @@ section {
   background-color: blue;
 }
 
-/* AFFICHAGE MODAL -- DEBUT */
-
-.modal-header{  /*modal pour poster une offre*/
-	background: #FDD417;
-	padding: 18px;
-  height: 80px;
-  border-radius: 20px 20px 0 0;
-}
-
-.modal-footer{
-  background: #FCFAF9;
-  padding: 18px;
-  height: 70px;
-  border-radius: 0 0 20px 20px;
-}
-
-h1{
-  text-align: center;
-}
-
-/*form {
-  margin: 0; pour que le background du header et footer de la modal prenne toute la largeur
-}*/
-
-.form-content{
-	padding: 30px 90px;
-}
-
-.modal{
-	display: none;
-	position: fixed;
-	z-index: 1;
-	left: 0;
-	top: 0;
-	height: 100%;
-	width: 100%;
-	overflow: auto;
-	background-color: rgba(0,0,0,0.6);
-}
-
-
-/*ICI POUR MODIF MODAL AFFICHAGE JOB EXSTANTS -- début */
-
-.modal-content{
-	background-color: white;
-  margin: 10% auto;
-  width: 50%;
-	box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.2);
-	animation-name: modalopen;
-	animation-duration: 0.8s;
-  padding: 0;
-  border-radius: 20px;
-}
-
-/*ICI POUR MODIF MODAL AFFICHAGE JOB EXSTANTS -- fin*/
 
 .close-btn{
 	color:black;
@@ -151,14 +94,6 @@ h1{
   to {opacity: 1}
 }
 
-/* AFFICHAGE MODAL -- FIN */
-
-/*CODE BOUTON RIGOLO STRIPES NAV -- DEBUT */
-
-
-/* CODE BOUTON RIGOLO STRIPES NAV -- DEBUT */
-
-/* HOVER VIGNETTES ZOOM OMBRE -- DEBUT */
 
 .box {
   position: relative;
