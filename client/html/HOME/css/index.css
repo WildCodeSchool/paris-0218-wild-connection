@@ -1,7 +1,7 @@
 
 * {
 	/* margin: 0; */
-	padding: 0;
+	/* padding: 0; */s
 	border: 0;
 	text-decoration: none;
 
@@ -44,9 +44,17 @@ body{
 	background-color: black;
 }
 .slide {
-	padding-top: 5.5%;
-	padding-bottom: 5.5%;
+	background-size: cover;
+
+	/* padding-top: 5.5%;
+	padding-bottom: 5.5%; */
 }
-.t{
-	z-index: 0;
+#botton{
+	position: absolute;
+
+	padding-top: 850px;
+	padding-left: 47%;
+}
+
+.test2 {
 }
