@@ -5,6 +5,12 @@ const session = require('express-session')
 const FileStore = require('session-file-store')(session)
 const mysql = require('mysql2/promise')
 const bodyParser = require('body-parser')
+const fs = require('fs')
+
+
+const util = require('util')
+
+const rename = util.promisify(fs.rename)
 
 const db = require('./db-fs.js')
 
@@ -151,10 +157,9 @@ app.post('/upload', upload.single('myImage'), async (req, res, next) => {
      const file = req.file
      console.log(req.file, req.files)
      const filename = req.file.fieldname + '-' + Date.now() + path.extname(req.file.originalname)
-     rename(req.file.path, path.join(req.file.destination, filename))
-
-         .then(() => res.end(`file ${filename} added !!!!!!`))
-         .catch(next)
+     rename(req.file.path, path.join(__dirname, '../client/css/img', filename))
+      .then(() => res.json({ filename }))
+      .catch(next)
  })
 
 // app.use((err, req, res, next) => {
@@ -164,6 +169,5 @@ app.post('/upload', upload.single('myImage'), async (req, res, next) => {
 //   }
 //   next(err)
 // })
-
 
 app.listen(3456, () => console.log('Port 3456'))

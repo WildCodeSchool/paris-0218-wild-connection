@@ -10,7 +10,6 @@ form.addEventListener('submit', e => {
     method: 'post',
     body: formData
   })
-  .then(res => {
-    console.log(res)  
-  })
+  .then(res => res.json())
+  .then(res => document.getElementById('imagePath').src = `/css/img/${res.filename}`)
 })

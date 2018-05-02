@@ -23,7 +23,7 @@ formLogin.addEventListener('submit', event => {
 
   logIn(inputs)
   .then(res => res.json())
-  .then((res) => console.log(res))
+  .then(res => window.location = 'http://localhost:5000/html/book.html')
 })
 
 // sign up
@@ -57,10 +57,13 @@ form.addEventListener('submit', event => {
       .then(res => console.log(res))
       .catch(err => console.log(err))
   } else {
-    console.log('Wrong entry')
+    console.log('error')
+
   }
 
 fetch('http://localhost:3456/', { 'credentials': 'include' })
   .then(res => res.json())
+  .then(res => window.location = 'http://localhost:5000/html/book.html')
+  
 
 })
