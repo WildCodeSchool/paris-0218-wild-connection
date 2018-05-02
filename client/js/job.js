@@ -29,7 +29,7 @@ const injectJob = jobs => {
   
   const jobElements = jobs.map(createJobOffer).join('') 
   
-  jobContainer.innerHTML = jobElements !== '' ? jobElements : 'no match for your research'
+  jobContainer.innerHTML = jobElements !== '' ? jobElements : 'Sorry, no match for your research'
   
   const offerElements = Array.from(document.getElementsByClassName('job'))
   

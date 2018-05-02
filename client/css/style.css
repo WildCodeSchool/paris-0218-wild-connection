@@ -164,7 +164,7 @@ nav li a:hover {
 
 .menu {
 	display: flex;
-    justify-content: space-around;
+  justify-content: space-around;
 	align-items: center;
 	text-align: left;
 	padding-left : 15px;
@@ -249,7 +249,7 @@ footer p{
 .modal-content{
 	background-color: white;
   margin: 10% auto;
-  width: 50%;
+  width: 80%;
 	box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.2);
 	animation-name: modalopen;
 	animation-duration: 0.8s;
@@ -285,6 +285,10 @@ footer p{
 
 h1{
   text-align: center;
+}
+
+textarea {
+  height: 8em;
 }
 
 .container-yolo {
@@ -325,3 +329,5 @@ h1{
 .vignette-title{
   text-align: center;
 }
+
+

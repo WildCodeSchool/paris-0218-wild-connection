@@ -81,20 +81,20 @@
           
           <form method="post" id="submit-job">
             <div class="form-content">
-            <label for="contract">Contract</label><select id="contract-modal">
+            <label for="job-title"></label><input type="text" name="jobTitle" id="job-title" placeholder="Job title" required>
+            <label for="company-name"></label><input type="text" name="companyName" id="company-name" placeholder="Company name">
+            <label for="contract"></label><select id="contract-modal">
               <option value="Contract">--Select the type of contract--</option>
               <option value="Fixed-term contract">Fixed-term contract</option>
               <option value="Open-ended contract">Open-ended contract</option>
               <option value="Internship">Internship</option>
               <option value="Freelance">Freelance</option>
             </select>
-            <label for="city">City or Country</label><input type="text" name="city" id="city" placeholder= "ex : 'Beauvais'" >
+            <label for="city"></label><input type="text" name="city" id="city" placeholder= "ex : 'Beauvais'" >
             <label for="beginning-date">Starting from &nbsp; </label><input type="date" name="date" id="beginning-date">
-            <label for="job-title">Job Title</label><input type="text" name="jobTitle" id="job-title" placeholder="Job title" required>
-            <label for="company-name">Company name</label><input type="text" name="companyName" id="company-name" placeholder="Company name">
-            <label for="job-description">Job description</label><textarea id="job-description" placeholder="More information..." name="jobDescription" required></textarea>
-            <label for="salary-range">Salary range</label><input type="text" name="salaryRange" id="salary-range" placeholder="ex : 35k - 40k">
-            <label for="Contact-mail">Contact</label><input type="email" name="contact" id="contact-mail" placeholder="contact@gmail.com" required>
+            <label for="job-description"></label><textarea id="job-description" placeholder="More information..." name="jobDescription" required maxlength="5000"></textarea>
+            <label for="salary-range"></label><input type="text" name="salaryRange" id="salary-range" placeholder="ex : 35k - 40k">
+            <label for="Contact-mail"></label><input type="email" name="contact" id="contact-mail" placeholder="contact@gmail.com" required>
             </div>
 <!-- FOOTER -->
           <div class="modal-footer">
