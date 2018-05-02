@@ -56,6 +56,8 @@ form.addEventListener('submit', event => {
     signup(credentials)
       .then(res => console.log(res))
       .catch(err => console.log(err))
+      
+
   } else {
     console.log('error')
 
@@ -63,7 +65,7 @@ form.addEventListener('submit', event => {
 
 fetch('http://localhost:3456/', { 'credentials': 'include' })
   .then(res => res.json())
-  .then(res => window.location = 'http://localhost:5000/html/book.html')
+  .then(res => document.getElementById('signupFeedback').innerHTML = `<p> Success ! Please Login.</p>`)
   
 
 })
