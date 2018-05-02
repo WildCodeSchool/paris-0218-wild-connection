@@ -74,7 +74,7 @@ a {
 }
 a:after {
   content: '';
-	  background: linear-gradient(120deg, #0000AC, #02A9E5,#5000FF , #028AE5,#7D00FF); //changement de couleur
+	  background: linear-gradient(120deg, #0000AC, #02A9E5,#5000FF , #028AE5,#7D00FF); 
   background-size: 400% 400%;
   -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 4px, 216px 4px, 216px 66px, 4px 66px, 4px 100%, 100% 100%, 100% 0%, 0% 0%);
   -moz-animation: gradient 3s ease-in-out infinite, border 1s forwards ease-in-out reverse;
