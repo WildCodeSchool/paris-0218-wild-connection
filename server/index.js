@@ -88,7 +88,7 @@ app.post('/auth', (request, response, next) => {
   db.getUsers()
     .then(users => {
       const user = users.find(u => {
-        if(request.body.mail === u.email)
+        if(request.body.email === u.email)
           return true
         return false
       })
@@ -140,7 +140,7 @@ app.post('/jobs', (request, response, next) => {
 
 app.post('/myProfile', (request, response, next) => {
   const users = db.getUsers()
-  console.log(request.session.user.id)
+  console.log(request.session)
  // .then(users => )
 }
 )
