@@ -61,5 +61,4 @@ form.addEventListener('submit', event => {
 
 fetch('http://localhost:3456/', { 'credentials': 'include' })
   .then(res => res.json())
-
 })

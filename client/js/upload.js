@@ -9,7 +9,9 @@ form.addEventListener('submit', e => {
   fetch(`http://localhost:3456/upload`, {
     method: 'post',
     body: formData
-  })
+  },
+  {'credentials': 'include'})
+  
   .then(res => {
     console.log(res)  
   })

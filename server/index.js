@@ -6,7 +6,7 @@ const FileStore = require('session-file-store')(session)
 const mysql = require('mysql2/promise')
 const bodyParser = require('body-parser')
 
-const db = require('./db-sql.js')
+const db = require('./db-fs.js')
 
 const secret = 'secret'
 
@@ -60,68 +60,16 @@ app.use(session({
   store: new FileStore({ secret })
 }))
 
-
 app.use((req, res, next) => {
+  console.log('===========')
   console.log(`mon middleware dit :  ${req.method} ${req.url}`, { user: req.session.user, cookie: req.headers.cookie })
-
+  console.log('===========')
   next()
 })
 
 app.get('/', (request, response) => {
   const user = request.session.user || {}
-
   response.json(user)
-})
-
-app.post('/auth', (request, response, next) => {
-  db.getUsers()
-    .then(users => {
-      const user = 
-        users.find(u => {
-          if(request.body.mail === u.mail)
-           return true
-          return false
-        })
-        
-      console.log('test')
-      if (!user) {
-        console.log("user not found")
-        return response.json({ error: 'User not found' })
-      }
-
-      if (user.password !== request.body.password) {
-        console.log('wrong password')
-        return response.json({ error: 'Wrong password' })
-      }
-      request.session.user = user
-    
-      response.json(user)
-    })
-})
-
-// routes
-app.get('/', (request, response) => {
-  response.send('ok')
-})
-
-// sign-up
-app.post('/login', (request, response, next) => {
-  const random = Math.floor(Math.random() * 5)
-  const user = {
-    mail: request.body.mail,
-    password: request.body.password,
-    // default values
-    firstName: 'Jason',
-    lastName: 'Du Place-Holder',
-    campus: 'Paris',
-    promo: '2013',
-    month: 'fevrier',
-    color: `profil-colors${random}`
-  }
-
-  db.addUser(user)
-    .then(response.json('ok'))
-    .catch(next)
 })
 
 app.get('/users', (request, response, next) => {
@@ -136,15 +84,72 @@ app.get('/jobs', (request, response, next) => {
     .catch(next)
 })
 
+app.post('/auth', (request, response, next) => {
+  db.getUsers()
+    .then(users => {
+      const user = users.find(u => {
+        if(request.body.mail === u.email)
+          return true
+        return false
+      })
+
+      if (!user) {
+        console.log("user not found")
+        return response.json({ error: 'User not found' })
+      }
+
+      if (user.password !== request.body.password) {
+        console.log('wrong password')
+        return response.json({ error: 'Wrong password' })
+      }
+      request.session.user = user
+    
+      response.json(user)
+  })
+})
+
+// sign-up
+app.post('/login', (request, response, next) => {
+  const random = Math.floor(Math.random() * 5)
+  const user = {
+    email: request.body.email,
+    password: request.body.password,
+    // default values
+    firstName: 'Jason',
+    lastName: 'Du Place-Holder',
+    campus: 'Paris',
+    promo: '2013',
+    month: 'fevrier',
+    color: `profil-colors${random}`
+  }
+  db.addUser(user)
+    .then(response.json('ok'))
+    .catch(next)
+})
+
 app.post('/jobs', (request, response, next) => {
   const job = request.body
   db.addJob(job)
-      .then(response.json ('ok'))
+      .then(response.json('ok'))
       .catch(next)
 })
 
-//upload
 
+
+
+
+app.post('/myProfile', (request, response, next) => {
+  const users = db.getUsers()
+  console.log(request.session.user.id)
+ // .then(users => )
+}
+)
+
+
+
+
+
+//upload
 app.post('/upload', upload.single('myImage'), async (req, res, next) => {
      const data = req.body
      const file = req.file
@@ -163,6 +168,5 @@ app.use((err, req, res, next) => {
   }
   next(err)
 })
-
 
 app.listen(3456, () => console.log('Port 3456'))
