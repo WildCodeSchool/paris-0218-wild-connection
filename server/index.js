@@ -1,14 +1,13 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const multer = require('multer')
 const path = require('path')
+const util = require('util')
+const fs = require('fs')
+
 const session = require('express-session')
 const FileStore = require('session-file-store')(session)
 const mysql = require('mysql2/promise')
-const bodyParser = require('body-parser')
-const fs = require('fs')
-
-
-const util = require('util')
 
 const rename = util.promisify(fs.rename)
 
@@ -145,6 +144,7 @@ app.get('/jobs', (request, response, next) => {
 app.post('/jobs', (request, response, next) => {
   console.log(request.body)
   const job = request.body
+  console.log(request.body)
   db.addJob(job)
       .then(response.json ('ok'))
       .catch(next)

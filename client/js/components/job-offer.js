@@ -1,7 +1,7 @@
 export const createJobOffer = jobOffer => `
 <div class='job box' id='${jobOffer.idJob}'>
-  <div>
-    <h3>${jobOffer.title}</h3>
+  <div class="offer-width">
+    <h3>${jobOffer.title} at ${jobOffer.companyName} </h3>
       <p>
       	<span><img src="./pictures/contract.png" class="img-vign"></span>
       	<span>${jobOffer.contract}</span>
@@ -19,7 +19,7 @@ export const createJobOffer = jobOffer => `
 
       <p>
       	<span><img src="./pictures/contractbis.png" class="img-vign"></span>
-      	<span>${jobOffer.description}</span>
+      	<span>${jobOffer.companyName}</span>
       </p>
 
   </div>

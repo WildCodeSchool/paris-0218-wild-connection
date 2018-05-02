@@ -33,9 +33,10 @@ const getJobs = () => {
 }
 
 const addJob = job => {
+  createdAt = Date.now()
+  job.createdAt = createdAt
   job.id = randomId()
-
-  const filename = `job-${job.id}.json`
+  const filename = `job-${createdAt}.json`
   const dirpath = path.join(jasondirJob, filename)
 
   return writeFile(dirpath, JSON.stringify(job, null, 2), 'utf8')
