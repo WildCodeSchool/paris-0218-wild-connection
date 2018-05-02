@@ -40,3 +40,13 @@ nav ul {
 nav li a:hover {
 	color:#44B4FF;
 }
+body{
+	background-color: black;
+}
+.slide {
+	padding-top: 5.5%;
+	padding-bottom: 5.5%;
+}
+.t{
+	z-index: 0;
+}
