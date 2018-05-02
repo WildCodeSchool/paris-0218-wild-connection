@@ -1,0 +1,60 @@
+/*reset*/
+
+/*ATTENTION : tous les spans n'ont pas pour défaut la couleur black, cg button modal job - début */
+
+
+/*ATTENTION : tous les spans n'ont pas pour défaut la couleur black, cg button modal job - fin */
+
+
+/*searchbar */
+
+.search-bar {
+	margin : 0 auto;
+	width : 90%;
+}
+
+@media screen and (max-width: 550px) {
+	.api{
+		display: none;
+	}
+	.profile-side{
+		margin: auto;
+		width: 100%;
+	}
+	.profile{
+		width: 100%;
+	}
+	.profile-pic{
+		border-radius: 100%;
+		
+	}
+
+}
+
+.job {
+	padding: 2%;
+	margin: auto;
+	margin-bottom: 2%;
+	background: white;
+	display: flex;
+	flex-direction: row; 
+	flex-wrap: wrap;
+	width: 80%;
+	box-shadow: 6px 6px 6px #DCDCDC	;
+	border-radius: 1px;
+
+}
+
+p {
+	word-wrap: break-word; 
+	letter-spacing: 1px;
+}
+
+body {
+	background-color: #F8FAFF;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.fas fa-handshake {
+	background-color: blue;
+}

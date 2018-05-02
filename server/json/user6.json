@@ -1,0 +1,12 @@
+{
+  "id": "6",
+  "mail": "Serge.chtira@hotmail.com",
+  "firstName": "Serge",
+  "lastName": "Benhamou",
+  "password": "password",
+  "campus": "Paris",
+  "promo": "2018",
+  "month": "fevrier",
+  "color": "profil-colors2",
+  "image": "../css/img/deer.png"
+}

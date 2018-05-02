@@ -1,0 +1,171 @@
+/*reset*/
+
+/*header*/
+
+/*Trait soulignement navbar*/
+
+/* .navitems::after {
+	display: block;
+	content: ' ';
+	width: 60px;
+	height: 1px;
+	background:black;
+	margin: auto;
+} */
+
+/*Trait soulignement navbar*/
+
+/*navigation*/
+
+/*body*/
+/*searchbar */
+
+/*#filter-form {
+	width: 100%;
+	margin: auto;
+}
+
+#search-bar {
+	background-color: white;	
+}*/
+
+/*.input {
+	padding-left: 5px;
+	background-color: white;	
+}*/
+
+/*profile side */
+
+.apiandprofile{
+	display : flex;
+	flex-direction: column;	
+}
+
+.api{
+	width: 95%;
+	margin: auto;
+	height: 450px;
+	margin-top : 20px;
+	margin-bottom: 20px;
+}
+.profile-side{
+	width: 100%;
+	margin :  auto;
+	margin-bottom: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+
+}
+
+.profile-pic{
+	border-radius: 100%;
+	padding : 5px;
+}
+
+/* Profile Random */
+.profil-colors0 {
+	background-color: #000000;
+}
+.profil-colors1 {
+	background-color: #191919;
+	
+}
+.profil-colors2 {
+	background-color: #323031;
+	
+}
+.profil-colors3 {
+	background-color: #13142B;
+	
+}
+.profil-colors4 {
+	background-color: #1A2E51;
+	
+}
+.profile{
+	width : 100%;
+	text-align : center;
+	line-height: 3px;
+	margin: 2px;
+	display: flex;
+	border-radius: 2.5px;
+	box-shadow: 6px 6px 6px #DCDCDC;
+	flex-direction: row;
+	width : 250px;
+}
+.profile p {
+	color: white;
+}
+
+.modal-profile {
+	width : 100%;
+	text-align : center;
+	line-height: 3px;
+	margin: 2px;
+	display: flex;
+	border-radius: 2.5px;
+	box-shadow: 6px 6px 6px #DCDCDC;
+	flex-direction: columns;
+	width : 250px;
+}
+
+.round{
+	max-width : 120px;
+	max-height: 120px;
+	margin: 15px 0 0 5px;
+}
+
+.name { 
+	 
+	margin : 0 auto;
+	margin-top: 30px;
+	margin-bottom: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+/*MODAL*/
+
+.modal {
+		display: none;
+		position: fixed;
+		z-index: 1;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 100%;
+		overflow: auto;
+		background-color: rgba(0,0,0,0.5);
+	}
+
+.modal-content{
+		background-color: white;
+		margin: 30% auto;
+		padding:20px;
+		width: 70%;
+		box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.2);
+		animation-name: modalopen;
+		animation-duration: 0.4s;
+	}
+
+/*MODAL*/
+
+@media screen and (max-width: 550px) {
+	.api{
+		display: none;
+	}
+
+	.profile-side{
+		margin: auto;
+		width: 100%;
+	}
+	.profile{
+		width: 100%;
+	}
+	.profile-pic{
+		border-radius: 100%;
+		
+	}
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css">
+  <link rel="stylesheet" href="../css/login.css">
+  <title>WildConnection - login</title>
+</head>
+
+<body>
+  <header>
+    <nav id='header' class='row'>
+      <div id='titre' class="column column-50 column">
+        <h2>WILD CONNECTION</h2>
+      </div>
+      <div id="login">
+        <form id="sendlogin" class="column column-50 column">
+          <div class="input">
+            <input id="user-login" type="text" name="mail" placeholder="username">    
+          </div>
+          <div class="input">
+            <input id="password-login" type="password" name="psw" placeholder="password">
+          </div>
+          <div class="input">
+            <input class="button" value="LOGIN" type="submit">
+            <p id="loginFeedback"></p>
+          </div>
+        </form>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div id="logo" class="column column-40 column-offset-10">
+        <img src="https://www.jds.fr/medias/image/0-42179800-1496335948-64638-600-600-F.jpg" alt="logo">
+      </div>
+        <div class="column column-40 column-offset-10">
+          <div class="signup">
+            <h3> Sign up</h3>
+          </div>
+          
+          <form id="signup-form">
+            <input id="email" type="email" placeholder="E-mail" required>
+            <input id="password" type="password" name="psw" placeholder="password" required>
+            <input id="password-bis" type="password" name="psw" placeholder="Confirm password" required>
+            <div class="row">
+              <input value="Send" type="submit">
+              <p id="signupFeedback"></p>         
+            </div>   
+          </form>
+
+      </div>
+    </div>
+
+    <footer>
+      <div>
+        <p>Contact us at <a>wildconnection@gmail.com</a></p>
+      </div>
+    </footer>
+  </body>
+  <script type="module" src="../js/login.js"></script>
+</html>
