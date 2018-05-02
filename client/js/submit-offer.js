@@ -7,6 +7,7 @@ const submit = postOffer => {
     'credentials': 'include',
     body: JSON.stringify(postOffer)
   })
+
 }
 
 form.addEventListener('submit', event => {
@@ -29,9 +30,6 @@ const lineBreak = str => {
     city: window.document.getElementById('city').value,
     contact: window.document.getElementById('contact-mail').value,
 	}
-
-console.log(input)
-
 
   submit(input)
 	.then(res => res.json())

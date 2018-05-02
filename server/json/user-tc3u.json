@@ -1,12 +1,11 @@
 {
-  "id": "jdfk",
-  "mail": "dude@dude.dude",
-  "password": "lol",
+  "password": "fr",
   "firstName": "Jason",
   "lastName": "Du Place-Holder",
   "campus": "Paris",
   "promo": "2013",
   "month": "fevrier",
   "color": "profil-colors1",
-  "image": "../css/img/deer.png"
+  "image": "../css/img/deer.png",
+  "id": "ksqx"
 }

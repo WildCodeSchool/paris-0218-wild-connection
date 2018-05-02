@@ -20,7 +20,7 @@ const getUsers = () => {
 const addUser  = user => {
     user.id = randomId()
 
-  const filename = `user-${randomId}.json`
+  const filename = `user-${randomId()}.json`
   const dirpath = path.join(jasondir, filename)
 
   return writeFile(dirpath, JSON.stringify(user, null, 2), 'utf8')
