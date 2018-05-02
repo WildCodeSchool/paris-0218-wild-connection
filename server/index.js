@@ -137,11 +137,11 @@ app.get('/jobs', (request, response) => {
 
 app.post('/jobs', (request, response, next) => {
   const idJob = Math.random().toString(36).slice(2, 8)
-  const fileNameJob = `job-${idJob}.json`
+  const createdAt = Date.now()
+  const fileNameJob = `job-${createdAt}.json`
   const dirpathJob = path.join(jasondirJob, fileNameJob)
   const contentJob = request.body
       contentJob.id = idJob
-      contentJob.createdAt = Date.now()
       
   console.log(contentJob)
   writeFile(dirpathJob, JSON.stringify(contentJob, null, 2), 'utf8')
