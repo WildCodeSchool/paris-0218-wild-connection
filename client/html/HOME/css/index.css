@@ -52,6 +52,7 @@ body{
 #botton{
 	position: absolute;
 
-	padding-top: 850px;
-	padding-left: 47%;
+	margin-top: 45%;
+	margin-left: 49%;
+	transform: rotate(90deg);
 }
