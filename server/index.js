@@ -161,10 +161,8 @@ app.get('/jobs', (request, response, next) => {
 })
 
 app.post('/jobs', (request, response, next) => {
-  console.log(request.body)
   const job = request.body
-  console.log(request.body)
-  db.saveJob(job)
+  db.addJob(job)
       .then(response.json ('ok'))
       .catch(next)
 })
