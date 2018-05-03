@@ -57,10 +57,18 @@ const checkFileType = (file, cb) => {
         cb('Error: Image Only!')
     }
 }
+// middlewear authentification
+// function ensureLoggedIn(req, res, next) {
+//   if ( ! req.session || ! req.session.user ) {
+//     return next(new Error('Unauthenticated'))
+//   }
+
+//   next();
+// }
 
 app.use(session({
   secret,
-  saveUninitialized: false,
+  saveUninitialized: true,
   resave: true,
   store: new FileStore({ secret })
 }))
@@ -68,65 +76,13 @@ app.use(session({
 
 app.use((req, res, next) => {
   console.log(`mon middleware dit :  ${req.method} ${req.url}`, { user: req.session.user, cookie: req.headers.cookie })
-
   next()
-})
-
-app.get('/', (request, response) => {
-  const user = request.session.user || {}
-
-  response.json(user)
-})
-
-app.post('/auth', (request, response, next) => {
-  db.getUsers()
-    .then(users => {
-      const user = 
-        users.find(u => {
-          if(request.body.mail === u.mail)
-           return true
-          return false
-        })
-        
-      if (!user) {
-        console.log("user not found")
-        return response.json({ error: 'User not found' })
-      }
-
-      if (user.password !== request.body.password) {
-        console.log('wrong password')
-        return response.json({ error: 'Wrong password' })
-      }
-      request.session.user = user
-    
-      response.json(user)
-    })
 })
 
 // routes
 app.get('/', (request, response) => {
-  response.send('ok')
-})
-
-// sign-up
-app.post('/login', (request, response, next) => {
-  const random = Math.floor(Math.random() * 5)
-  const user = {
-    mail: request.body.mail,
-    password: request.body.password,
-    // default values
-    firstName: 'Jason',
-    lastName: 'Du Place-Holder',
-    campus: 'Paris',
-    promo: '2013',
-    month: 'fevrier',
-    color: `profil-colors${random}`,
-    image: "../css/img/deer.png"
-  }
-
-  db.addUser(user)
-    .then(response.json('ok'))
-    .catch(next)
+  const user = request.session.user || {}
+  response.json('ok')
 })
 
 app.get('/users', (request, response, next) => {
@@ -136,29 +92,109 @@ app.get('/users', (request, response, next) => {
 })
 
 app.get('/jobs', (request, response, next) => {
-  db.getJobs()
-    .then(jobs => response.json(jobs))
-    .catch(next)
+  request.session.destroy()
+  response.json('ok')
+//   db.getJobs()
+//     .then(jobs => response.json(jobs))
+//     .catch(next)
+})
+
+app.post('/auth', (request, response, next) => {
+  db.getUsers()
+    .then(users => {  
+      const user = users.find(u => request.body.mail === u.email ? true : false)
+      if (!user) {
+        console.log("user not found")
+        return response.json('User not found')
+      }
+
+      if (user.password !== request.body.password) {
+        console.log('wrong password')
+        return response.json('Wrond password')
+
+      } else {
+      request.session.user = user
+      response.json('Ok')
+      }
+
+    })
+})
+
+// sign-up
+app.post('/login', (request, response, next) => {
+  db.getUsers()
+    .then(users => users.find(user => user.email === request.body.email ? true : false))
+    .then(isNewMail => {
+      const random = Math.floor(Math.random() * 5)
+      const user = {
+        email: request.body.email,
+        password: request.body.password,
+        // default values
+        firstName: 'Jason',
+        lastName: 'Du Place-Holder',
+        campus: 'Paris',
+        promo: '2013',
+        month: 'fevrier',
+        color: `profil-colors${random}`,
+        image: "../css/img/deer.png"
+      }
+
+      if (isNewMail === undefined) {
+        console.log('new user : ', user)
+        db.addUser(user)
+          .then(response.json('Success ! You can login now !'))
+          .catch(next)
+      } else {
+        response.json('This mail is already used')
+      }
+    })
+//app.get('/users/:user_id', (request, response, next) => {
+//  db.getUsers()
+//    .then(users => response.json( users[ request.params.user_id ] ))
+//    .catch(next)
+})
+
 })
 
 app.post('/jobs', (request, response, next) => {
   const job = request.body
   db.addJob(job)
-      .then(response.json ('ok'))
+      .then(response.json('ok'))
       .catch(next)
 })
 
-//upload
+app.post('/updateProfile', (request, response, next) => {  
+  db.getUsers()
+  .then(users => {
+    let theUser = users.find(user => request.session.user.id === user.id ? true : false)
 
-app.post('/upload', upload.single('myImage'), async (req, res, next) => {
-     const data = req.body
-     const file = req.file
-     console.log(req.file, req.files)
-     const filename = req.file.fieldname + '-' + Date.now() + path.extname(req.file.originalname)
-     rename(req.file.path, path.join(__dirname, '../client/css/img', filename))
-      .then(() => res.json({ filename }))
+    request.body.color = theUser.color
+    request.body.image = theUser.image
+    request.body.id = theUser.id
+    theUser = request.body
+
+    db.updateUser(theUser)
+      .then(response.json('Ok'))
       .catch(next)
- })
+  })
+})
+
+app.post('/upload', upload.single('myImage'), async (request, response, next) => {
+db.getUsers()
+  .then( users => {
+    const theUser = users.find(user => request.session.user.id === user.id ? true : false)
+    const data = request.body
+    const file = request.file
+    console.log(request.file, request.files)
+    const filename = request.file.fieldname + '-' + Date.now() + path.extname(request.file.originalname)
+    theUser.image = '../css/img/' + filename
+
+    db.updateUser(theUser)
+    rename(request.file.path, path.join(__dirname, '../client/css/img', filename))
+     .then(() => response.json({ filename }))
+     .catch(next)
+  })
+})
 
 // app.use((err, req, res, next) => {
 //   if (err) {

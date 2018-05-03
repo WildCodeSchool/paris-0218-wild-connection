@@ -1,10 +1,11 @@
 {
-  "contract": "Open-ended contract",
+  "id": "1525266885447",
+  "title": "Méchant Vilain",
   "companyName": "Disney Studio",
-  "title": "Méchant",
-  "description": "Un méchant très vilain",
+  "contract": "Fixed-term contract",
+  "city": "Beauvais",
+  "date": "2018-05-16",
+  "description": "Un méchant très méchant !!",
   "salaryRange": "40k",
-  "city": "City",
-  "contact": "mechant@disney.fr",
-  "id": 1525266885447
+  "contact": "mechant@disney.fr"
 }

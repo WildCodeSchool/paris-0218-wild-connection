@@ -16,10 +16,26 @@ const filterJobSubmitBtn = document.getElementById('filter-job-submit-button')
 //   modal.style.display = 'block'
 // }
 
+const fillJobData = ( job, form ) => {
+  const formElements = Array.from( form.querySelectorAll( 'input,select,textarea' ) )
+  formElements.forEach( element => {
+    if ( element.name && job.hasOwnProperty( element.name ) ) {
+      element.value = job[ element.name ]
+    }
+  } )
+}
+
 const openModalBis = (job) => {
   modalBis.style.display = 'block'
 
   modalBis.innerHTML = showVignette(job)
+
+  modalBis.querySelector( '.edit-job-button' ).addEventListener( 'click', event => {
+    modalBis.style.display = 'none'
+    modal.style.display = 'block'
+    const form = modal.querySelector('#submit-job');
+    fillJobData(job, form)
+  })
 
   console.log(job)
 }
@@ -36,7 +52,11 @@ const injectJob = jobs => {
 }
 
 const filterJob = jobs => {
+  let filteredJobs = jobs;
+
   const search = document.getElementById('search-bar').value
+
+  filteredJobs = filteredJobs.filter( job => job.title && job.title.toLowerCase().includes( search ) )
 
   const filters = {
     city: document.getElementById('city').value,
@@ -44,18 +64,17 @@ const filterJob = jobs => {
     skills: document.getElementById('skills').value
   }
 
-  const byfilters = jobs => {
-    if ((!filters.city || filters.city.toLowerCase() === jobs.city.toLowerCase()) &&
-      (!filters.contract || filters.contract.toLowerCase() === jobs.contract.toLowerCase()) &&
-      (!filters.skills || filters.skills.toLowerCase() === jobs.skills.toLowerCase())
-    ) {
-      return true
+  Object.keys(filters).forEach(filterName => {
+    const filterValue = filters[filterName];
+    if ( ! filterValue ) {
+      return;
     }
+    filteredJobs = filteredJobs.filter(job => {
+      return job[filterName] && job[filterName].toLowerCase() === filterValue.toLowerCase();
+    })
+  })
 
-    return false
-  }
-
-  return jobs.filter(byfilters)
+  return filteredJobs;
 }
 
 filterJobSubmitBtn.addEventListener('click', event => {
@@ -63,16 +82,18 @@ filterJobSubmitBtn.addEventListener('click', event => {
 
   const filteredJob = filterJob(jobs)
 
-  inject(filteredJob)
+  injectJob(filteredJob)
 })
 
-fetch('http://localhost:3456/jobs', {'credentials': 'include'})
-  .then(response => response.json())
-  .then(fetchedJobs => {
-    jobs = fetchedJobs
-    console.log(jobs)
-    injectJob(jobs)
-  })
+document.addEventListener("DOMContentLoaded", function(event) {
+  fetch('http://localhost:3456/jobs', {'credentials': 'include'})
+    .then(response => response.json())
+    .then(fetchedJobs => {
+      jobs = fetchedJobs
+      console.log(jobs)
+      injectJob(jobs)
+    })
+})
 
 // https://osvaldas.info/real-time-search-in-javascript
 
