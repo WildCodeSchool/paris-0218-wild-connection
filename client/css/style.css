@@ -330,4 +330,43 @@ textarea {
   text-align: center;
 }
 
+/*dropdown btn profile*/ 
 
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+
+.drop-btn{
+    background-color: lightgrey;
+    color: red;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 125px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 50px;
+    border-radius: 4px;
+}
+
+.dropdown-content a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown:hover .dropdown-content{
+  display: block;
+}
+
+.dropdown-content a:hover{
+  color: #48E5C2;
+}

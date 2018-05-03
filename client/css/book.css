@@ -31,8 +31,13 @@
 }
 
 /* Profile Random */
+
+.opacity{
+	opacity: 0.95;
+}
+
 .profil-colors0 {
-	background-color: #F17300;
+	background-color: #001928;
 	margin: 10% auto;
     width: 30%;
 	box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.2);
@@ -43,12 +48,8 @@
     color: white;
 }
 
-.opacity{
-	opacity: 0.95;
-}
-
 .profil-colors1 {
-	background-color: #3C464B;
+	background-color: #00868C;
 	margin: 10% auto;
     width: 30%;
 	box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.2);
@@ -60,7 +61,7 @@
 	
 }
 .profil-colors2 {
-	background-color: #999FA1;
+	background-color: #4DB5A5;
 	margin: 10% auto;
     width: 30%;
 	box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.2);
@@ -71,7 +72,7 @@
     color: white;
 }    
 .profil-colors3 {
-	background-color: #456275;
+	background-color: #3A464B;
 	margin: 10% auto;
     width: 30%;
 	box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.2);
@@ -82,7 +83,7 @@
     color: white;
 }
 .profil-colors4 {
-	background-color: #253F54;
+	background-color: #FF0059;
 	margin: 10% auto;
     width: 30%;
 	box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.2);

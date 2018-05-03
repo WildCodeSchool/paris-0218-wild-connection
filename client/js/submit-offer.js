@@ -22,13 +22,13 @@ const lineBreak = str => {
 }
 
 	const input = {
-		contract: window.document.getElementById('contract-modal').value,
+        contract: window.document.getElementById('contract-modal').value,
 		companyName: window.document.getElementById('company-name').value,
-    title: window.document.getElementById('job-title').value,
-    description: lineBreak(window.document.getElementById('job-description').value),
-    salaryRange: window.document.getElementById('salary-range').value,
-    city: window.document.getElementById('city').value,
-    contact: window.document.getElementById('contact-mail').value,
+        title: window.document.getElementById('job-title').value,
+        description: lineBreak(window.document.getElementById('job-description').value),
+        salaryRange: window.document.getElementById('salary-range').value,
+        city: window.document.getElementById('city').value,
+        contact: window.document.getElementById('contact-mail').value,
 	}
 
   submit(input)

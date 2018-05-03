@@ -12,20 +12,3 @@ export const showVignette = vignette =>
       </div>
       </div>
 `
-
-// export const showVignette = vignette =>
-// `  <div class="modal-content">
-//       <div class="modal-header vignette-title">
-//         <h3>${vignette.title}</h3>
-//       </div>
-//       <div class="form-content">
-//           <p><span vignette-description><i class="fas fa-handshake></i></span><span>${vignette.contract}</span></p>
-//           <p><span><i class="fab fa-fly"></i></span><span class="vignette-description">${vignette.city}</span></p>
-//           <p><span><i class="fas fa-euro-sign"></i></span><span class="vignette-description">${vignette.salaryRange}</span></p>
-//           <p><span><i class="fas fa-hand-spock"></i><span><span class="vignette-description">${vignette.description}</span></p>
-//       </div>
-//         <div class="modal-footer">
-//           <p>Footer</p>
-//         </div>
-//       </div>
-// `

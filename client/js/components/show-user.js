@@ -8,6 +8,7 @@ export const showUser = fullUser => `
       <div><p>${fullUser.firstName} ${fullUser.lastName}</p></div>
       <div><p>${fullUser.campus}</p></div>
       <div><p>${fullUser.promo}</p></div>
+      <div><p>${fullUser.description}</p></div>
     </div>
   </div>
 `
