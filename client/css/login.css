@@ -9,6 +9,7 @@
 }
 html, body {
 	height: 100%;
+	width: 100%;
 }
 body {
 	display: flex;
@@ -56,13 +57,19 @@ a {
 	color: #232C31 !important;
 
 }
+#sendlogin {
+	display: flex;
+	flex-direction: row;	
+}
 
-#login .input {
+.input {
 	display: inline-flex;
 }
-#login .input input {
+
+.input input {
 	color: black;
 	background-color: white;
+	
 }
 .input input:focus {
 	border: solid 1px #03B5AA;
@@ -87,7 +94,8 @@ a {
 }
 
 .container {
-    flex: 1 0 auto;
+		flex: 1 0 auto;
+		padding: 0;
 }
 
 #logo {

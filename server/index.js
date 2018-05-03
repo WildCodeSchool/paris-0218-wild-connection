@@ -58,6 +58,14 @@ const checkFileType = (file, cb) => {
     }
 }
 
+function ensureLoggedIn(req, res, next) {
+  if ( ! req.session || ! req.session.user ) {
+    return next(new Error('Unauthenticated'))
+  }
+
+  next();
+}
+
 app.use(session({
   secret,
   saveUninitialized: false,
@@ -135,6 +143,12 @@ app.get('/users', (request, response, next) => {
     .catch(next)
 })
 
+app.get('/users/:user_id', (request, response, next) => {
+  db.getUsers()
+    .then(users => response.json( users[ request.params.user_id ] ))
+    .catch(next)
+})
+
 app.get('/jobs', (request, response, next) => {
   db.getJobs()
     .then(jobs => response.json(jobs))
@@ -145,7 +159,7 @@ app.post('/jobs', (request, response, next) => {
   console.log(request.body)
   const job = request.body
   console.log(request.body)
-  db.addJob(job)
+  db.saveJob(job)
       .then(response.json ('ok'))
       .catch(next)
 })

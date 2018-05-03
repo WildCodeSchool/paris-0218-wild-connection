@@ -1,5 +1,5 @@
 export const showVignette = vignette =>
-  `  <div class="modal-content">
+  `<div class="modal-content">
       <div class="modal-header vignette-title">
         <h3>${vignette.title} at ${vignette.companyName} </h3>
       </div>
@@ -10,7 +10,10 @@ export const showVignette = vignette =>
           <p><span><img src="./pictures/contractbis.png" class="img-vign"><span><span>${vignette.description}</span></p>
           <p><span><img src="./pictures/mail.png" class="img-vign"><span><span>${vignette.contact}</span></p>
       </div>
+      <div>
+        <button class="edit-job-button">Edit</button>
       </div>
+    </div>
 `
 
 // export const showVignette = vignette =>

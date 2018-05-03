@@ -9,6 +9,7 @@ const closeBtn = document.getElementsByClassName('close-btn')[0]
 // on affiche la div modal (class="modal"), définie dans le css comme display 'none'
 // grâce au JS qui va changer le style 'none' à 'block' avec l'addEventListenir(click, openModal)
 const openModal = () => {
+  modal.querySelectorAll( 'form' ).forEach( form => form.reset() )
   modal.style.display = 'block'
 }
 
