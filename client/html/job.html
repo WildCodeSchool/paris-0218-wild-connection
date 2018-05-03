@@ -24,7 +24,17 @@
         <li><a class="navitems" href="book.html">BOOK</a></li>
         <li><a class="navitems" href="job.html">JOB</a></li>
         <li class="bright"><img src="./pictures/plus.png" id="modal-btn" alt="Post an offer" class="icon"></li>
-        <li class="bright"><a class="navitems" href="profile.html"><img src="./pictures/profilebis.png" class="icon"></a></li>
+        
+          <li class="bright dropdown"> 
+          <a class="navitems">
+            <img src="./pictures/profilebis.png" class="icon">
+          </a>
+            <div class="dropdown-content">
+              <a href="profile.html">Settings</a>
+              <a>Log out</a>
+            </div>
+          </li>
+
       </ul>
     </nav>
   </header>
@@ -38,11 +48,11 @@
 
         <!-- Injecter villes existantes -->       
         <select id="city" class="column input">
-          <option value="City">-- City --</option>
+          <option value="">-- City --</option>
         </select>   
         <!-- Injecter contrats existants et enlever les choix par défaut -->
         <select id="contract" class="column input">
-          <option value="Contract">-- Contract --</option>
+          <option value="">-- Contract --</option>
           <option value="Fixed-term contract">Fixed-term contract</option>
           <option value="Open-ended contract">Open-ended contract</option>
           <option value="Internship">Internship</option>
@@ -51,7 +61,7 @@
 
         <!-- Injecter langages -->
         <select id="skills" class="column input">
-          <option value="Skills">-- Skills --</option>
+          <option value="">-- Skills --</option>
           <optgroup label="Frameworks">Framework
             <option value="Javascript">JavaScript</option>
             <option value="AngularJS">AngularJS</option>
@@ -82,9 +92,10 @@
           
           <form method="post" id="submit-job">
             <div class="form-content">
-            <label for="job-title"></label><input type="text" name="jobTitle" id="job-title" placeholder="Job title" required>
-            <label for="company-name"></label><input type="text" name="companyName" id="company-name" placeholder="Company name">
-            <label for="contract"></label><select id="contract-modal">
+            <input type="hidden" name="id" id="job-id" value=""/>
+            <label for="title"></label><input type="text" name="title" id="job-title" placeholder="Job title" required>
+            <label for="companyName"></label><input type="text" name="companyName" id="company-name" placeholder="Company name">
+            <label for="contract"></label><select id="contract-modal" name="contract">
               <option value="Contract">--Select the type of contract--</option>
               <option value="Fixed-term contract">Fixed-term contract</option>
               <option value="Open-ended contract">Open-ended contract</option>
@@ -92,10 +103,10 @@
               <option value="Freelance">Freelance</option>
             </select>
             <label for="city"></label><input type="text" name="city" id="city" placeholder= "ex : 'Beauvais'" >
-            <label for="beginning-date">Starting from &nbsp; </label><input type="date" name="date" id="beginning-date">
-            <label for="job-description"></label><textarea id="job-description" placeholder="More information..." name="jobDescription" required maxlength="5000"></textarea>
-            <label for="salary-range"></label><input type="text" name="salaryRange" id="salary-range" placeholder="ex : 35k - 40k">
-            <label for="Contact-mail"></label><input type="email" name="contact" id="contact-mail" placeholder="contact@gmail.com" required>
+            <label for="date">Starting from &nbsp; </label><input type="date" name="date" id="beginning-date">
+            <label for="description"></label><textarea id="job-description" placeholder="More information..." name="description" required maxlength="5000"></textarea>
+            <label for="salaryRange"></label><input type="text" name="salaryRange" id="salary-range" placeholder="ex : 35k - 40k">
+            <label for="contact"></label><input type="email" name="contact" id="contact-mail" placeholder="contact@gmail.com" required>
             </div>
 <!-- FOOTER -->
           <div class="modal-footer">

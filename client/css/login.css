@@ -9,8 +9,10 @@
 }
 html, body {
 	height: 100%;
+	width: 100%;
 }
 body {
+	width:100%;
 	display: flex;
 	flex-direction: column;
 }
@@ -29,6 +31,11 @@ blockquote, dl, figure, form, ol, p, pre, table, ul {
 a {
 	color: #03B5AA;
 	cursor: pointer;
+}
+.row {
+	padding: 0;
+	margin: 0;
+	width:100%;
 }
 /*header*/
 #header {
@@ -56,13 +63,21 @@ a {
 	color: #232C31 !important;
 
 }
+#sendlogin {
+	display: flex;
+	flex-direction: row;	
 
-#login .input {
-	display: inline-flex;
 }
-#login .input input {
+
+.input {
+	display: inline-flex;
+	margin-left: 5px;
+}
+
+.input input {
 	color: black;
 	background-color: white;
+	
 }
 .input input:focus {
 	border: solid 1px #03B5AA;
@@ -86,8 +101,19 @@ a {
     text-align: center;
 }
 
-.container {
-    flex: 1 0 auto;
+#signupFeedback p {
+	color: white;
+	background-color: green;
+	font-weight: bold;
+	border-radius: 15px;
+	padding: 5px;
+	margin-left: 5px;
+
+}
+
+.container1 {
+		flex: 1 0 auto;
+		padding: 0;
 }
 
 #logo {
@@ -97,10 +123,10 @@ a {
 }
 footer {
 	background-color: rgb(35, 44, 49);
-	width: calc(100% + 2.0rem);
+	width: 100%;
 	height: 80px;
-    display: flex;
-    justify-content: center;
+	display: flex;
+	justify-content: center;
 	align-items: center;
 	flex-shrink: 0;
 	
@@ -118,9 +144,26 @@ footer p {
 		flex-direction: column;
 		
 	}
-	#login .input {
+	#login {
 		display: flex;
 		flex-direction: column;
+		width: 100%;
+		margin: auto;
+	}
+
+	#input {
+		display: flex;
+		flex-direction: column;
+		margin: auto;
+	}
+.input .button{
+			width:100%;
+	}
+
+	#login .input input{
+		display: flex;
+		flex-direction: column;
+		width: 100%;
 		margin: auto;
 		margin-top: 20px;
 		margin-bottom: 20px;

@@ -57,6 +57,14 @@ const checkFileType = (file, cb) => {
         cb('Error: Image Only!')
     }
 }
+// middlewear authentification
+// function ensureLoggedIn(req, res, next) {
+//   if ( ! req.session || ! req.session.user ) {
+//     return next(new Error('Unauthenticated'))
+//   }
+
+//   next();
+// }
 
 app.use(session({
   secret,
@@ -95,7 +103,6 @@ app.post('/auth', (request, response, next) => {
   db.getUsers()
     .then(users => {  
       const user = users.find(u => request.body.mail === u.email ? true : false)
-      
       if (!user) {
         console.log("user not found")
         return response.json('User not found')
@@ -141,6 +148,12 @@ app.post('/login', (request, response, next) => {
         response.json('This mail is already used')
       }
     })
+//app.get('/users/:user_id', (request, response, next) => {
+//  db.getUsers()
+//    .then(users => response.json( users[ request.params.user_id ] ))
+//    .catch(next)
+})
+
 })
 
 app.post('/jobs', (request, response, next) => {
