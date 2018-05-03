@@ -74,7 +74,7 @@ app.use((req, res, next) => {
 // routes
 app.get('/', (request, response) => {
   const user = request.session.user || {}
-  response.json(user)
+  response.json('ok')
 })
 
 app.get('/users', (request, response, next) => {
@@ -146,22 +146,19 @@ app.post('/login', (request, response, next) => {
 app.post('/jobs', (request, response, next) => {
   const job = request.body
   db.addJob(job)
-      .then(response.json ('ok'))
+      .then(response.json('ok'))
       .catch(next)
 })
 
 app.post('/updateProfile', (request, response, next) => {  
   db.getUsers()
   .then(users => {
-    console.log(users)
     let theUser = users.find(user => request.session.user.id === user.id ? true : false)
 
-    console.log('premodif = ' ,theUser)
     request.body.color = theUser.color
     request.body.image = theUser.image
     request.body.id = theUser.id
     theUser = request.body
-    console.log('postmodif = ', theUser)
 
     db.updateUser(theUser)
       .then(response.json('Ok'))
@@ -172,15 +169,12 @@ app.post('/updateProfile', (request, response, next) => {
 app.post('/upload', upload.single('myImage'), async (request, response, next) => {
 db.getUsers()
   .then( users => {
-    console.log(users)
     const theUser = users.find(user => request.session.user.id === user.id ? true : false)
-    console.log('premodif = ' ,theUser)
     const data = request.body
     const file = request.file
     console.log(request.file, request.files)
     const filename = request.file.fieldname + '-' + Date.now() + path.extname(request.file.originalname)
     theUser.image = '../css/img/' + filename
-    console.log('postmodif = ', theUser)
 
     db.updateUser(theUser)
     rename(request.file.path, path.join(__dirname, '../client/css/img', filename))

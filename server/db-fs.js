@@ -45,6 +45,8 @@ const addJob = job => {
 const updateUser = newUser => {
   const filename = `user-${newUser.id}.json`
   const dirpath = path.join(jasondir, filename)
+  // const arrayOfNewUser = newUser.entries()
+  // console.log(arrayOfNewUser)
 
   return writeFile(dirpath, JSON.stringify(newUser, null, 2), 'utf8')
 }
