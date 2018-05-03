@@ -42,9 +42,17 @@ const addJob = job => {
   return writeFile(dirpath, JSON.stringify(job, null, 2), 'utf8')
 }
 
+const updateUser = newUser => {
+  const filename = `user-${newUser.id}.json`
+  const dirpath = path.join(jasondir, filename)
+
+  return writeFile(dirpath, JSON.stringify(newUser, null, 2), 'utf8')
+}
+
 module.exports = {
   getUsers,
   addUser,
   getJobs,
-  addJob
+  addJob,
+  updateUser
 }

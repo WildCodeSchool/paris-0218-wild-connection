@@ -68,14 +68,33 @@ app.use(session({
 
 app.use((req, res, next) => {
   console.log(`mon middleware dit :  ${req.method} ${req.url}`, { user: req.session.user, cookie: req.headers.cookie })
-
   next()
 })
 
+// routes
 app.get('/', (request, response) => {
   const user = request.session.user || {}
-
   response.json(user)
+})
+
+// app.use((request, response, next) => {
+//   request.session.user ? next() : console.log('lol')
+// })
+
+//app.use((request, response, next) => console.log(request.session.user))
+
+app.get('/users', (request, response, next) => {
+  db.getUsers()
+    .then(users => response.json(users))
+    .catch(next)
+})
+
+app.get('/jobs', (request, response, next) => {
+  request.session.user = {}
+  response.json('ok')
+//   db.getJobs()
+//     .then(jobs => response.json(jobs))
+//     .catch(next)
 })
 
 app.post('/auth', (request, response, next) => {
@@ -83,36 +102,32 @@ app.post('/auth', (request, response, next) => {
     .then(users => {
       const user = 
         users.find(u => {
-          if(request.body.mail === u.mail)
+          if(request.body.email === u.email)
            return true
           return false
         })
         
       if (!user) {
         console.log("user not found")
-        return response.json({ error: 'User not found' })
+        return response.json('User not found')
       }
 
       if (user.password !== request.body.password) {
         console.log('wrong password')
-        return response.json({ error: 'Wrong password' })
+        return response.json('wrond password')
       }
+      else {
       request.session.user = user
-    
-      response.json(user)
+      response.json('ok')
+      }
     })
-})
-
-// routes
-app.get('/', (request, response) => {
-  response.send('ok')
 })
 
 // sign-up
 app.post('/login', (request, response, next) => {
   const random = Math.floor(Math.random() * 5)
   const user = {
-    mail: request.body.mail,
+    email: request.body.email,
     password: request.body.password,
     // default values
     firstName: 'Jason',
@@ -123,21 +138,8 @@ app.post('/login', (request, response, next) => {
     color: `profil-colors${random}`,
     image: "../css/img/deer.png"
   }
-
   db.addUser(user)
     .then(response.json('ok'))
-    .catch(next)
-})
-
-app.get('/users', (request, response, next) => {
-  db.getUsers()
-    .then(users => response.json(users))
-    .catch(next)
-})
-
-app.get('/jobs', (request, response, next) => {
-  db.getJobs()
-    .then(jobs => response.json(jobs))
     .catch(next)
 })
 
@@ -148,17 +150,42 @@ app.post('/jobs', (request, response, next) => {
       .catch(next)
 })
 
-//upload
+app.post('/updateProfile', (request, response, next) => {  
+  db.getUsers()
+  .then(users => {
+    let theUser = users.find(user => request.session.user.id === user.id ? true : false)
+    console.log('premodif = ' ,theUser)
 
-app.post('/upload', upload.single('myImage'), async (req, res, next) => {
-     const data = req.body
-     const file = req.file
-     console.log(req.file, req.files)
-     const filename = req.file.fieldname + '-' + Date.now() + path.extname(req.file.originalname)
-     rename(req.file.path, path.join(__dirname, '../client/css/img', filename))
-      .then(() => res.json({ filename }))
+    request.body.color = theUser.color
+    request.body.image = theUser.image
+    request.body.id = theUser.id
+    theUser = request.body
+    console.log('postmodif = ', theUser)
+    db.updateUser(theUser)
+      .then(response.json('ok'))
       .catch(next)
- })
+  })
+})
+
+app.post('/upload', upload.single('myImage'), async (request, response, next) => {
+db.getUsers()
+  .then( users => {
+    const theUser = users.find(user => request.session.user.id === user.id ? true : false)
+    console.log('premodif = ' ,theUser)
+
+    const data = request.body
+    const file = request.file
+    console.log(request.file, request.files)
+    const filename = request.file.fieldname + '-' + Date.now() + path.extname(request.file.originalname)
+    theUser.image = '../css/img/' + filename
+    console.log('postmodif = ', theUser)
+
+    db.updateUser(theUser)
+    rename(request.file.path, path.join(__dirname, '../client/css/img', filename))
+     .then(() => response.json({ filename }))
+     .catch(next)
+  })
+})
 
 // app.use((err, req, res, next) => {
 //   if (err) {

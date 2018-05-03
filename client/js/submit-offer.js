@@ -3,7 +3,7 @@ const form = window.document.getElementById('submit-job')
 const submit = postOffer => {
 	return fetch("http://localhost:3456/jobs", {
     method: 'POST',
-    headers: {'Content-Type': 'application/json',},
+    headers: {'Content-Type': 'application/json'},
     'credentials': 'include',
     body: JSON.stringify(postOffer)
   })
