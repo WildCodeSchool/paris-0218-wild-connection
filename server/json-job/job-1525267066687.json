@@ -1,10 +1,11 @@
 {
+  "id": "1525267066687",
+  "title": "Le gentil prince charmante",
+  "companyName": "Disney Studio & Pixar",
   "contract": "Internship",
-  "companyName": "Disney Studio",
-  "title": "Le gentil prince charmant",
-  "description": "Un très servant chevalier musclé",
-  "salaryRange": "40k",
   "city": "City",
-  "contact": "gentil@disney.fr",
-  "id": 1525267066687
+  "date": "",
+  "description": "Un très servant chevalier musclé",
+  "salaryRange": "60k",
+  "contact": "gentil@disney.fr"
 }
