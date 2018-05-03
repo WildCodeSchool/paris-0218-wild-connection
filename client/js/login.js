@@ -26,7 +26,7 @@ formLogin.addEventListener('submit', event => {
   .then(res => {
     console.log(res)
     res === 'Ok' ? window.location = 'http://localhost:5000/html/book.html' 
-                             :document.getElementById('loginFeedback').innerHTML = res})
+                 : document.getElementById('loginFeedback').innerHTML = res})
 })
 
 

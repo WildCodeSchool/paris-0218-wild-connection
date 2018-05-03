@@ -84,7 +84,7 @@ app.get('/users', (request, response, next) => {
 })
 
 app.get('/jobs', (request, response, next) => {
-  request.session.user = {}
+  request.session.destroy()
   response.json('ok')
 //   db.getJobs()
 //     .then(jobs => response.json(jobs))
@@ -131,7 +131,7 @@ app.post('/login', (request, response, next) => {
         color: `profil-colors${random}`,
         image: "../css/img/deer.png"
       }
-      
+
       if (isNewMail === undefined) {
         console.log('new user : ', user)
         db.addUser(user)
@@ -153,6 +153,7 @@ app.post('/jobs', (request, response, next) => {
 app.post('/updateProfile', (request, response, next) => {  
   db.getUsers()
   .then(users => {
+    console.log(users)
     let theUser = users.find(user => request.session.user.id === user.id ? true : false)
 
     console.log('premodif = ' ,theUser)
@@ -171,8 +172,8 @@ app.post('/updateProfile', (request, response, next) => {
 app.post('/upload', upload.single('myImage'), async (request, response, next) => {
 db.getUsers()
   .then( users => {
+    console.log(users)
     const theUser = users.find(user => request.session.user.id === user.id ? true : false)
-
     console.log('premodif = ' ,theUser)
     const data = request.body
     const file = request.file
