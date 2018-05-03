@@ -60,7 +60,7 @@ const checkFileType = (file, cb) => {
 
 app.use(session({
   secret,
-  saveUninitialized: false,
+  saveUninitialized: true,
   resave: true,
   store: new FileStore({ secret })
 }))
@@ -76,12 +76,6 @@ app.get('/', (request, response) => {
   const user = request.session.user || {}
   response.json(user)
 })
-
-// app.use((request, response, next) => {
-//   request.session.user ? next() : console.log('lol')
-// })
-
-//app.use((request, response, next) => console.log(request.session.user))
 
 app.get('/users', (request, response, next) => {
   db.getUsers()
@@ -99,14 +93,9 @@ app.get('/jobs', (request, response, next) => {
 
 app.post('/auth', (request, response, next) => {
   db.getUsers()
-    .then(users => {
-      const user = 
-        users.find(u => {
-          if(request.body.email === u.email)
-           return true
-          return false
-        })
-        
+    .then(users => {  
+      const user = users.find(u => request.body.mail === u.email ? true : false)
+      
       if (!user) {
         console.log("user not found")
         return response.json('User not found')
@@ -114,33 +103,44 @@ app.post('/auth', (request, response, next) => {
 
       if (user.password !== request.body.password) {
         console.log('wrong password')
-        return response.json('wrond password')
-      }
-      else {
+        return response.json('Wrond password')
+
+      } else {
       request.session.user = user
-      response.json('ok')
+      response.json('Ok')
       }
+
     })
 })
 
 // sign-up
 app.post('/login', (request, response, next) => {
-  const random = Math.floor(Math.random() * 5)
-  const user = {
-    email: request.body.email,
-    password: request.body.password,
-    // default values
-    firstName: 'Jason',
-    lastName: 'Du Place-Holder',
-    campus: 'Paris',
-    promo: '2013',
-    month: 'fevrier',
-    color: `profil-colors${random}`,
-    image: "../css/img/deer.png"
-  }
-  db.addUser(user)
-    .then(response.json('ok'))
-    .catch(next)
+  db.getUsers()
+    .then(users => users.find(user => user.email === request.body.email ? true : false))
+    .then(isNewMail => {
+      const random = Math.floor(Math.random() * 5)
+      const user = {
+        email: request.body.email,
+        password: request.body.password,
+        // default values
+        firstName: 'Jason',
+        lastName: 'Du Place-Holder',
+        campus: 'Paris',
+        promo: '2013',
+        month: 'fevrier',
+        color: `profil-colors${random}`,
+        image: "../css/img/deer.png"
+      }
+      
+      if (isNewMail === undefined) {
+        console.log('new user : ', user)
+        db.addUser(user)
+          .then(response.json('Success ! You can login now !'))
+          .catch(next)
+      } else {
+        response.json('This mail is already used')
+      }
+    })
 })
 
 app.post('/jobs', (request, response, next) => {
@@ -154,15 +154,16 @@ app.post('/updateProfile', (request, response, next) => {
   db.getUsers()
   .then(users => {
     let theUser = users.find(user => request.session.user.id === user.id ? true : false)
-    console.log('premodif = ' ,theUser)
 
+    console.log('premodif = ' ,theUser)
     request.body.color = theUser.color
     request.body.image = theUser.image
     request.body.id = theUser.id
     theUser = request.body
     console.log('postmodif = ', theUser)
+
     db.updateUser(theUser)
-      .then(response.json('ok'))
+      .then(response.json('Ok'))
       .catch(next)
   })
 })
@@ -171,8 +172,8 @@ app.post('/upload', upload.single('myImage'), async (request, response, next) =>
 db.getUsers()
   .then( users => {
     const theUser = users.find(user => request.session.user.id === user.id ? true : false)
-    console.log('premodif = ' ,theUser)
 
+    console.log('premodif = ' ,theUser)
     const data = request.body
     const file = request.file
     console.log(request.file, request.files)

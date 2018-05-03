@@ -23,8 +23,12 @@ formLogin.addEventListener('submit', event => {
 
   logIn(inputs)
   .then(res => res.json())
-  .then(res => {res === 'ok' ? window.location = 'http://localhost:5000/html/book.html' : console.log('error')
+  .then(res => {
+    console.log(res)
+    res === 'Ok' ? window.location = 'http://localhost:5000/html/book.html' 
+                             :document.getElementById('loginFeedback').innerHTML = res})
 })
+
 
 // sign up
 const form = window.document.getElementById('signup-form')
@@ -40,7 +44,6 @@ const signup = (credentials) => {
 
 form.addEventListener('submit', event => {
   event.preventDefault()
-
   const inputs = {
     email: window.document.getElementById('email').value,
     password: window.document.getElementById('password').value,
@@ -53,16 +56,13 @@ form.addEventListener('submit', event => {
     }
 
     signup(credentials)
-      .then(res => console.log(res))
+      .then(res => res.json())
+      .then(res => document.getElementById('signupFeedback').innerHTML = res)
       .catch(err => console.log(err))
-      
-
   } else {
-    console.log('error')
-
+     document.getElementById('signupFeedback').innerHTML = 'Password are not the same'
   }
+})
 
 fetch('http://localhost:3456/', { 'credentials': 'include' })
   .then(res => res.json())
-  .then(res => document.getElementById('signupFeedback').innerHTML = `<p> Success ! Please Login.</p>`)
-})
