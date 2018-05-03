@@ -47,7 +47,7 @@ form.addEventListener('submit', event => {
   const inputs = {
     email: window.document.getElementById('email').value,
     password: window.document.getElementById('password').value,
-    passwordBis: window.document.getElementById('password-bis').value
+    passwordBis: window.document.getElementById('password-bis').value,
   }
   if (inputs.password && inputs.password === inputs.passwordBis) {
     const credentials = {

@@ -25,7 +25,13 @@
         <li><a class="navitems" href="book.html">BOOK</a></li>
         <li><a class="navitems" href="job.html">JOB</a></li>
         <li class="bright"><img src="./pictures/plus.png" id="modal-btn" alt="Post an offer" class="icon"></li>
-        <li class="bright"><a class="navitems" href="profile.html"><img src="./pictures/profilebis.png" class="icon"></a></li>
+        <li class="bright dropdown">
+          <a class="navitems"><img src="./pictures/profilebis.png" class="icon"></a>
+            <div class="dropdown-content">
+              <a href="profile.html">Settings</a>
+              <a href="logout.html">Log out</a>
+            </div>
+        </li>
       </ul>
     </nav>
   </header>
@@ -80,7 +86,7 @@
       </div>
     </section>
 
-    <!-- >>>MODAL DIV -->
+<!-- Post offer modal --> 
       <div id="simple-modal" class="modal">
         <div class="modal-content">
           <div class="modal-header">
