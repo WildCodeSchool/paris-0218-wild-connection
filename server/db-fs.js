@@ -11,24 +11,11 @@ const jasondirJob = path.join(__dirname, '/json-job/')
 
 const randomId = () => Math.random().toString(36).slice(2, 6)
 
-let usersCache = null;
-
 const getUsers = () => {
-  if ( usersCache ) {
-    return Promise.resolve( usersCache );
-  }
-
   return readdir(jasondir)
     .then(files => files.map(file => path.join(jasondir, file)))
     .then(paths => Promise.all(paths.map(path => readFile(path, 'utf8').then(JSON.parse))))
-    .then(users => users.reduce( ( result, user ) => {
-      result[ user.id ] = user;
-      return result;
-    }, {} ))
-    .then(usersIndexed => {
-      cache = usersIndexed;
-      return usersIndexed;
-    });
+    
 }
 
 const addUser  = user => {
