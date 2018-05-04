@@ -81,6 +81,12 @@ filtersSubmitButton.addEventListener('click', event => {
   inject(filteredUsers)
 })
 
+// fetch('http://localhost:3456/', {'credentials': 'include'})
+//   .then(response => {
+//     response.json()
+//   })
+
+
 fetch('http://localhost:3456/users', {'credentials': 'include'})
   .then(response => response.json())
   .then(fetchedUsers => {

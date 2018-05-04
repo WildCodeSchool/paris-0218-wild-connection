@@ -28,43 +28,35 @@ app.use((request, response, next) => {
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-//set storage
+// set storage
 const storage = multer.diskStorage({
-    destination: path.join(__dirname, 'uploads'),
-    filename: (req, file, cb) => {
-        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
-    }
+  destination: path.join(__dirname, 'uploads'),
+  filename: (req, file, cb) => {
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+  }
 })
 
 // init upload
 const upload = multer({
-    storage: storage,
-    limits: { fileSize: 3000000 },
+  storage: storage,
+  limits: { fileSize: 3000000 }
 })
 
 // check File Type
 const checkFileType = (file, cb) => {
-    //alowed ext
-    const filetypes = /jpeg|jpg|png|gif/
-    //check ext
-    const extname = filetypes.test(path.extname(file.originalname).toLowerCase())
-    // check mime
-    const mimetype = filetypes.test(file.mimetype)
+  // alowed ext
+  const filetypes = /jpeg|jpg|png|gif/
+  // check ext
+  const extname = filetypes.test(path.extname(file.originalname).toLowerCase())
+  // check mime
+  const mimetype = filetypes.test(file.mimetype)
 
-    if(mimetype && extname) {
-        return cb(null, true)
-    } else {
-        cb('Error: Image Only!')
-    }
+  if (mimetype && extname) {
+    return cb(null, true)
+  } else {
+    cb('Error: Image Only!')
+  }
 }
-// middlewear authentification
-// function ensureLoggedIn(req, res, next) {
-//   if ( ! req.session || ! req.session.user ) {
-//     return next(new Error('Unauthenticated'))
-//   }
-
-//   next();
-// }
 
 app.use(session({
   secret,
@@ -73,7 +65,6 @@ app.use(session({
   store: new FileStore({ secret })
 }))
 
-
 app.use((req, res, next) => {
   console.log(`mon middleware dit :  ${req.method} ${req.url}`, { user: req.session.user, cookie: req.headers.cookie })
   next()
@@ -81,7 +72,7 @@ app.use((req, res, next) => {
 
 // routes
 app.get('/', (request, response) => {
-  const user = request.session.user || {}
+  const user = request.session.user 
   response.json('ok')
 })
 
@@ -92,38 +83,39 @@ app.get('/users', (request, response, next) => {
 })
 
 app.get('/jobs', (request, response, next) => {
-  request.session.destroy()
-  response.json('ok')
-//   db.getJobs()
-//     .then(jobs => response.json(jobs))
-//     .catch(next)
+  db.getJobs()
+    .then(jobs => response.json(jobs))
+    .catch(next)
 })
 
 app.post('/auth', (request, response, next) => {
   db.getUsers()
-    .then(users => {  
-      const user = users.find(u => request.body.mail === u.email ? true : false)
+    .then(users => {
+      const user = users.find(u => request.body.mail === u.email)
       if (!user) {
-        console.log("user not found")
+        console.log('user not found')
         return response.json('User not found')
       }
 
       if (user.password !== request.body.password) {
         console.log('wrong password')
         return response.json('Wrond password')
-
       } else {
-      request.session.user = user
-      response.json('Ok')
+        request.session.user = user
+        response.json('Ok')
       }
-
     })
+})
+
+app.post('/logout', (request, response, next) => {
+  request.session.user = {}
+  response.json('ok')
 })
 
 // sign-up
 app.post('/login', (request, response, next) => {
   db.getUsers()
-    .then(users => users.find(user => user.email === request.body.email ? true : false))
+    .then(users => users.find(user => user.email === request.body.email))
     .then(isNewMail => {
       const random = Math.floor(Math.random() * 5)
       const user = {
@@ -136,7 +128,7 @@ app.post('/login', (request, response, next) => {
         promo: '2013',
         month: 'fevrier',
         color: `profil-colors${random}`,
-        image: "../css/img/deer.png"
+        image: '../css/img/deer.png'
       }
 
       if (isNewMail === undefined) {
@@ -148,52 +140,46 @@ app.post('/login', (request, response, next) => {
         response.json('This mail is already used')
       }
     })
-//app.get('/users/:user_id', (request, response, next) => {
-//  db.getUsers()
-//    .then(users => response.json( users[ request.params.user_id ] ))
-//    .catch(next)
-})
-
 })
 
 app.post('/jobs', (request, response, next) => {
   const job = request.body
   db.addJob(job)
-      .then(response.json('ok'))
-      .catch(next)
+    .then(response.json('ok'))
+    .catch(next)
 })
 
-app.post('/updateProfile', (request, response, next) => {  
+app.post('/updateProfile', (request, response, next) => {
   db.getUsers()
-  .then(users => {
-    let theUser = users.find(user => request.session.user.id === user.id ? true : false)
+    .then(users => {
+      let theUser = users.find(user => request.session.user.id === user.id)
 
-    request.body.color = theUser.color
-    request.body.image = theUser.image
-    request.body.id = theUser.id
-    theUser = request.body
+      request.body.color = theUser.color
+      request.body.image = theUser.image
+      request.body.id = theUser.id
+      theUser = request.body
 
-    db.updateUser(theUser)
-      .then(response.json('Ok'))
-      .catch(next)
-  })
+      db.updateUser(theUser)
+        .then(response.json('Ok'))
+        .catch(next)
+    })
 })
 
 app.post('/upload', upload.single('myImage'), async (request, response, next) => {
-db.getUsers()
-  .then( users => {
-    const theUser = users.find(user => request.session.user.id === user.id ? true : false)
-    const data = request.body
-    const file = request.file
-    console.log(request.file, request.files)
-    const filename = request.file.fieldname + '-' + Date.now() + path.extname(request.file.originalname)
-    theUser.image = '../css/img/' + filename
+  db.getUsers()
+    .then(users => {
+      const theUser = users.find(user => request.session.user.id === user.id)
+      const data = request.body
+      const file = request.file
+      console.log(request.file, request.files)
+      const filename = request.file.fieldname + '-' + Date.now() + path.extname(request.file.originalname)
+      theUser.image = '../css/img/' + filename
 
-    db.updateUser(theUser)
-    rename(request.file.path, path.join(__dirname, '../client/css/img', filename))
-     .then(() => response.json({ filename }))
-     .catch(next)
-  })
+      db.updateUser(theUser)
+      rename(request.file.path, path.join(__dirname, '../client/css/img', filename))
+        .then(() => response.json({ filename }))
+        .catch(next)
+    })
 })
 
 // app.use((err, req, res, next) => {

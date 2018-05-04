@@ -6,13 +6,12 @@ form.addEventListener('submit', e => {
   const formData = new FormData(form)
   console.log(formData)
 
-  window.fetch('http://localhost:3456/upload', 
-  { method: 'post',
-    'credentials': 'include',
-    body: formData}
+  window.fetch('http://localhost:3456/upload',
+    { method: 'post',
+      'credentials': 'include',
+      body: formData}
   )
 
-
-  .then(res => res.json())
-  .then(res => document.getElementById('imagePath').src = `/css/img/${res.filename}`)
+    .then(res => res.json())
+    .then(res => document.getElementById('imagePath').src = `/css/img/${res.filename}`)
 })

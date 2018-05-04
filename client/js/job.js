@@ -16,13 +16,13 @@ const filterJobSubmitBtn = document.getElementById('filter-job-submit-button')
 //   modal.style.display = 'block'
 // }
 
-const fillJobData = ( job, form ) => {
-  const formElements = Array.from( form.querySelectorAll( 'input,select,textarea' ) )
-  formElements.forEach( element => {
-    if ( element.name && job.hasOwnProperty( element.name ) ) {
+const fillJobData = (job, form) => {
+  const formElements = Array.from(form.querySelectorAll('input,select,textarea'))
+  formElements.forEach(element => {
+    if (element.name && job.hasOwnProperty(element.name)) {
       element.value = job[ element.name ]
     }
-  } )
+  })
 }
 
 const openModalBis = (job) => {
@@ -30,33 +30,31 @@ const openModalBis = (job) => {
 
   modalBis.innerHTML = showVignette(job)
 
-  modalBis.querySelector( '.edit-job-button' ).addEventListener( 'click', event => {
+  modalBis.querySelector('.edit-job-button').addEventListener('click', event => {
     modalBis.style.display = 'none'
     modal.style.display = 'block'
-    const form = modal.querySelector('#submit-job');
+    const form = modal.querySelector('#submit-job')
     fillJobData(job, form)
   })
 
-  console.log(job)
 }
 
 const injectJob = jobs => {
-  
-  const jobElements = jobs.map(createJobOffer).join('') 
-  
+  const jobElements = jobs.map(createJobOffer).join('')
+
   jobContainer.innerHTML = jobElements !== '' ? jobElements : 'Sorry, no match for your research'
-  
+
   const offerElements = Array.from(document.getElementsByClassName('job'))
 
   offerElements.forEach((element, i) => element.addEventListener('click', () => openModalBis(jobs[i])))
 }
 
 const filterJob = jobs => {
-  let filteredJobs = jobs;
+  let filteredJobs = jobs
 
   const search = document.getElementById('search-bar').value
 
-  filteredJobs = filteredJobs.filter( job => job.title && job.title.toLowerCase().includes( search ) )
+  filteredJobs = filteredJobs.filter(job => job.title && job.title.toLowerCase().includes(search))
 
   const filters = {
     city: document.getElementById('city').value,
@@ -65,16 +63,16 @@ const filterJob = jobs => {
   }
 
   Object.keys(filters).forEach(filterName => {
-    const filterValue = filters[filterName];
-    if ( ! filterValue ) {
-      return;
+    const filterValue = filters[filterName]
+    if (!filterValue) {
+      return
     }
     filteredJobs = filteredJobs.filter(job => {
-      return job[filterName] && job[filterName].toLowerCase() === filterValue.toLowerCase();
+      return job[filterName] && job[filterName].toLowerCase() === filterValue.toLowerCase()
     })
   })
 
-  return filteredJobs;
+  return filteredJobs
 }
 
 filterJobSubmitBtn.addEventListener('click', event => {
@@ -85,7 +83,7 @@ filterJobSubmitBtn.addEventListener('click', event => {
   injectJob(filteredJob)
 })
 
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener('DOMContentLoaded', function (event) {
   fetch('http://localhost:3456/jobs', {'credentials': 'include'})
     .then(response => response.json())
     .then(fetchedJobs => {

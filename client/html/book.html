@@ -21,7 +21,7 @@
     </div>
     <nav id="navbar">
       <ul class="menu">
-        <li><a class="navitems" href="WildHome.html">HOME</a></li>
+        <li><a class="navitems" href="index.html">HOME</a></li>
         <li><a class="navitems" href="book.html">BOOK</a></li>
         <li><a class="navitems" href="job.html">JOB</a></li>
         <li class="bright"><img src="./pictures/plus.png" id="modal-btn" alt="Post an offer" class="icon"></li>
@@ -29,7 +29,7 @@
           <a class="navitems"><img src="./pictures/profilebis.png" class="icon"></a>
             <div class="dropdown-content">
               <a href="profile.html">Settings</a>
-              <a href="logout.html">Log out</a>
+              <a id="logout">Log out</a>
             </div>
         </li>
       </ul>
@@ -129,16 +129,18 @@
 
   <footer>
     <div>
-      <p>Contact us at <a>wildconnection@gmail.com</a></p>
+      <p>Contact us at <a>wildconnection75@gmail.com</a></p>
     </div>
   </footer>
 
+  <script type="module" src=" ../js/isAuth.js"></script>
   <script type="module" src="../js/nav-bar-scroll.js"></script>
   <script type="module" src="../js/submit-offer.js"></script>
   <script type="module" src="../js/modal.js"></script>
   <script type="module" src="../js/modal-offer.js"></script>
   <script type="module" src="../js/book.js"></script>
   <script type="module" src="../js/profile-modal.js"></script>
+  <script type="module" src="../js/logout.js"></script>
   <script src="../js/map.js"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAt4SBwCFqoXGujQhi3I2qETM3sOJS6n3w&callback=initialize">
   </script>

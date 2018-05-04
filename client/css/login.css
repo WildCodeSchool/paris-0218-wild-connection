@@ -101,14 +101,24 @@ a {
     text-align: center;
 }
 
-#signupFeedback p {
+#signupFeedback {
+	display: none;
 	color: white;
 	background-color: green;
 	font-weight: bold;
 	border-radius: 15px;
 	padding: 5px;
 	margin-left: 5px;
+}
 
+#loginFeedback {
+	display: none;
+	color: white;
+	background-color: green;
+	font-weight: bold;
+	border-radius: 15px;
+	padding: 5px;
+	margin-left: 5px;
 }
 
 .container1 {

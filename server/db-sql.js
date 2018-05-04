@@ -22,9 +22,8 @@ const addUser = user => {
   const params = keys.map(key => user[key])
 
   // console.log(query, params)
-  return exec(query, params) 
+  return exec(query, params)
 }
-
 
 const updateUser = (user, id) => {
   const keys = [ 'firstName', 'lastName', 'email', 'password', 'campus', 'promo', 'image' ]
@@ -42,17 +41,17 @@ const updateUser = (user, id) => {
 
 const getJobs = () => exec('SELECT * FROM jobOffers')
 
-const addJob  = job => {
-  const keys = [ 'userID','firstName','lastName','email','city','salaryRange','contract','title','companyName','description',]
+const addJob = job => {
+  const keys = [ 'userID', 'firstName', 'lastName', 'email', 'city', 'salaryRange', 'contract', 'title', 'companyName', 'description']
   const query = `INSERT INTO jobOffers (${keys.join(', ')}) VALUES (${Array(keys.length).fill('?').join(', ')})`
   const params = keys.map(key => job[key])
 
   // console.log(query, params)
-  return exec(query, params) 
+  return exec(query, params)
 }
 
 const updateJob = (job, id) => {
-  const keys = [ 'firstName','lastName','email','city','salaryRange','contract','title','companyName','description',]
+  const keys = [ 'firstName', 'lastName', 'email', 'city', 'salaryRange', 'contract', 'title', 'companyName', 'description']
   const keyvalues = keys
     .map(key => ({ key, value: job[key] }))
     .filter(kv => kv.value !== undefined)
@@ -79,4 +78,3 @@ module.exports = {
 // updateUser({ firstName: 'Yoann', lastName: 'Cribier', promo: '2018', campus: undefined }, 3).then(console.log, console.error)
 // addJob({ userID: '2', firstName: 'Mehdi', lastName:'Chtira', email: 'qwe@WSAEDQUOT.fr',city: 'le Mans', salaryRange: 10, contract: 'cdi', title: 'cherche larbin',companyName: 'wcs', description: 'Larbin' }).then(console.log, console.error)
 // updateJob({ firstName: 'Yoann', lastName: 'Cribier', description: 'serveur chez Do-Mac' }, 3).then(console.log, console.error)
-

@@ -15,11 +15,10 @@ const getUsers = () => {
   return readdir(jasondir)
     .then(files => files.map(file => path.join(jasondir, file)))
     .then(paths => Promise.all(paths.map(path => readFile(path, 'utf8').then(JSON.parse))))
-    
 }
 
-const addUser  = user => {
-    user.id = randomId()
+const addUser = user => {
+  user.id = randomId()
 
   const filename = `user-${user.id}.json`
   const dirpath = path.join(jasondir, filename)
@@ -34,7 +33,7 @@ const getJobs = () => {
 }
 
 const addJob = job => {
-  if ( ! job.id ) {
+  if (!job.id) {
     job.createdAt = Date.now()
     job.id = randomId()
   }
