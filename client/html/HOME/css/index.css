@@ -1,18 +1,17 @@
 
 * {
-	/* margin: 0; */
-	/* padding: 0; */s
+
 	border: 0;
 	text-decoration: none;
 
 }
 
-/*header*/
+
 a {
 	color: white;
 	cursor: pointer;
 
-}/*navigation*/
+}
 
 a.navitems {
 	text-align: center;
@@ -22,10 +21,6 @@ header nav {
 	justify-content: space-around;
 	align-items: center;
 	margin-top: 20px;
-}
-nav ul {
-	/* justify-content: space-around; */
-
 }
 .menu li {
 	display: inline-flex;
@@ -46,8 +41,6 @@ body{
 .slide {
 	background-size: cover;
 
-	/* padding-top: 5.5%;
-	padding-bottom: 5.5%; */
 }
 #botton{
 	position: absolute;
@@ -74,7 +67,7 @@ a {
 }
 a:after {
   content: '';
-	  background: linear-gradient(120deg ,#0000AC, #02A9E5 , #028AE5,#0000FF); 
+	  background: linear-gradient(120deg ,#0000AC, #02A9E5 , #028AE5,#0000FF);
   background-size: 400% 400%;
   -webkit-clip-path: polygon(0% 100%, 4px 100%, 4px 4px, 216px 4px, 216px 66px, 4px 66px, 4px 100%, 100% 100%, 100% 0%, 0% 0%);
   -moz-animation: gradient 3s ease-in-out infinite, border 1s forwards ease-in-out reverse;
@@ -92,7 +85,7 @@ a > span {
   animation: gradient 3s ease-in-out infinite;
 }
 
-/* helpers */
+
 .absolute-centering, body:after, a, a:after {
   position: absolute;
   top: 0;
@@ -112,7 +105,7 @@ a > span {
   font-size: 28px;
 }
 
-/* motion */
+
 @-moz-keyframes gradient {
   0% {
     background-position: 14% 0%;
