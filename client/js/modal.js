@@ -1,4 +1,4 @@
-// Récupération de la div contenant l'ensemble du modal formulaire  
+// Récupération de la div contenant l'ensemble du modal formulaire
 const modal = document.getElementById('simple-modal')
 // Récupération du bouton pour afficher le modal
 const modalBtn = document.getElementById('modal-btn')
@@ -16,9 +16,7 @@ const closeModal = () => {
   modal.style.display = 'none'
 }
 
-
 const clickOutside = e => {
-
   if (e.target === modal) {
     modal.style.display = 'none'
   }

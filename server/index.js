@@ -6,7 +6,7 @@ const fs = require('fs')
 const writeFile = util.promisify(fs.writeFile)
 const readdir = util.promisify(fs.readdir)
 const readFile = util.promisify(fs.readFile)
-const jasondir = __dirname + "/json/"
+const jasondir = __dirname + '/json/'
 const wildjob = require('./wildjob-mock.json')
 
 const app = express()
@@ -56,27 +56,21 @@ app.post('/login', (request, response, next) => {
     mail: request.body.mail,
     password: request.body.password,
     // default values
-    firstName: "Bob",
-    lastName: "Marley",
-    campus: "Paris",
-    promo: "2013",
-    month: "fevrier"
+    firstName: 'Bob',
+    lastName: 'Marley',
+    campus: 'Paris',
+    promo: '2013',
+    month: 'fevrier'
   }
-  if(color < 0.2){
+  if (color < 0.2) {
     content.color = 'profil-colors0'
-  }
-  else if(color < 0.4) {
+  } else if (color < 0.4) {
     content.color = 'profil-colors1'
-  } 
-  else if(color < 0.6) {
+  } else if (color < 0.6) {
     content.color = 'profil-colors2'
-    
-  }
-  else if(color < 0.8) {
+  } else if (color < 0.8) {
     content.color = 'profil-colors3'
-    
-  }
-  else if(color < 1) {
+  } else if (color < 1) {
     content.color = 'profil-colors4'
   }
 
@@ -99,14 +93,14 @@ app.post('/jobs', (request, response) => {
   let fileNameJob = `${idJob}.json`
   const dirpathJob = path.join(__dirname, fileNameJob)
   const formJob = {
-      id : idJob,
-      contract : request.body.contract, 
-      city : request.body.city,
-      begDate : request.body.begDate,
-      endDate : request.body.endDate,
-      title : request.body.title,
-      companyName : request.body.companyName,
-      description : request.body.description
+    id: idJob,
+    contract: request.body.contract,
+    city: request.body.city,
+    begDate: request.body.begDate,
+    endDate: request.body.endDate,
+    title: request.body.title,
+    companyName: request.body.companyName,
+    description: request.body.description
   }
   writeFile(dirpathJob, JSON.stringify(formJob, null, 2), 'utf8')
     .then(response.send('ok'))
@@ -120,7 +114,6 @@ app.get('/users', (request, response) => {
       Promise.all(paths.map(path => readFile(path, 'utf8').then(JSON.parse)))
         .then(users => response.json(users))
     })
-
 })
 
 app.listen(3456, () => console.log('Port 3456'))

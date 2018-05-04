@@ -8,19 +8,19 @@ const openModal = () => {
 document.getElementById('submit-job').addEventListener('click', event => {
   event.preventDefault()
   const formulaireJob = {
-    contract : window.document.getElementById('contract-modal').value,
-    city : window.document.getElementById('city-modal').value,
-    begDate : window.document.getElementById('beginning-date').value,
-    endDate : window.document.getElementById('end-date').value,
-    title : window.document.getElementById('job-title').value,
-    companyName : window.document.getElementById('company-name').value,
-    description : window.document.getElementById('job-description').value
+    contract: window.document.getElementById('contract-modal').value,
+    city: window.document.getElementById('city-modal').value,
+    begDate: window.document.getElementById('beginning-date').value,
+    endDate: window.document.getElementById('end-date').value,
+    title: window.document.getElementById('job-title').value,
+    companyName: window.document.getElementById('company-name').value,
+    description: window.document.getElementById('job-description').value
   }
   console.log(formulaireJob)
 
-  fetch("http://localhost:3456/wildjob", {
-    method : 'post',
-    body : JSON.stringify(formulaireJob)
+  fetch('http://localhost:3456/wildjob', {
+    method: 'post',
+    body: JSON.stringify(formulaireJob)
   })
 })
 
