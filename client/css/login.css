@@ -102,9 +102,7 @@ a {
 }
 
 #signupFeedback {
-	display: none;
-	color: white;
-	background-color: green;
+	color: red;
 	font-weight: bold;
 	border-radius: 15px;
 	padding: 5px;
@@ -112,9 +110,7 @@ a {
 }
 
 #loginFeedback {
-	display: none;
-	color: white;
-	background-color: green;
+	color: red;
 	font-weight: bold;
 	border-radius: 15px;
 	padding: 5px;

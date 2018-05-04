@@ -56,11 +56,11 @@ body{
 }
 
 #botton-container {
-  justify-content: center;
+  justify-content: center;  
+
 }
 
 #botton{
-	position: absolute;
 	font-size: 25px;
 	margin-top: 35%;
 }
