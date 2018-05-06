@@ -72,7 +72,7 @@ app.use((req, res, next) => {
 
 // routes
 app.get('/', (request, response) => {
-  const user = request.session.user 
+  const user = request.session.user
   response.json('ok')
 })
 
@@ -107,7 +107,7 @@ app.post('/auth', (request, response, next) => {
     })
 })
 
-app.post('/logout', (request, response, next) => {
+app.get('/logout', (request, response, next) => {
   request.session.user = {}
   response.json('ok')
 })
